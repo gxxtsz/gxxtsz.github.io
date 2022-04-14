@@ -1,350 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>jk</title>
-    <url>/2022/04/14/123/jk/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-  </entry>
-  <entry>
-    <title>789</title>
-    <url>/2022/04/14/123/789/</url>
-    <content><![CDATA[<span id="more"></span>
-
-
-
-<p><img src="/../images/789/touxiang.jpg" alt="456"> </p>
-<p><img src="/../images/789/icon.png"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>002.aksdkjs</title>
-    <url>/2022/04/13/123/002-aksdkjs/</url>
-    <content><![CDATA[<p>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+    <title>人性的弱点</title>
+    <url>/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</url>
+    <content><![CDATA[<p>这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？</p>
 <span id="more"></span>
 
-
-
-<p>111111111111111111111111111111111111111116666666666666666666666666666666666666667777777777777777777777777777777777777</p>
+<h1 id="人际交往的基本技巧"><a href="#人际交往的基本技巧" class="headerlink" title="人际交往的基本技巧"></a>人际交往的基本技巧</h1><ul>
+<li>不要批评、指责、抱怨他人。</li>
+<li>真诚的感谢、赞美他人。</li>
+<li>激发他人的需求，这样他才会心甘情愿的去做一件事。</li>
+</ul>
+<h1 id="赢得他人喜爱的六个方式"><a href="#赢得他人喜爱的六个方式" class="headerlink" title="赢得他人喜爱的六个方式"></a>赢得他人喜爱的六个方式</h1><ul>
+<li>建立对他人的兴趣，真诚的关注别人。</li>
+<li>微笑。</li>
+<li>记住对方的名字，对他来说他的名字是这个世界上最动听的语言。</li>
+<li>专心的倾听别人。</li>
+<li>谈论对方感兴趣的事情。</li>
+<li>真心实意的让对方知道他有多重要。</li>
+</ul>
+<h1 id="如何让他人想你之想"><a href="#如何让他人想你之想" class="headerlink" title="如何让他人想你之想"></a>如何让他人想你之想</h1><ul>
+<li>赢得争论的方式只有一个，那就是避免争论。</li>
+<li>如果你错了，请坚决果断的承认错误。</li>
+<li>沟通始于友善。</li>
+<li>让对方主导谈话。</li>
+<li>将心比心，体谅他人。</li>
+<li>激发对方内心深处的高尚情操。</li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这儿我只列举了书中前面的一部分，我觉得能够不断向上面的规则对齐，就很了不起了，其他的规则基本上都是这些规则的衍生。</p>
+<p>希望你能生活的越来越好，这个世界更加和谐。</p>
 ]]></content>
       <categories>
-        <category>wedf</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>343</tag>
+        <tag>读书笔记</tag>
+        <tag>心理学</tag>
+        <tag>人际交往</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>001.gjgh</title>
-    <url>/2022/04/13/123/001-gjgh/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>gxx</title>
-    <url>/2022/04/13/123/gxx/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>123</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wxpython</title>
-    <url>/2022/04/13/wxpython/</url>
-    <content><![CDATA[<p>123</p>
-<span id="more"></span>
-
-<h1 id="wxpython入门"><a href="#wxpython入门" class="headerlink" title="wxpython入门"></a>wxpython入门</h1><p>任何wxPython应用程序都需要一个应用程序对象。这个应用程序对象必须是类wx.App或其定制的子类的一个实例。应用程序对象的主要目的是管理幕后的主事件循环。这个事件循环响应于窗口系统事件并分配它们给适当的事件处理器。</p>
-<h2 id="创建一个wx-App的子类"><a href="#创建一个wx-App的子类" class="headerlink" title="创建一个wx.App的子类"></a>创建一个<strong>wx.App</strong>的子类</h2><p>1、定义一个wx.App子类 </p>
-<p>2、在定义的子类中写一个OnInit()方法 </p>
-<p>3、在你的程序的主要部分创建这个类的一个实例 </p>
-<p>4、调用应用程序实例的MainLoop()方法。这个方法将程序的控制权转交 给wxPython</p>
-<blockquote>
-<p>由于OnInit()方法的存在，并且它是wxPython架构的一部分，所以任何关于 你的定制的类的所需的初始化通常都由OnInit()方法管理，而不在Python的 __init__方法中。如果由于某些原因你决定需要__init__方法，那么你必须在你 的__ini__方法中调用父类的__init__方法</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx     </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span>(wx.App):    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnInit</span>(<span class="params">self</span>):     </span><br><span class="line">        frame = wx.Frame(parent=<span class="literal">None</span>, title=’Bare’)</span><br><span class="line">        frame.Show()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">app = App()    </span><br><span class="line">app.MainLoop()    </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="关闭应用程序"><a href="#关闭应用程序" class="headerlink" title="关闭应用程序"></a>关闭应用程序</h2><p>wx.App子类的OnExit()方法在最后一个窗口被关闭后且在wxPython的内在的清 理过程之前被调用，你可以使用OnExit()方法来清理你创建的任何非wxPython 资源（例如一个数据库连接）。即使使用了wx.Exit()来关闭wxPython程 序，OnExit()方法仍将被触发。 </p>
-<p>如果由于某种原因你想在最后的窗口被关闭后wxPython应用程序仍然可以 继续，你可以使用wx.App的SetExitOnFrameDelete(flflag)方法来改变默认的行 为。如果flflag参数设置为False，那么最后的窗口被关闭后wxPython应用程序仍 然会继续运行。这意味着wx.App实例将继续存活，并且事件循环将继续处理事 件，比如这时你还可以创建所有新的这里所谓的顶级窗口。wxPython应用程序 将保持存活直到全局函数wx.Exit()被明确地调用。</p>
-<h1 id="wx-Frame"><a href="#wx-Frame" class="headerlink" title="wx.Frame"></a>wx.Frame</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wx.Frame(parent, <span class="built_in">id</span>=-<span class="number">1</span>, title=””, pos=wx.DefaultPosition,</span><br><span class="line">        size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE,</span><br><span class="line">        name=”frame”)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><em>parent</em>：框架的父窗口。对于顶级窗口，这个值是<em>None</em>。框架随其父窗口的销毁而 销毁。取决于平台，框架可被限制只出现在父窗口的顶部。在多文档界面的情况下， 子窗口被限制为只能在父窗口中移动和缩放。 </p>
-</li>
-<li><p><em>id</em>：关于新窗口的wxPython ID*号。你可以明确地传递一个。或传递-1，这将导致 wxPython自动生成一个新的ID。 </p>
-</li>
-<li><p><em>title</em>：窗口的标题。 </p>
-</li>
-<li><p><em>pos</em>：一个<em>wx.Point</em>对象，它指定这个新窗口的左上角在屏幕中的位置。在图形用户 界面程序中，通常*(0,0)<em>是显示器的左上角。这个默认的</em>(-1,-1)*将让系统决定窗口的位 置。 </p>
-</li>
-<li><p><em>size</em>：一个<em>wx.Size</em>对象，它指定这个窗口的初始尺寸。这个默认的*(-1,-1)*将让系统决 定窗口的初始尺寸。 </p>
-</li>
-<li><p><em>style</em>：指定窗口的类型的常量。你可以使用或运算来组合它们。 </p>
-</li>
-<li><p><em>name</em>：框架的内在的名字。以后你可以使用它来寻找这个窗口。</p>
-</li>
-</ul>
-<p>示例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        wx.Frame.__init__(self, <span class="literal">None</span>, -<span class="number">1</span>, ”My Friendly Window”,</span><br><span class="line">            (<span class="number">100</span>, <span class="number">100</span>), (<span class="number">100</span>, <span class="number">100</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>每个wxPython窗口部件都要求一个样式参数。这部分我们将讨论用于 wx.Frame的样式。它们中的一些也适用于别的wxPython窗口部件。一些窗口部 件也定义了一个SetStyle()方法，让你可以在该窗口部件创建后改变它的样式。 所有的你能使用的样式元素都有一个常量标识符（如wx.MINIMIZE_BOX）。 要使用多个样式，你可以使用或运算符|。例 如，wx.DEFAULT_FRAME_STYLE样式就被定义为如下几个基本样式的组 合： </p>
-<p><em><strong>wx.MAXIMIZE_BOX | wx.MINIMIZE_BOX | wx.RESIZE_BORDER |</strong></em> <strong>wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX</strong></p>
-<p>要从一个合成的样式中去掉个别的样式，你可以使用^操作符。例如要创 建一个默认样式的窗口，但要求用户不能缩放和改变窗口的尺寸，你可以这样 做：</p>
-<p><em><strong>wx.DEFAULT_FRAME_STYLE ^ (wx.RESIZE_BORDER | wx.MINIMIZE_BOX</strong></em> <em><strong>|wx.MAXIMIZE_BOX)</strong></em></p>
-<hr>
-<p>几个重要样式：</p>
-<ul>
-<li><p><em>wx.CAPTION</em>：在框架上增加一个标题栏，它显示该框架的标题属性。 </p>
-</li>
-<li><p><em>wx.CLOSE_BOX</em>：指示系统在框架的标题栏上显示一个关闭框，使用系统默认的位 置和样式。 </p>
-</li>
-<li><p><em>wx.DEFAULT_FRAME_STYLE</em>：默认样式。 </p>
-</li>
-<li><p><em>wx.FRAME_SHAPED</em>：用这个样式创建的框架可以使用*SetShape()*方法去创建一个 非矩形的窗口。 </p>
-</li>
-<li><p><em>wx.FRAME_TOOL_WINDOW</em>：通过给框架一个比正常更小的标题栏，使框架看起 来像一个工具框窗口。在<em>Windows</em>下，使用这个样式创建的框架不会出现在显示所 有打开窗口的任务栏上。 </p>
-</li>
-<li><p><em>wx.MAXIMIZE_BOX</em>：指示系统在框架的标题栏上显示一个最大化框，使用系统默认 的位置和样式。 </p>
-</li>
-<li><p><em>wx.MINIMIZE_BOX</em>：指示系统在框架的标题栏上显示一个最小化框，使用系统默认 的位置和样式。 </p>
-</li>
-<li><p><em>wx.RESIZE_BORDER</em>：给框架增加一个可以改变尺寸的边框。 </p>
-</li>
-<li><p><em>wx.SIMPLE_BORDER</em>：没有装饰的边框。不能工作在所有平台上。 </p>
-</li>
-<li><p><em>wx.SYSTEM_MENU</em>：增加系统菜单（带有关闭、移动、改变尺寸等功能）和关闭 框到这个窗口。在系统菜单中的改变尺寸和关闭功能的有效性依赖于 <em>wx.MAXIMIZE_BOX, wx.MINIMIZE_BOX</em>和<em>wx.CLOSE_BOX</em>样式是否被应用。</p>
-</li>
-</ul>
-<hr>
-<p>示例：</p>
-<ul>
-<li>wx.DEFAULT_STYLE</li>
-</ul>
-<p><img src="/assets/1649508758162.png" alt="1649508758162"></p>
-<ul>
-<li>wx.DEFAULT_FRAME_STYLE ^ (wx.RESIZE_BORDER | wx.MINIMIZE_BOX | wx.MAXIMIZE_BOX)</li>
-</ul>
-<p><img src="/assets/1649508783898.png" alt="1649508783898"></p>
-<ul>
-<li>wx.DEFAULT_FRAME_STYLE | wx.FRAME_TOOL_WINDOW</li>
-</ul>
-<p><img src="/assets/1649508810175.png" alt="1649508810175"></p>
-<ul>
-<li>wx.help.FRAME_EX_CONTEXTHELP</li>
-</ul>
-<p><img src="/assets/1649508823963.png" alt="1649508823963"></p>
-<hr>
-<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><h2 id="wx-Event的重要的子类"><a href="#wx-Event的重要的子类" class="headerlink" title="wx.Event的重要的子类"></a>wx.Event的重要的子类</h2><ul>
-<li><em>wx.CloseEvent</em>：当一个框架关闭时触发。这个事件的类型分为一个通常的框架关闭 和一个系统关闭事件。 </li>
-<li><em>wx.CommandEvent</em>：与窗口部件的简单的各种交互都将触发这个事件，如按钮单 击、菜单项选择、单选按钮选择。这些交互有它各自的事件类型。许多更复杂的窗口 部件，如列表等则定义<em>wx.CommandEvent</em>的子类。事件处理系统对待命令事件与其 它事件不同。 </li>
-<li><em>wx.KeyEvent</em>：按按键事件。这个事件的类型分按下按键、释放按键、整个按键动 作。 </li>
-<li><em>wx.MouseEvent</em>：鼠标事件。这个事件的类型分鼠标移动和鼠标敲击。对于哪个鼠 标按钮被敲击和是单击还是双击都有各自的事件类型。 </li>
-<li><em>wx.PaintEvent</em>：当窗口的内容需要被重画时触发。 </li>
-<li><em>wx.SizeEvent</em>：当窗口的大小或其布局改变时触发。 </li>
-<li><em>wx.TimerEvent</em>：可以由类<em>wx.Timer</em>类创建，它是定期的事件。</li>
-</ul>
-<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p><strong>wx.MouseEvent的事件</strong></p>
-<ul>
-<li><em>wx.EVT_LEFT_DOWN</em> </li>
-<li><em>wx.EVT_LEFT_UP</em> </li>
-<li><em>wx.EVT_LEFT_DCLICK</em></li>
-<li><em>wx.EVT_MIDDLE_DOWN</em> </li>
-<li><em>wx.EVT_MIDDLE_UP</em> </li>
-<li><em>wx.EVT_MIDDLE_DCLICK</em> </li>
-<li><em>wx.EVT_RIGHT_DOWN</em> </li>
-<li><em>wx.EVT_RIGHT_UP</em> </li>
-<li><em>wx.EVT_RIGHT_DCLICK</em></li>
-</ul>
-<p>另外，类型wx.EVT_MOTION产生于用户移动鼠标。类型 wx.ENTER_WINDOW和wx.LEAVE_WINDOW产生于当鼠标进入或离开一个窗 口部件时。类型wx.EVT_MOUSEWHEEL被绑定到鼠标滚轮的活动。最后，你 可以使用类型wx.EVT_MOUSE_EVENTS一次绑定所有的鼠标事件到一个函 数。</p>
-<p>同样，类wx.CommandEvent有28个不同的事件类型与之关联；尽管有几个 仅针对老的Windows操作系统。它们中的大多数是专门针对单一窗口部件的， 如wx.EVT_BUTTON用于按钮敲击，wx.EVT_MENU用于菜单项选择。</p>
-<h2 id="Bind"><a href="#Bind" class="headerlink" title="Bind()"></a>Bind()</h2><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="constructor">Bind(<span class="params">event</span>, <span class="params">handler</span>, <span class="params">source</span>=None, <span class="params">id</span>=<span class="params">wx</span>.ID_ANY, <span class="params">id2</span>=<span class="params">wx</span>.ID_ANY)</span></span><br></pre></td></tr></table></figure>
-
-<p>Bind()函数将一个事件和一个对象与一个事件处理器函数关联起来。参数 event是必选的，它是一个事件的实例。handler也是必选的，它是一个可调用的Python对象，通常是一个被绑定的方法 或函数。处理器必须是可使用一个参数（事件对象本身）来调用的。参数 handler可以是None，这种情况下，事件没有关联的处理器。参数source是产生 该事件的源窗口部件，这个参数在触发事件的窗口部件与用作事件处理器的窗 口部件不相同时使用。通常情况下这个参数使用默认值None，这是因为你一般 使用一个定制的wx.Frame类作为处理器，并且绑定来自于包含在该框架内的窗 口部件的事件。</p>
-<p>Bind()方法中的参数id和id2使用ID号指定了事件的源。一般情况下这没必 要，因为事件源的ID号可以从参数source中提取。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent, <span class="built_in">id</span></span>):</span><br><span class="line">    wx.Frame.__init__(self, parent, <span class="built_in">id</span>, ’Frame With Button’,</span><br><span class="line">            size=(<span class="number">300</span>, <span class="number">100</span>))</span><br><span class="line">    panel = wx.Panel(self, -<span class="number">1</span>)                              </span><br><span class="line">    button = wx.Button(panel, -<span class="number">1</span>, ”Close”, pos=(<span class="number">130</span>, <span class="number">15</span>),   </span><br><span class="line">            size=(<span class="number">40</span>, <span class="number">40</span>))</span><br><span class="line">    self.Bind(wx.EVT_CLOSE, self.OnCloseWindow) <span class="comment">#1 绑定框架关闭事件</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#为了让wxPython能够区分在这个框架中该按钮和其它按钮所产生的事件</span></span><br><span class="line">    self.Bind(wx.EVT_BUTTON, self.OnCloseMe, button) <span class="comment">#2 绑定按钮事件  </span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnCloseMe</span>(<span class="params">self, event</span>):</span><br><span class="line">        self.Close(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnCloseWindow</span>(<span class="params">self, event</span>):</span><br><span class="line">        self.Destroy()</span><br></pre></td></tr></table></figure>
-
-<h2 id="Skip"><a href="#Skip" class="headerlink" title="Skip()"></a><strong>Skip()</strong></h2><p>事件的第一个处理器函数被发现并执行完后，该事件处理将终止，除非在 处理器返回之前调用了该事件的Skip()方法。调用Skip()方法允许另外被绑定的处理器被搜索。</p>
-<h1 id="对话框"><a href="#对话框" class="headerlink" title="对话框"></a>对话框</h1><h2 id="自定义模式对话框"><a href="#自定义模式对话框" class="headerlink" title="自定义模式对话框"></a>自定义模式对话框</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubclassDialog</span>(wx.Dialog):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):<span class="comment">#初始化对话框</span></span><br><span class="line">        wx.Dialog.__init__(self, <span class="literal">None</span>, -<span class="number">1</span>, ’Dialog Subclass’,</span><br><span class="line">                size=(<span class="number">300</span>, <span class="number">100</span>))</span><br><span class="line">        okButton = wx.Button(self, wx.ID_OK, ”OK”, pos=(<span class="number">15</span>, <span class="number">15</span>))</span><br><span class="line">        okButton.SetDefault()</span><br><span class="line"> cancelButton = wx.Button(self, wx.ID_CANCEL, ”Cancel”,</span><br><span class="line">                pos=(<span class="number">115</span>, <span class="number">15</span>))</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == ’__main__’:</span><br><span class="line">    app = wx.PySimpleApp()</span><br><span class="line">    app.MainLoop()</span><br><span class="line">    dialog = SubclassDialog()</span><br><span class="line">    result = dialog.ShowModal()<span class="comment">#显示模式对话框</span></span><br><span class="line">    <span class="keyword">if</span> result == wx.ID_OK:</span><br><span class="line">        <span class="built_in">print</span> ”OK”</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span> ”Cancel”</span><br><span class="line">    dialog.Destroy()</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="消息对话框"><a href="#消息对话框" class="headerlink" title="消息对话框"></a>消息对话框</h2><p>wx.MessageDialog可用作一个简单的OK框或yes&#x2F;no对话框。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wx.MessageDialog(parent, message,</span><br><span class="line">        caption=”Message box”,</span><br><span class="line">        style=wx.OK | wx.CANCEL,</span><br><span class="line">        pos=wx.DefaultPosition)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><em>parent</em>：对话框的父窗口，如果对话框是顶级的则为<em>None</em>。 </li>
-<li><em>message</em>：显示在对话框中的字符串。 </li>
-<li><em>caption</em>：显示在对话框标题栏上的字符串。 </li>
-<li><em>style</em>：对话框中按钮的样式。 </li>
-<li><em>pos</em>：对话框出现的位置。</li>
-</ul>
-<p>ShowModal()方法将对话框以模式框架的方式显示，这意味着在对话框关 闭之前，应用程序中的别的窗口不能响应用户事件。ShowModal()方法的返回 值是一个整数，对于wx.MessageDialog，返回值是下面常量之 一： wx.ID_YES, wx.ID_NO, wx.ID_CANCEL, wx.ID_OK。</p>
-<p><strong>样式</strong></p>
-<p><img src="/assets/1649524306189.png" alt="1649524306189"></p>
-<p>最后，你可以使用样式wx.STAY_ON_TOP将对话框显示在系统中任何其它窗口的上面，包括系统窗口和wxPython应用程序窗口。</p>
-<hr>
-<p><strong>示例：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dlg = wx.MessageDialog(<span class="literal">None</span>, ’Is this the coolest thing ever!’,</span><br><span class="line">                      ’MessageDialog’, wx.YES_NO | wx.ICON_QUESTION)</span><br><span class="line">result = dlg.ShowModal()</span><br><span class="line">dlg.Destroy()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649512540674.png" alt="1649512540674"></p>
-<hr>
-<p>要在你的消息框中显示大量的文本（例如，终端用户许可证的显示），你可以使用wxPython特定的类wx.lib.dialogs.ScrolledMessageDialog，它包含如下的构造函数：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">wx<span class="selector-class">.lib</span><span class="selector-class">.dialogs</span><span class="selector-class">.ScrolledMessageDialog</span>(parent, msg, <span class="selector-tag">caption</span>,</span><br><span class="line">        pos=wx<span class="selector-class">.wxDefaultPosition</span>, size=(<span class="number">500</span>,<span class="number">300</span>))</span><br></pre></td></tr></table></figure>
-
-<p>这个对话框不使用本地消息框控件，它根据别的wxPython窗口部件来创建一个对话框。它只显示一个OK按钮，并且没有更多的样式信息。</p>
-<hr>
-<h2 id="文本输入对话框"><a href="#文本输入对话框" class="headerlink" title="文本输入对话框"></a>文本输入对话框</h2><p>如果你想从用户那里得到单独一行文本，你可能使用类 wx.TextEntryDialog。下面的片断创建了一个文本输入域，当用户单击OK按钮退出时，获得用户输入的值：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">dlg <span class="operator">=</span> wx.TextEntryDialog(<span class="keyword">None</span>, ”Who <span class="keyword">is</span> buried <span class="keyword">in</span> <span class="keyword">Grant</span>’s tomb?”,</span><br><span class="line">        ’A Question’, ’Cary <span class="keyword">Grant</span>’)</span><br><span class="line">        </span><br><span class="line">if dlg.ShowModal() <span class="operator">=</span><span class="operator">=</span> wx.ID_OK:</span><br><span class="line">    response <span class="operator">=</span> dlg.GetValue()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649513014577.png" alt="1649513014577"></p>
-<p>上面的wx.TextEntryDialog的参数按顺序说明是，父窗口，显示在窗口中的 文本标签，窗口的标题（默认是“Please enter text”），输入域中的默认值。同 样它也有一个样式参数，默认是wx.OK | wx.CANCEL。与wx.MessageDialog一 样，ShowModal()方法返回所按下的按钮的ID。GetValue()方法得到用户输入在 文本域中的值（这有一个相应的SetValue()方法让你可以改变文本域中的值）。 </p>
-<p>几个wx.TextCtrl的样式也可以用在这里。最有用的应该是 wx.TE_PASSWORD，它掩饰所输入的真实密码。你也可以使用 wx.TE_MULTILINE来使用户能够在对话框中输入多行文本，也可以使用 wx.TE_LEFT, wx.TE_CENTRE, 和 wx.TE_RIGHT来调整所输入的文本的对齐位 置。</p>
-<hr>
-<p>下面这些是使用文本对话框的便利函数： </p>
-<p>1、wx.GetTextFromUser() </p>
-<p>2、wx.GetPasswordFromUser() </p>
-<p>3、wx.GetNumberFromUser()</p>
-<h2 id="从一个列表中选择"><a href="#从一个列表中选择" class="headerlink" title="从一个列表中选择"></a>从一个列表中选择</h2><p>你可以让用户只能从你所提供的列表中选择，你可以使用类 wx.SingleChoiceDialog。下面是一个简单的用法：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">dlg <span class="operator">=</span> wx.SingleChoiceDialog(<span class="keyword">None</span>,</span><br><span class="line">        ’What version <span class="keyword">of</span> Python <span class="keyword">are</span> you <span class="keyword">using</span>?’,</span><br><span class="line">        ’Single Choice’,</span><br><span class="line">        [‘<span class="number">1.5</span><span class="number">.2</span>’, ’<span class="number">2.0</span>’, ’<span class="number">2.1</span><span class="number">.3</span>’, ’<span class="number">2.2</span>’, ’<span class="number">2.3</span><span class="number">.1</span>’]）</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">if dlg.ShowModal() <span class="operator">=</span><span class="operator">=</span> wx.ID_OK:</span><br><span class="line">    response <span class="operator">=</span> dlg.GetStringSelection()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649513258935.png" alt="1649513258935"></p>
-<p>wx.SingleChoiceDialog的参数类似于文本输入对话框，只是以字符串的列 表代替了默认的字符串文本。要得到所选择的结果有两种方法，GetSelection() 方法返回用户选项的索引，而GetStringSelection()返回实际所选的字符串。</p>
-<h2 id="显示进度条"><a href="#显示进度条" class="headerlink" title="显示进度条"></a>显示进度条</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">if</span> __name__ == ”__main__”:</span><br><span class="line">    app = wx.PySimpleApp()</span><br><span class="line">    progressMax = <span class="number">100</span></span><br><span class="line">    dialog = wx.ProgressDialog(“A progress box”, ”Time remaining”, progressMax,</span><br><span class="line">            style=wx.PD_CAN_ABORT | wx.PD_ELAPSED_TIME | wx.PD_REMAIN</span><br><span class="line">ING_TIME)</span><br><span class="line">    keepGoing = <span class="literal">True</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> keepGoing <span class="keyword">and</span> count &lt; progressMax:</span><br><span class="line">        count = count + <span class="number">1</span></span><br><span class="line">        wx.Sleep(<span class="number">1</span>)</span><br><span class="line">        keepGoing = dialog.Update(count)</span><br><span class="line">    dialog.Destroy()</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">wx.ProgressDialog(title, message, <span class="attribute">maximum</span>=100, <span class="attribute">parent</span>=None,</span><br><span class="line">        <span class="attribute">style</span>=wx.PD_AUTO_HIDE | wx.PD_APP_MODAL)</span><br></pre></td></tr></table></figure>
-
-<p>参数title被放置在窗口的标题栏，message被显示在对话框中。maximum是你用来显示进度计数的最大值。</p>
-<p><img src="/assets/1649524954711.png" alt="1649524954711"></p>
-<p>要使用进度条，就要调用它的唯一的方法Update(value,newmsg&#x3D;””)。value 参数是进度条的新的内部的值，调用update将导致进度条根据新的计数值与最 大计算值的比例重绘。如果使用可选的参数newmsg，那么进度条上的文本消息 将变为该字符串。这让你可以给用户一个关于当前进度的文本描述。 这个Update()方法通常返回True。但是，如果用户通过Cancel按钮已经取消 了该对话框，那么下次的Update()将返回False。这是你响应用户的取消请求的 机会。要检测用户的取消请求，我们建议你尽可能频繁地Update()。</p>
-<h2 id="文件对话框"><a href="#文件对话框" class="headerlink" title="文件对话框"></a>文件对话框</h2><p><strong>文件选择</strong></p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">wx.FileDialog(parent, <span class="attribute">message</span>=”Choose a file”, <span class="attribute">defaultDir</span>=””,</span><br><span class="line">              <span class="attribute">defaultFile</span>=””, <span class="attribute">wildcard</span>=”*.*”, <span class="attribute">style</span>=0)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649516268385.png" alt="1649516268385"></p>
-<p><img src="/assets/1649521666033.png" alt="1649521666033"></p>
-<hr>
-<p>wx.FileDialog的两个最重要的样式标记是wx.OPEN和wx.SAVE，它们表明 对话框的类型并影响对话框的行为。 </p>
-<p>用于打开文件的对话框有两个标记，它们进一步影响对话框的行 为。wx.HIDE_READONLY标记灰化复选框，使用户以只读模式打开文 件。wx.MULTIPLE标记使用户可以在一个目录中选择打开多个文件。 </p>
-<p>保存文件对话框有一个有用的标记wx.OVERWRITE_PROMPT，它使得保 存文件时，如果有相同的文件存在，则提示用户是否覆盖。 </p>
-<p>两种文件对话框都可以使用wx.CHANGE_DIR标记。当使用这个标记时， 文件的选择也可改变应用程序的工作目录为所选文件所在的目录。这使得下次 文件对话框打开在相同的目录，而不需要应用程序再在别处存储该值。 </p>
-<p>和本章迄今为止我人们所见过的其它对话框不一样，文件对话框的属性 directory，fifilename, style, message, 和wildcard是可以通过方法来得到和设置的。 这些方法使用Get&#x2F;Set命名习惯。</p>
-<hr>
-<p>在用户退出对话框后，如果返回值是wx.OK，那么你可以使用方法 GetPath()来得到用户的选择，该函数的返回值是字符串形式的文件全路径名。 如果对话框是一个使用了wx.MULTIPLE标记的打开对话框，则用GetPaths()代 替GetPath()。该方法返回路径字符串的一个Python列表。如果你需要知道在用 户选择时使用了下拉菜单中的哪个项，你可以使用GetFilterIndex()，它返回项目的索引。要通过编程改变索引，使用方法SetFilterIndex()。</p>
-<hr>
-<p><strong>文件对话框的便利函数：</strong></p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">wx.FileSelector(message, <span class="attribute">default_path</span>=””, <span class="attribute">default_filename</span>=””,</span><br><span class="line">    <span class="attribute">default_extension</span>=””, <span class="attribute">wildcard</span>=”*.*’’, <span class="attribute">flags</span>=0, <span class="attribute">parent</span>=None,</span><br><span class="line">    <span class="attribute">x</span>=-1, <span class="attribute">y</span>=-1)</span><br></pre></td></tr></table></figure>
-
-<p>message, default_path, default_fifilename, 和 wildcard参数意义与构造函数的基 本相同，尽管参数的名字不同。flags参数通常被称作style，default_extension参 数是保存为文件时默认的后缀（如果用户没有指定后缀的情况下）。如果用户 按下OK，返回值是字符串形式的路径名，如果用户按下Cancel则返回一个空字 符串。 </p>
-<hr>
-<p><strong>选择一个目录</strong></p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">wx.DirDialog(parent, <span class="attribute">message</span>=”Choose a directory”, <span class="attribute">defaultPath</span>=””,</span><br><span class="line">    <span class="attribute">style</span>=0, pos = wx.DefaultPosition, size = wx.DefaultSize,</span><br><span class="line">    <span class="attribute">name</span>=”wxDirCtrl”)</span><br></pre></td></tr></table></figure>
-
-<p>由于message参数显示在对话框中，所以你不需要一个钩子去改变标题 栏。defaultPath告诉对话框选择的默认路径，如果它为空，那么对话框显示文 件系统的根目录。pos和size参数在微软Windows下被忽略，name参数在所有的 操作系统下都被忽略。该对话框的样式标记wx.DD_NEW_DIR_BUTTON给对 话框一个用于创建目录的一个按钮。这个标记在老版的微软Windows中不工作。</p>
-<p>wx.DirDialog类的path, message, 和style属性都有相应的get<em>和set</em>方法。你 可以使用GetPath()方法来在对话框被调用后获取用户的选择。这个对话框也有 一个便利的函数：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">wx.DirSelector(<span class="attribute">message</span>=wx.DirSelectorPromptStr, <span class="attribute">default_path</span>=””,</span><br><span class="line">    <span class="attribute">style</span>=0, <span class="attribute">pos</span>=wxDefaultPosition, <span class="attribute">parent</span>=None)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="字体选择对话框"><a href="#字体选择对话框" class="headerlink" title="字体选择对话框"></a>字体选择对话框</h2><p>类似这样的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">if</span> __name__ == ”__main__”:</span><br><span class="line">    app = wx.PySimpleApp()</span><br><span class="line">    dialog = wx.FontDialog(<span class="literal">None</span>, wx.FontData())</span><br><span class="line">    <span class="keyword">if</span> dialog.ShowModal() == wx.ID_OK:</span><br><span class="line">        data = dialog.GetFontData()</span><br><span class="line">        font = data.GetChosenFont()</span><br><span class="line">        colour = data.GetColour()</span><br><span class="line">        <span class="built_in">print</span> ’You selected: ”%s”, %d points\n’ % (</span><br><span class="line">                font.GetFaceName(), font.GetPointSize())</span><br><span class="line">    dialog.Destroy()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649522584080.png" alt="1649522584080"></p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">wx.<span class="constructor">FontDialog(<span class="params">parent</span>, <span class="params">data</span>)</span></span><br></pre></td></tr></table></figure>
-
-<p>你不能为该对话框设置一个消息或标题，并且被通常作为样式标记传递的 信息被包含在data参数中，该参数是类wx.FontData。wx.FontData类自己只有一 个有用的方法：GetFontData()，该方法返回字体数据的实例。</p>
-<hr>
-<p><strong><em>wx.FontData</em>的方法</strong></p>
-<p><img src="/assets/1649522957016.png" alt="1649522957016"></p>
-<h2 id="颜色对话框"><a href="#颜色对话框" class="headerlink" title="颜色对话框"></a>颜色对话框</h2><figure class="highlight sqf"><table><tr><td class="code"><pre><span class="line">import wx</span><br><span class="line"><span class="keyword">if</span> <span class="variable">__name__</span> == ”<span class="variable">__main__</span>”:</span><br><span class="line">    app = wx.PySimpleApp()</span><br><span class="line">    <span class="built_in">dialog</span> = wx.ColourDialog(None)</span><br><span class="line">    <span class="built_in">dialog</span>.GetColourData().SetChooseFull(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">dialog</span>.ShowModal() == wx.ID_OK:</span><br><span class="line">        data = <span class="built_in">dialog</span>.GetColourData()</span><br><span class="line">        print ’You selected: %s\n’ % <span class="built_in">str</span>(data.GetColour().<span class="built_in">Get</span>())</span><br><span class="line">    <span class="built_in">dialog</span>.Destroy()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649523110298.png" alt="1649523110298"></p>
-<hr>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">wx.<span class="constructor">ColourDialog(<span class="params">parent</span>, <span class="params">data</span>=None)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649523261228.png" alt="1649523261228"></p>
-<hr>
-<h2 id="图像浏览对话框"><a href="#图像浏览对话框" class="headerlink" title="图像浏览对话框"></a>图像浏览对话框</h2><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">import wx</span><br><span class="line">import wx<span class="selector-class">.lib</span><span class="selector-class">.imagebrowser</span> as imagebrowser</span><br><span class="line"><span class="keyword">if</span> __name__ == ”__main__”:</span><br><span class="line">    app = wx<span class="selector-class">.PySimpleApp</span>()</span><br><span class="line">    dialog = imagebrowser<span class="selector-class">.ImageDialog</span>(None)   </span><br><span class="line">    <span class="keyword">if</span> dialog<span class="selector-class">.ShowModal</span>() == wx<span class="selector-class">.ID_OK</span>:</span><br><span class="line">        print ”You Selected File: ” + dialog<span class="selector-class">.GetFile</span>()  </span><br><span class="line">    dialog<span class="selector-class">.Destroy</span>()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/1649523768328.png" alt="1649523768328"></p>
-<p><img src="/assets/1649523876843.png" alt="1649523876843"></p>
-<hr>
-<h2 id="创建向导"><a href="#创建向导" class="headerlink" title="创建向导"></a>创建向导</h2><p>在wxPython中，一个向导是一系列的页面，它由类wx.wizard.Wizard的一 个实例控制。向导实例管理用户的页面切换事件。这些页面自身也是类 wx.wizard.WizardPageSimple或wx.wizard.WizardPage的实例。这两种类的实 例，它们只不过是附加了必要的管理页面链接逻辑的wx.Panel的实例。已证明 这两个实例之间的区别仅当用户按下Next按钮时。wx.wizard.WizardPage的实例使你能够动态地决定浏览哪页，而wx.wizard.WizardPageSimple的实例要求向导 被显示前，顺序被预先设置。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-<h1 id="wxpython高效指南"><a href="#wxpython高效指南" class="headerlink" title="wxpython高效指南"></a>wxpython高效指南</h1><h2 id="构造函数中的关键字参数"><a href="#构造函数中的关键字参数" class="headerlink" title="构造函数中的关键字参数"></a>构造函数中的关键字参数</h2><p>如果你发现自己放入了一堆不需要的默认值像<code>wx.DefaultSize、wx.DefaultPosition、wx.ID_ANY</code>等在构造函数，使用关键字参数：</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">MainFrame = wx.<span class="constructor">Frame(None, <span class="params">title</span>=<span class="string">&quot;A Title&quot;</span>, <span class="params">size</span>=(500, 400)</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>因为：显式优于隐式。</li>
-</ul>
-<h2 id="不要使用-ID"><a href="#不要使用-ID" class="headerlink" title="不要使用 ID"></a>不要使用 ID</h2><p>很少有充分的理由使用它们。大多数 Widget 构造函数都会为您填写一个默认 ID，因此您根本不必指定一个</p>
-<ul>
-<li>因为：简单胜于复杂。</li>
-</ul>
-<p>如果 id 是必需的参数，请使用<code>wx.ID_ANY</code>。因为<code>wx.ID_ANY == -1</code>，您可能会看到 -1 用于代码中的 id，但使用 wx.ID_ANY 来制作您的代码更清晰。</p>
-<ul>
-<li>因为：显式优于隐式。</li>
-</ul>
-<h2 id="使用Sizer"><a href="#使用Sizer" class="headerlink" title="使用Sizer"></a>使用Sizer</h2><p>如果你使用 Sizer 而不是绝对定位，你得到的代码会：</p>
-<ul>
-<li><p>跨平台效果更好：不同的平台有不同的尺寸小部件。</p>
-</li>
-<li><p>轻松适应不同语言：不同语言有不同长度的标签等</p>
-</li>
-<li><p>即使在一个平台上也能更好地工作，即使用户使用不同的平台默认字体，不同的主题。</p>
-</li>
-<li><p>更易于维护：如果您需要更改、删除或添加一个小部件，您的对话框或面板的其余部分可以重新排列。</p>
-</li>
-</ul>
-<h2 id="使用单独的自定义类，而不是在一个类中嵌套大量wx-Panel"><a href="#使用单独的自定义类，而不是在一个类中嵌套大量wx-Panel" class="headerlink" title="使用单独的自定义类，而不是在一个类中嵌套大量wx.Panel"></a>使用单独的自定义类，而不是在一个类中嵌套大量<code>wx.Panel</code></h2><p>如果您发现自己在<code>__init__ 中执行此操作：</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.MainPanel = wx.Panel(self, ...</span><br><span class="line">self.SubPanel1 = wx.Panel(self.MainPanel, ..)</span><br><span class="line">self.SubPanel2 = wx.Panel(self.SubPanel1, ...)</span><br><span class="line">MyButton = wx.Button(self.SubPanel2, ....)</span><br></pre></td></tr></table></figure>
-
-<p>那么你正在创造一个丑陋的，难以维护的混乱的东西！<br>相反，为所有在面板中一起工作的东西创建自定义类：</p>
-<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainPanel</span>（wx.Panel）：</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SubPanel1</span>（wx.Panel）：</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
-
-<p>等等</p>
-<p>您还会发现，通过这样做，您不太可能破坏“不要重复自己”（DRY）原则。很多时候你会发现你有一组对您的各个部分通用的小部件应用程序。如果您将它们放在自定义面板上，您将能够重新使用它。尝试使这些小部件中的每一个都具有自主性，这样它们就可以插入您应用程序的其他位置，甚至是另一个应用程序。如果您的小部件必须与其他控件通信，请定义您自己的控件自定义事件并使用它们与其他控件进行通信。</p>
-<h2 id="尽可能使用原生-Python-的东西而不是-wx-的东西"><a href="#尽可能使用原生-Python-的东西而不是-wx-的东西" class="headerlink" title="尽可能使用原生 Python 的东西而不是 wx 的东西"></a>尽可能使用原生 Python 的东西而不是 wx 的东西</h2><ul>
-<li>因为：简单胜于复杂。</li>
-</ul>
-<p>例如，使用 <code>size=(500, 400)</code>而不是<code>size=wx.Size(500, 400)</code></p>
-<h2 id="始终如一地使用文档字符串"><a href="#始终如一地使用文档字符串" class="headerlink" title="始终如一地使用文档字符串"></a>始终如一地使用文档字符串</h2><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This is a small wxPython app developed to demonstrate how to write</span></span><br><span class="line"><span class="string">Pythonic wxPython code.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DemoPanel</span>(wx.Panel):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;This Panel hold two simple buttons, but doesn&#x27;t really do anything.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent, *args, **kwargs</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Create the DemoPanel.&quot;&quot;&quot;</span></span><br><span class="line">        wx.Panel.__init__(self, parent, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.parent = parent  <span class="comment"># Sometimes one can use inline Comments</span></span><br><span class="line"></span><br><span class="line">        NothingBtn = wx.Button(self, label=<span class="string">&quot;Do Nothing with a long label&quot;</span>)</span><br><span class="line">        NothingBtn.Bind(wx.EVT_BUTTON, self.DoNothing )</span><br><span class="line"></span><br><span class="line">        MsgBtn = wx.Button(self, label=<span class="string">&quot;Send Message&quot;</span>)</span><br><span class="line">        MsgBtn.Bind(wx.EVT_BUTTON, self.OnMsgBtn )</span><br><span class="line"></span><br><span class="line">        Sizer = wx.BoxSizer(wx.VERTICAL)</span><br><span class="line">        Sizer.Add(NothingBtn, <span class="number">0</span>, wx.ALIGN_CENTER|wx.ALL, <span class="number">5</span>)</span><br><span class="line">        Sizer.Add(MsgBtn, <span class="number">0</span>, wx.ALIGN_CENTER|wx.ALL, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        self.SetSizerAndFit(Sizer)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">DoNothing</span>(<span class="params">self, event=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Do nothing.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnMsgBtn</span>(<span class="params">self, event=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Bring up a wx.MessageDialog with a useless message.&quot;&quot;&quot;</span></span><br><span class="line">        dlg = wx.MessageDialog(self,</span><br><span class="line">                               message=<span class="string">&#x27;A completely useless message&#x27;</span>,</span><br><span class="line">                               caption=<span class="string">&#x27;A Message Box&#x27;</span>,</span><br><span class="line">                               style=wx.OK|wx.ICON_INFORMATION</span><br><span class="line">                               )</span><br><span class="line">        dlg.ShowModal()</span><br><span class="line">        dlg.Destroy()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DemoFrame</span>(wx.Frame):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Main Frame holding the Panel.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Create the DemoFrame.&quot;&quot;&quot;</span></span><br><span class="line">        wx.Frame.__init__(self, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Build the menu bar</span></span><br><span class="line">        MenuBar = wx.MenuBar()</span><br><span class="line"></span><br><span class="line">        FileMenu = wx.Menu()</span><br><span class="line"></span><br><span class="line">        item = FileMenu.Append(wx.ID_EXIT, text=<span class="string">&quot;&amp;Quit&quot;</span>)</span><br><span class="line">        self.Bind(wx.EVT_MENU, self.OnQuit, item)</span><br><span class="line"></span><br><span class="line">        MenuBar.Append(FileMenu, <span class="string">&quot;&amp;File&quot;</span>)</span><br><span class="line">        self.SetMenuBar(MenuBar)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Add the Widget Panel</span></span><br><span class="line">        self.Panel = DemoPanel(self)</span><br><span class="line"></span><br><span class="line">        self.Fit()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnQuit</span>(<span class="params">self, event=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Exit application.&quot;&quot;&quot;</span></span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = wx.App()</span><br><span class="line">    frame = DemoFrame(<span class="literal">None</span>, title=<span class="string">&quot;Micro App&quot;</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/04/13/123/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
