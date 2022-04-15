@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>wxpython基础</title>
-    <url>/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>132424516</p>
-<span id="more"></span>
-<p>233123242342342342342$\begin{pmatrix}<br>  a_{11} &amp; a_{12} &amp; a_{13} \\<br>  a_{21} &amp; a_{22} &amp; a_{23} \\<br>  a_{31} &amp; a_{32} &amp; a_{33}<br>\end{pmatrix}$</p>
-<p>qwewewerwr</p>
-<p>243234234234234234$COP = \frac{Q_{CoolingCircuits}}{P_{CoolingCircuits}} $</p>
-<p>x^2^</p>
-<p>h~2~</p>
-<p>2342$\begin{equation}<br>\begin{aligned}<br>a &amp;= b + c \\<br>  &amp;= d + e + f + g \\<br>  &amp;= h + i<br>\end{aligned}<br>\end{equation}$<br>$\begin{equation}<br>\begin{aligned}<br>a &amp;= b + c \\<br>  &amp;= d + e + f + g \\<br>  &amp;= h + i<br>\end{aligned}<br>\end{equation}$</p>
-<p>$<br>\begin{pmatrix}<br>  a_{11} &amp; a_{12} &amp; a_{13} \\<br>  a_{21} &amp; a_{22} &amp; a_{23} \\<br>  a_{31} &amp; a_{32} &amp; a_{33}<br>\end{pmatrix}<br>$</p>
-]]></content>
-      <categories>
-        <category>wxpython</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>wxpython</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人性的弱点</title>
     <url>/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</url>
     <content><![CDATA[<p>这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？</p>
@@ -57,6 +36,23 @@
         <tag>读书笔记</tag>
         <tag>心理学</tag>
         <tag>人际交往</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wxpython基础</title>
+    <url>/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>在这里将介绍wxpython工作的一些基本原理，为之后的进阶学习奠定一个基础。</p>
+<span id="more"></span>
+<h1 id="最小的wxpython应用程序"><a href="#最小的wxpython应用程序" class="headerlink" title="最小的wxpython应用程序"></a>最小的wxpython应用程序</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span>(wx.App):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnInit</span>(<span class="params">self</span>):</span><br><span class="line">        frame = wx.Frame(parent=<span class="literal">None</span>, title=<span class="string">&quot;最小的应用程序&quot;</span>)</span><br><span class="line">        frame.Show()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = App()</span><br><span class="line">app.MainLoop()</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<p><img src="/images/wxpython/最小的应用程序.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>wxpython</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>wxpython</tag>
       </tags>
   </entry>
 </search>
