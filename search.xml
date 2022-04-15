@@ -11,12 +11,8 @@
 <p>x^2^</p>
 <p>h~2~</p>
 <p>2342$\begin{equation}<br>\begin{aligned}<br>a &amp;= b + c \\<br>  &amp;= d + e + f + g \\<br>  &amp;= h + i<br>\end{aligned}<br>\end{equation}$<br>$\begin{equation}<br>\begin{aligned}<br>a &amp;= b + c \\<br>  &amp;= d + e + f + g \\<br>  &amp;= h + i<br>\end{aligned}<br>\end{equation}$</p>
-<script type="math/tex; mode=display">
-\begin{pmatrix}  
-  a_{11} & a_{12} & a_{13} \\  
-  a_{21} & a_{22} & a_{23} \\  
-  a_{31} & a_{32} & a_{33}  
-\end{pmatrix}</script>]]></content>
+<p>$<br>\begin{pmatrix}<br>  a_{11} &amp; a_{12} &amp; a_{13} \\<br>  a_{21} &amp; a_{22} &amp; a_{23} \\<br>  a_{31} &amp; a_{32} &amp; a_{33}<br>\end{pmatrix}<br>$</p>
+]]></content>
       <categories>
         <category>wxpython</category>
       </categories>
