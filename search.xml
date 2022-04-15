@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>wxpython基础</title>
+    <url>/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>233123242342342342342$<br>\begin{pmatrix}<br>  a<em>{11} &amp; a</em>{12} &amp; a<em>{13} \<br>  a</em>{21} &amp; a<em>{22} &amp; a</em>{23} \<br>  a<em>{31} &amp; a</em>{32} &amp; a_{33}<br>\end{pmatrix}<br>​$</p>
+<p>qwewewerwr</p>
+<p>243234234234234234$ COP = \frac{Q<em>{CoolingCircuits}}{P</em>{CoolingCircuits}} $</p>
+<p>x^2^</p>
+<p>h~2~</p>
+<p>2342$<br>\begin{equation}<br>\begin{aligned}<br>a &amp;= b + c \<br>  &amp;= d + e + f + g \<br>  &amp;= h + i<br>\end{aligned}<br>\end{equation}<br>$</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+a &= b + c \\
+  &= d + e + f + g \\
+  &= h + i
+\end{aligned}
+\end{equation}</script>]]></content>
+      <categories>
+        <category>wxpython</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>wxpython</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人性的弱点</title>
     <url>/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</url>
     <content><![CDATA[<p>这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？</p>
 <span id="more"></span>
-
 <h1 id="人际交往的基本技巧"><a href="#人际交往的基本技巧" class="headerlink" title="人际交往的基本技巧"></a>人际交往的基本技巧</h1><ul>
 <li>不要批评、指责、抱怨他人。</li>
 <li>真诚的感谢、赞美他人。</li>
