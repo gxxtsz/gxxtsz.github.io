@@ -3,7 +3,8 @@
   <entry>
     <title>wxpython基础</title>
     <url>/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<p>132424516</p>
+<span id="more"></span>
 <p>233123242342342342342$<br>\begin{pmatrix}<br>  a<em>{11} &amp; a</em>{12} &amp; a<em>{13} \<br>  a</em>{21} &amp; a<em>{22} &amp; a</em>{23} \<br>  a<em>{31} &amp; a</em>{32} &amp; a_{33}<br>\end{pmatrix}<br>​$</p>
 <p>qwewewerwr</p>
 <p>243234234234234234$ COP = \frac{Q<em>{CoolingCircuits}}{P</em>{CoolingCircuits}} $</p>
@@ -17,7 +18,12 @@ a &= b + c \\
   &= d + e + f + g \\
   &= h + i
 \end{aligned}
-\end{equation}</script>]]></content>
+\end{equation}</script><script type="math/tex; mode=display">
+\begin{pmatrix}  
+  a_{11} & a_{12} & a_{13} \\  
+  a_{21} & a_{22} & a_{23} \\  
+  a_{31} & a_{32} & a_{33}  
+\end{pmatrix}</script>]]></content>
       <categories>
         <category>wxpython</category>
       </categories>
