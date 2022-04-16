@@ -21,19 +21,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在这里将介绍wxpython工作的一些基本原理，为之后的进阶学习奠定一个基础。">
+    <meta name="description" content="在这里将介绍wxpython作为一个GUI库的整体框架结构，包括：整个wxpython程序的流程、菜单栏、上下文菜单栏、工具栏、状态栏。为之后的进阶学习奠定一个基础。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wxpython基础">
 <meta property="og:url" content="https://gxxtsz.cn/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="探索者">
-<meta property="og:description" content="在这里将介绍wxpython工作的一些基本原理，为之后的进阶学习奠定一个基础。">
+<meta property="og:description" content="在这里将介绍wxpython作为一个GUI库的整体框架结构，包括：整个wxpython程序的流程、菜单栏、上下文菜单栏、工具栏、状态栏。为之后的进阶学习奠定一个基础。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gxxtsz.cn/images/wxpython/最小的应用程序.png">
 <meta property="og:image" content="https://gxxtsz.cn/images/wxpython/给窗口增加部件.png">
 <meta property="og:image" content="https://gxxtsz.cn/images/wxpython/菜单栏.png">
 <meta property="og:image" content="https://gxxtsz.cn/images/wxpython/勾选菜单项.png">
+<meta property="og:image" content="https://gxxtsz.cn/images/wxpython/contextmenu.png">
+<meta property="og:image" content="https://gxxtsz.cn/images/wxpython/simpletoolbar.png">
+<meta property="og:image" content="https://gxxtsz.cn/images/wxpython/toolbars.png">
 <meta property="article:published_time" content="2022-04-15T12:58:20.000Z">
-<meta property="article:modified_time" content="2022-04-15T17:47:04.849Z">
+<meta property="article:modified_time" content="2022-04-16T14:11:58.483Z">
 <meta property="article:author" content="探索者">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="wxpython">
@@ -155,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%9A%84wxpython%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">最小的wxpython应用程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8Frame%E5%88%9B%E5%BB%BA%E9%A1%B6%E7%BA%A7%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">用Frame创建顶级窗口对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F"><span class="nav-number">3.</span> <span class="nav-text">菜单栏</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%9A%84wxpython%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">最小的wxpython应用程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8Frame%E5%88%9B%E5%BB%BA%E9%A1%B6%E7%BA%A7%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">用Frame创建顶级窗口对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F"><span class="nav-number">3.</span> <span class="nav-text">菜单栏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E8%8F%9C%E5%8D%95"><span class="nav-number">4.</span> <span class="nav-text">上下文菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="nav-number">5.</span> <span class="nav-text">工具栏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%A0%8F"><span class="nav-number">6.</span> <span class="nav-text">状态栏</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-16 01:47:04" itemprop="dateModified" datetime="2022-04-16T01:47:04+08:00">2022-04-16</time>
+      <time title="修改时间：2022-04-16 22:11:58" itemprop="dateModified" datetime="2022-04-16T22:11:58+08:00">2022-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,14 +307,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.2k</span>
+      <span>8.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>8 分钟</span>
     </span>
 </div>
 
@@ -322,7 +325,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在这里将介绍wxpython工作的一些基本原理，为之后的进阶学习奠定一个基础。</p>
+        <p>在这里将介绍wxpython作为一个GUI库的整体框架结构，包括：整个wxpython程序的流程、菜单栏、上下文菜单栏、工具栏、状态栏。为之后的进阶学习奠定一个基础。</p>
 <span id="more"></span>
 <h1 id="最小的wxpython应用程序"><a href="#最小的wxpython应用程序" class="headerlink" title="最小的wxpython应用程序"></a>最小的wxpython应用程序</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span>(wx.App):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnInit</span>(<span class="params">self</span>):</span><br><span class="line">        frame = wx.Frame(parent=<span class="literal">None</span>, title=<span class="string">&quot;最小的应用程序&quot;</span>)</span><br><span class="line">        frame.Show()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnExit</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = App()</span><br><span class="line">app.MainLoop()</span><br></pre></td></tr></table></figure>
 <p>结果为：</p>
@@ -363,6 +366,9 @@
 <hr>
 <p><strong>关于窗口的方法</strong></p>
 <p>包括Frame在内的大部分窗口或者控件，都有类似Getxxx()和Setxxx()的方法来获取和设置窗口或控件的属性值。</p>
+<hr>
+<p><strong>关于控件的构造</strong></p>
+<p>在构造一个控件时，一般开头的构造参数默认都是父容器，id。后面的一般有标题、样式等参数。</p>
 <hr>
 <p><strong>关于wx.Frame的样式</strong></p>
 <ul>
@@ -417,6 +423,30 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">menubar = wx.MenuBar()</span><br><span class="line">viewMenu = wx.Menu()</span><br><span class="line">self.shst = viewMenu.Append(wx.ID_ANY, <span class="string">&#x27;Show statusbar&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;Show Statusbar&#x27;</span>, kind=wx.ITEM_CHECK)</span><br><span class="line">self.shtl = viewMenu.Append(wx.ID_ANY, <span class="string">&#x27;Show toolbar&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;Show Toolbar&#x27;</span>, kind=wx.ITEM_CHECK)</span><br></pre></td></tr></table></figure>
 <p>我们也可以通过下面的方法来设置和获取勾选菜单项的状态。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">viewMenu.Check(self.shst.GetId(), <span class="literal">True</span>)  <span class="comment">#选中</span></span><br><span class="line">viewMenu.Check(self.shtl.GetId(), <span class="literal">False</span>) <span class="comment">#不选中</span></span><br><span class="line">self.shst.IsChecked()  <span class="comment">#检查是否选中</span></span><br></pre></td></tr></table></figure>
+<h1 id="上下文菜单"><a href="#上下文菜单" class="headerlink" title="上下文菜单"></a>上下文菜单</h1><p>上下文菜单是在某种上下文条件下出现的命令列表。 例如，在 Firefox 网页浏览器中，当我们右击一个网页时，我们会得到一个上下文菜单。在上下文菜单处，我们可以重新加载页面，返回或查看页面源代码。如果我们点击一个工具栏，我们会得到另一个用于管理工具栏的上下文菜单。上下文菜单有时称为弹出式菜单。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyPopupMenu</span>(wx.Menu):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent</span>):</span><br><span class="line">        <span class="built_in">super</span>(MyPopupMenu, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.parent = parent</span><br><span class="line"></span><br><span class="line">        mmi = wx.MenuItem(self, wx.NewId(), <span class="string">&#x27;Minimize&#x27;</span>)</span><br><span class="line">        self.Append(mmi)</span><br><span class="line">        self.Bind(wx.EVT_MENU, self.OnMinimize, mmi)</span><br><span class="line"></span><br><span class="line">        cmi = wx.MenuItem(self, wx.NewId(), <span class="string">&#x27;Close&#x27;</span>)</span><br><span class="line">        self.Append(cmi)</span><br><span class="line">        self.Bind(wx.EVT_MENU, self.OnClose, cmi)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnMinimize</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.parent.Iconize()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnClose</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.parent.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_RIGHT_DOWN, self.OnRightDown) <span class="comment">#绑定鼠标右键摁下事件</span></span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">350</span>, <span class="number">250</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Context menu&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnRightDown</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.PopupMenu(MyPopupMenu(self), e.GetPosition())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>结果如下:</p>
+<p><img src="/images/wxpython/contextmenu.png" alt=""></p>
+<p>在 <code>OnRightDown()</code> 方法中，我们调用 <code>PopupMenu()</code> 方法，该方法显示上下文菜单。 第一个参数是要显示的菜单，第二个参数是上下文菜单出现的位置。上下文菜单出现在鼠标光标的位置。 为了获得实际的鼠标位置，我们调用提供的事件对象的 <code>GetPosition()</code> 方法。</p>
+<h1 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        toolbar = self.CreateToolBar()</span><br><span class="line">        qtool = toolbar.AddTool(wx.ID_ANY, <span class="string">&#x27;Quit&#x27;</span>, wx.Bitmap(<span class="string">&#x27;exit.png&#x27;</span>))</span><br><span class="line">        toolbar.Realize()</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)  <span class="comment">#绑定工具栏事件</span></span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">350</span>, <span class="number">250</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Simple toolbar&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnQuit</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="/images/wxpython/simpletoolbar.png" alt=""></p>
+<p>我们创建一个工具栏。 默认情况下，工具栏是水平的，没有边框和显示。要创建一个工具栏工具，我们调用 <code>AddTool()</code> 方法。第二个参数是工具的标签，第三个参数是工具的图像。请注意，标签 label 不可见，因为默认样式仅显示图标。将我们的项目放到工具栏后，我们调用 <code>Realize()</code> 方法。 在 Linux 上调用此方法不是强制性的。 在 windows 上是必须的（不然不会添加工具）。</p>
+<hr>
+<p><strong>创建多个工具栏</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        vbox = wx.BoxSizer(wx.VERTICAL)</span><br><span class="line"></span><br><span class="line">        toolbar1 = wx.ToolBar(self) </span><br><span class="line">        toolbar1.AddTool(wx.ID_ANY, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;tnew.png&#x27;</span>))</span><br><span class="line">        toolbar1.AddTool(wx.ID_ANY, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;topen.png&#x27;</span>))</span><br><span class="line">        toolbar1.AddTool(wx.ID_ANY, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;tsave.png&#x27;</span>))</span><br><span class="line">        toolbar1.Realize()</span><br><span class="line"></span><br><span class="line">        toolbar2 = wx.ToolBar(self)</span><br><span class="line">        qtool = toolbar2.AddTool(wx.ID_EXIT, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;texit.png&#x27;</span>))</span><br><span class="line">        toolbar2.Realize()</span><br><span class="line"></span><br><span class="line">        vbox.Add(toolbar1, <span class="number">0</span>, wx.EXPAND)</span><br><span class="line">        vbox.Add(toolbar2, <span class="number">0</span>, wx.EXPAND)</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)</span><br><span class="line"></span><br><span class="line">        self.SetSizer(vbox)</span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">350</span>, <span class="number">250</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Toolbars&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnQuit</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>结果如下:</p>
+<p><img src="/images/wxpython/toolbars.png" alt=""></p>
+<p>在这儿我们用wx.ToolBar显式的创建了两个工具栏对象，并把它们放入一个垂直的盒子里。就像我们前面说过的，因为我们设置了ToolBar的父容器是Example，所以即使我们没有显式的把工具栏放进Example，它也会在后台自动的进行。</p>
+<hr>
+<p><strong>分割线</strong></p>
+<p>我们可以调用<code>toolbar.AddSeparator()</code>为工具栏添加一个分割线。</p>
+<hr>
+<p><strong>启用和禁用</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">toolbar.EnableTool(wx.ID_REDO, <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>我们可以调用EnableTool方法来启用或者禁用工具栏按钮，其中第一个参数代表要设置工具栏按钮的id，第二个参数表明是要禁用还是启动。</p>
+<h1 id="状态栏"><a href="#状态栏" class="headerlink" title="状态栏"></a>状态栏</h1><p>理解了上面的内容，状态栏就更好理解了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">statusBar = wx.StatusBar(self, -<span class="number">1</span>)<span class="comment"># 实例化 wx.StatusBar</span></span><br><span class="line">statusBar.SetFieldsCount(<span class="number">3</span>) <span class="comment"># 状态栏分成3个区域</span></span><br><span class="line">statusBar.SetStatusWidths([-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">1</span>]) <span class="comment">#区域宽度比列，用负数</span></span><br><span class="line">statusBar.SetStatusText(<span class="string">&quot;A Custom StatusBar...&quot;</span>, <span class="number">0</span>) <span class="comment">#给状态栏设文字，第二个而参数为状态栏区块序号，从0开始</span></span><br><span class="line"></span><br><span class="line">statusBar = self.CreateStatusBar() <span class="comment">#调用框架wx.frame的CreateStatusBar方法</span></span><br><span class="line">statusBar.statusBar.SetFieldsCount(<span class="number">3</span>) <span class="comment"># 状态栏分成3个区域</span></span><br><span class="line">statusBar.SetStatusWidths([-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">1</span>]) <span class="comment">#区域宽度比列，用负数</span></span><br><span class="line">statusBar.SetStatusText(<span class="string">&quot;A Custom StatusBar...&quot;</span>, <span class="number">0</span>) <span class="comment">#给状态栏设文字</span></span><br><span class="line"></span><br><span class="line">self.SetStatusBar(statusBar) <span class="comment">#将状态栏附加到框架上</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -502,13 +532,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">9k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">8 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
