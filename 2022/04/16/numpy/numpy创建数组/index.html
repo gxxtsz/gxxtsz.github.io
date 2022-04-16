@@ -1,9 +1,323 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>numpy创建数组</title>
-    <url>/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p>本文主要介绍在numpy中如何创建数组。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文主要介绍在numpy中如何创建数组。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy创建数组">
+<meta property="og:url" content="https://gxxtsz.cn/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="探索者">
+<meta property="og:description" content="本文主要介绍在numpy中如何创建数组。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-16T15:07:06.000Z">
+<meta property="article:modified_time" content="2022-04-16T17:44:45.635Z">
+<meta property="article:author" content="探索者">
+<meta property="article:tag" content="numpy">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gxxtsz.cn/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/","path":"2022/04/16/numpy/numpy创建数组/","title":"numpy创建数组"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>numpy创建数组 | 探索者</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">探索者</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">探索未知，责无旁贷。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ones-%E5%92%8C-zeros-%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">Ones 和 zeros 填充方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#empty"><span class="nav-number">1.1.</span> <span class="nav-text">empty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty-like"><span class="nav-number">1.2.</span> <span class="nav-text">empty_like</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eye"><span class="nav-number">1.3.</span> <span class="nav-text">eye</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#identity"><span class="nav-number">1.4.</span> <span class="nav-text">identity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ones"><span class="nav-number">1.5.</span> <span class="nav-text">ones</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ones-like"><span class="nav-number">1.6.</span> <span class="nav-text">ones_like</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zeros"><span class="nav-number">1.7.</span> <span class="nav-text">zeros</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zeros-like"><span class="nav-number">1.8.</span> <span class="nav-text">zeros_like</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#full"><span class="nav-number">1.9.</span> <span class="nav-text">full</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#full-like"><span class="nav-number">1.10.</span> <span class="nav-text">full_like</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E7%8E%B0%E6%9C%89%E6%95%B0%E6%8D%AE%E5%88%9B%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">从现有数据创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#array"><span class="nav-number">2.1.</span> <span class="nav-text">array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asarray"><span class="nav-number">2.2.</span> <span class="nav-text">asarray</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asanyarray"><span class="nav-number">2.3.</span> <span class="nav-text">asanyarray</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ascontiguousarray"><span class="nav-number">2.4.</span> <span class="nav-text">ascontiguousarray</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asmatrix"><span class="nav-number">2.5.</span> <span class="nav-text">asmatrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">2.6.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frombuffer"><span class="nav-number">2.7.</span> <span class="nav-text">frombuffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fromfile"><span class="nav-number">2.8.</span> <span class="nav-text">fromfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fromfunction"><span class="nav-number">2.9.</span> <span class="nav-text">fromfunction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fromiter"><span class="nav-number">2.10.</span> <span class="nav-text">fromiter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fromstring"><span class="nav-number">2.11.</span> <span class="nav-text">fromstring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loadtxt"><span class="nav-number">2.12.</span> <span class="nav-text">loadtxt</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4"><span class="nav-number">3.</span> <span class="nav-text">数值范围</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#arange"><span class="nav-number">3.1.</span> <span class="nav-text">arange</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linspace"><span class="nav-number">3.2.</span> <span class="nav-text">linspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logspace"><span class="nav-number">3.3.</span> <span class="nav-text">logspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#geomspace"><span class="nav-number">3.4.</span> <span class="nav-text">geomspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meshgrid"><span class="nav-number">3.5.</span> <span class="nav-text">meshgrid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mgrid"><span class="nav-number">3.6.</span> <span class="nav-text">mgrid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ogrid"><span class="nav-number">3.7.</span> <span class="nav-text">ogrid</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E7%9F%A9%E9%98%B5"><span class="nav-number">4.</span> <span class="nav-text">构建矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#diag"><span class="nav-number">4.1.</span> <span class="nav-text">diag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diagflat"><span class="nav-number">4.2.</span> <span class="nav-text">diagflat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tri"><span class="nav-number">4.3.</span> <span class="nav-text">tri</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tril"><span class="nav-number">4.4.</span> <span class="nav-text">tril</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#triu"><span class="nav-number">4.5.</span> <span class="nav-text">triu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vander"><span class="nav-number">4.6.</span> <span class="nav-text">vander</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mat"><span class="nav-number">4.7.</span> <span class="nav-text">mat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bmat"><span class="nav-number">4.8.</span> <span class="nav-text">bmat</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="探索者"
+      src="/images/touxiang.jpg">
+  <p class="site-author-name" itemprop="name">探索者</p>
+  <div class="site-description" itemprop="description">探寻宇宙真理，思考生命意义。<br>推理万物规律，实现人神合一。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxxtsz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxxtsz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="探索者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="探索者">
+      <meta itemprop="description" content="探寻宇宙真理，思考生命意义。<br>推理万物规律，实现人神合一。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="numpy创建数组 | 探索者">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          numpy创建数组
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-16 23:07:06" itemprop="dateCreated datePublished" datetime="2022-04-16T23:07:06+08:00">2022-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-17 01:44:45" itemprop="dateModified" datetime="2022-04-17T01:44:45+08:00">2022-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/numpy/" itemprop="url" rel="index"><span itemprop="name">numpy</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文主要介绍在numpy中如何创建数组。</p>
 <span id="more"></span>
 <h1 id="Ones-和-zeros-填充方式"><a href="#Ones-和-zeros-填充方式" class="headerlink" title="Ones 和 zeros 填充方式"></a>Ones 和 zeros 填充方式</h1><h2 id="empty"><a href="#empty" class="headerlink" title="empty"></a>empty</h2><p>返回给定形状和类型的新数组，而不初始化项。</p>
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; np.empty([<span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">array(<span class="string">[[ -9.74499359e+001,   6.69583040e-309],</span></span><br><span class="line"><span class="string">       [  2.13182611e-314,   3.06959433e-309]]</span>)    </span><br><span class="line">       </span><br><span class="line">&gt;&gt;&gt; np.empty([<span class="number">2</span>, <span class="number">2</span>], dtype=int)</span><br><span class="line">array(<span class="string">[[-1073741821, -1067949133],</span></span><br><span class="line"><span class="string">       [  496041986,    19249760]]</span>)  </span><br></pre></td></tr></table></figure>
@@ -147,185 +461,161 @@
 <h2 id="bmat"><a href="#bmat" class="headerlink" title="bmat"></a><strong>bmat</strong></h2><p>从字符串、嵌套序列或数组生成矩阵对象。</p>
 <figure class="highlight python-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">A = np.mat(<span class="string">&#x27;1 1; 1 1&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">B = np.mat(<span class="string">&#x27;2 2; 2 2&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">C = np.mat(<span class="string">&#x27;3 4; 5 6&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">D = np.mat(<span class="string">&#x27;7 8; 9 0&#x27;</span>)</span></span><br></pre></td></tr></table></figure>
 <p>以下所有表达式构造相同的块矩阵：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; np<span class="selector-class">.bmat</span>(<span class="selector-attr">[[A, B]</span>, <span class="selector-attr">[C, D]</span>])</span><br><span class="line"><span class="built_in">matrix</span>(<span class="selector-attr">[[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[3, 4, 7, 8]</span>,</span><br><span class="line">        <span class="selector-attr">[5, 6, 9, 0]</span>])</span><br><span class="line">&gt;&gt;&gt; np<span class="selector-class">.bmat</span>(np<span class="selector-class">.r_</span><span class="selector-attr">[np.c_[A, B]</span>, np<span class="selector-class">.c_</span><span class="selector-attr">[C, D]</span>])</span><br><span class="line"><span class="built_in">matrix</span>(<span class="selector-attr">[[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[3, 4, 7, 8]</span>,</span><br><span class="line">        <span class="selector-attr">[5, 6, 9, 0]</span>])</span><br><span class="line">&gt;&gt;&gt; np<span class="selector-class">.bmat</span>(<span class="string">&#x27;A,B; C,D&#x27;</span>)</span><br><span class="line"><span class="built_in">matrix</span>(<span class="selector-attr">[[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[3, 4, 7, 8]</span>,</span><br><span class="line">        <span class="selector-attr">[5, 6, 9, 0]</span>])</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>numpy</category>
-      </categories>
-      <tags>
-        <tag>numpy</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wxpython基础</title>
-    <url>/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>在这里将介绍wxpython作为一个GUI库的整体框架结构，包括：整个wxpython程序的流程、菜单栏、上下文菜单栏、工具栏、状态栏。为之后的进阶学习奠定一个基础。</p>
-<span id="more"></span>
-<h1 id="最小的wxpython应用程序"><a href="#最小的wxpython应用程序" class="headerlink" title="最小的wxpython应用程序"></a>最小的wxpython应用程序</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span>(wx.App):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnInit</span>(<span class="params">self</span>):</span><br><span class="line">        frame = wx.Frame(parent=<span class="literal">None</span>, title=<span class="string">&quot;最小的应用程序&quot;</span>)</span><br><span class="line">        frame.Show()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnExit</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = App()</span><br><span class="line">app.MainLoop()</span><br></pre></td></tr></table></figure>
-<p>结果为：</p>
-<p><img src="/images/wxpython/最小的应用程序.png" alt=""></p>
-<p>每个wxPython程序必须有一个application对象和至少一个frame对象。当你的应用程序启动的时候，OnInit()方法将被wx.App父类调用。由于OnInit()方法的存在，并且它是wxPython架构的一部分，所以任何关于你的定制的类的所需的初始化通常都由OnInit()方法管理，而不在Python的 <code>__init__</code>方法中。如果由于某些原因你决定需要<code>__init__</code>方法，那么你必须在你的<code>__init__</code>方法中调用父类的<code>__init__</code>方法.</p>
-<p>关于Frame框架的显示与隐藏，有如下用法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame.Show(<span class="literal">False</span>)   <span class="comment">#使框架不可见</span></span><br><span class="line">frame.Show(<span class="literal">True</span>)    <span class="comment">#使框架可见</span></span><br><span class="line">frame.Hide()        <span class="comment">#等同于frame.Show(False)</span></span><br></pre></td></tr></table></figure>
-<p>当应用程序退出时，会执行App对象的OnExit方法，所以如果我们想在应用程序退出时执行某些操作，我们可以重写OnExit方法。</p>
-<h1 id="用Frame创建顶级窗口对象"><a href="#用Frame创建顶级窗口对象" class="headerlink" title="用Frame创建顶级窗口对象"></a>用Frame创建顶级窗口对象</h1><p>一般意义上的顶级窗口是指在你的应用程序中任何没有父容器的窗口部件。你的应用程序至少必须有一个顶级窗口对象。顶级窗口对象通常是类wx.Frame的子类，尽管它也可以是wx.Dialog的子类。</p>
-<p>按照wxPython中的说法，框架就是用户通常称的窗口。那就是说，框架是一个容器，用户可以将它在屏幕上任意移动，并可将它缩放，它通常包含诸如标题栏、菜单等等。在wxPython中，wx.Frame是所有框架的父类。这里也有少数专用的wx.Frame子类，你可以使用它们。</p>
-<p>下面是wx.Frame的构造器：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wx.Frame(parent, <span class="built_in">id</span>=-<span class="number">1</span>, title=<span class="string">&quot;&quot;</span>, pos=wx.DefaultPosition,size=wx.DefaultSize,style=wx.DEFAULT_FRAME_STYLE,name=<span class="string">&quot;frame&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>参数</strong>解释如下：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; np<span class="selector-class">.bmat</span>(<span class="selector-attr">[[A, B]</span>, <span class="selector-attr">[C, D]</span>])</span><br><span class="line"><span class="built_in">matrix</span>(<span class="selector-attr">[[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[3, 4, 7, 8]</span>,</span><br><span class="line">        <span class="selector-attr">[5, 6, 9, 0]</span>])</span><br><span class="line">&gt;&gt;&gt; np<span class="selector-class">.bmat</span>(np<span class="selector-class">.r_</span><span class="selector-attr">[np.c_[A, B]</span>, np<span class="selector-class">.c_</span><span class="selector-attr">[C, D]</span>])</span><br><span class="line"><span class="built_in">matrix</span>(<span class="selector-attr">[[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[3, 4, 7, 8]</span>,</span><br><span class="line">        <span class="selector-attr">[5, 6, 9, 0]</span>])</span><br><span class="line">&gt;&gt;&gt; np<span class="selector-class">.bmat</span>(<span class="string">&#x27;A,B; C,D&#x27;</span>)</span><br><span class="line"><span class="built_in">matrix</span>(<span class="selector-attr">[[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[1, 1, 2, 2]</span>,</span><br><span class="line">        <span class="selector-attr">[3, 4, 7, 8]</span>,</span><br><span class="line">        <span class="selector-attr">[5, 6, 9, 0]</span>])</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/weixin_dashang.png" alt="探索者 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
 <ul>
-<li><p><em>parent</em>：框架的父窗口。对于顶级窗口，这个值是<em>None</em>。框架随其父窗口的销毁而销毁。取决于平台，框架可被限制只出现在父窗口的顶部。在多文档界面的情况下，子窗口被限制为只能在父窗口中移动和缩放。 </p>
-</li>
-<li><p><em>id</em>：关于新窗口的<em>wxPython ID</em>号。你可以明确地传递一个。或传递<em>-1</em>，这将导致 </p>
-</li>
-<li><p><em>wxPython</em>自动生成一个新的<em>ID</em>。 </p>
-</li>
-<li><p><em>title</em>：窗口的标题。 </p>
-</li>
-<li><p><em>pos</em>：一个<em>wx.Point</em>对象，它指定这个新窗口的左上角在屏幕中的位置。在图形用户界面程序中，通常<em>(0,0)</em>是显示器的左上角。这个默认的<em>(-1,-1)</em>将让系统决定窗口的位置。 </p>
-</li>
-<li><p><em>size</em>：一个<em>wx.Size</em>对象，它指定这个窗口的初始尺寸。这个默认的<em>(-1,-1)</em>将让系统决定窗口的初始尺寸。 </p>
-</li>
-<li><p><em>style</em>：指定窗口的类型的常量。你可以使用或运算来组合它们。 </p>
-</li>
-<li><p><em>name</em>：框架的内在的名字。以后你可以使用它来寻找这个窗口。</p>
-</li>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>探索者
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://gxxtsz.cn/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/" title="numpy创建数组">https://gxxtsz.cn/2022/04/16/numpy/numpy创建数组/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-<p>通常，我们会自定义继承自wx.Frame的一个类，用法如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        wx.Frame.__init__(self, <span class="literal">None</span>, -<span class="number">1</span>, <span class="string">&quot;My Friendly Window&quot;</span>,(<span class="number">100</span>, <span class="number">100</span>), (<span class="number">100</span>, <span class="number">100</span>))</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>关于id</strong></p>
-<p>我们可以使用wx.NewId()函数来生成唯一的id。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">id</span> = wx.NewId()</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>关于窗口的方法</strong></p>
-<p>包括Frame在内的大部分窗口或者控件，都有类似Getxxx()和Setxxx()的方法来获取和设置窗口或控件的属性值。</p>
-<hr>
-<p><strong>关于控件的构造</strong></p>
-<p>在构造一个控件时，一般开头的构造参数默认都是父容器，id。后面的一般有标题、样式等参数。</p>
-<hr>
-<p><strong>关于wx.Frame的样式</strong></p>
-<ul>
-<li><p><em>wx.CAPTION</em>：在框架上增加一个标题栏，它显示该框架的标题属性。 </p>
-</li>
-<li><p><em>wx.CLOSE_BOX</em>：指示系统在框架的标题栏上显示一个关闭框，使用系统默认的位置和样式。 </p>
-</li>
-<li><p><em>wx.DEFAULT_FRAME_STYLE</em>：默认样式。 </p>
-</li>
-<li><p><em>wx.FRAME_SHAPED</em>：用这个样式创建的框架可以使用<em>SetShape()</em>方法去创建一个非矩形的窗口。 </p>
-</li>
-<li><p><em>wx.FRAME_TOOL_WINDOW</em>：通过给框架一个比正常更小的标题栏，使框架看起来像一个工具框窗口。在<em>Windows</em>下，使用这个样式创建的框架不会出现在显示所有打开窗口的任务栏上。 </p>
-</li>
-<li><p><em>wx.MAXIMIZE_BOX</em>：指示系统在框架的标题栏上显示一个最大化框，使用系统默认的位置和样式。 </p>
-</li>
-<li><p><em>wx.MINIMIZE_BOX</em>：指示系统在框架的标题栏上显示一个最小化框，使用系统默认的位置和样式。 </p>
-</li>
-<li><p><em>wx.RESIZE_BORDER</em>：给框架增加一个可以改变尺寸的边框。 </p>
-</li>
-<li><p><em>wx.SIMPLE_BORDER</em>：没有装饰的边框。不能工作在所有平台上。 </p>
-</li>
-<li><p><em>wx.SYSTEM_MENU</em>：增加系统菜单（带有关闭、移动、改变尺寸等功能）和关闭框到这个窗口。在系统菜单中的改变尺寸和关闭功能的有效性依赖于<em>wx.MAXIMIZE_BOX, wx.MINIMIZE_BOX</em>和<em>wx.CLOSE_BOX</em>样式是否被应用。</p>
-</li>
-</ul>
-<p>要使用多个样式，你可以使用或运算符|。要从一个合成的样式中去掉个别的样式，你可以使用^操作符。</p>
-<hr>
-<p><strong>关于给框架增加窗口部件</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Frame_01</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        wx.Frame.__init__(self,<span class="literal">None</span>,-<span class="number">1</span>,<span class="string">&#x27;here we go&#x27;</span>,pos=wx.DefaultPosition,size=(<span class="number">300</span>,<span class="number">100</span>))</span><br><span class="line">        panel = wx.Panel(self)</span><br><span class="line">        button = wx.Button(panel,label=<span class="string">&quot;Close&quot;</span>,pos=(<span class="number">125</span>,<span class="number">10</span>),size=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">        self.Bind(wx.EVT_BUTTON,self.onCloseMe,button)</span><br><span class="line">        self.Bind(wx.EVT_CLOSE,self.onCloseWindow)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onCloseMe</span>(<span class="params">self,event</span>):</span><br><span class="line">        self.Close(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onCloseWindow</span>(<span class="params">self,event</span>):</span><br><span class="line">        self.Destroy()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = wx.App()</span><br><span class="line">    frame = Frame_01()</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<p><img src="/images/wxpython/给窗口增加部件.png" alt=""></p>
-<p>你不必像使用别的UI工具包那样，你不需要显式调用一个增加方法来向双亲中插入一个子窗口。在wxPython中，你只需在子窗口被创建时指定父窗口，这个子窗口就隐式地增加到父对象中了。</p>
-<p>在wxPython中，如果只有一个子窗口的框架被创建，那么那个子窗口被自动重新调整尺寸去填满该框架的客 户区域。这个自动调整尺寸将覆盖关于这个子窗口的任何位置和尺寸信息，尽管关于子窗口的信息已被指定，这些信息将被忽略。这个自动调整尺寸仅适用于框架内或对话框内的只有唯一元素的情况。这里按钮是panel的元素，而不是框架的，所以要使用指定的尺寸和位置。如果没有为这个按钮指定尺寸和位置，它将使用默认的位置（panel的左上角）和基于按钮标签的长度的尺寸。</p>
-<p>显式地指定所有子窗口的位置和尺寸是十分乏味的。更重要的是，当用户 调整窗口大小的时候，这使得子窗口的位置和大小不能作相应调整。为了解决这两个问题，wxPython使用了称为sizers的对象来管理子窗口的复杂布局。</p>
-<h1 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h1><p>在 wxPython 中有三个类用于创建菜单栏 menubars：<code>wx.MenuBar</code>，<code>wx.Menu</code> 和 <code>wx.MenuItem</code>。分别对应于菜单栏、菜单、菜单项。我们先介绍一下整个框架的流程，然后在对一些细节部分进行详细的讨论。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        menubar = wx.MenuBar()</span><br><span class="line">        fileMenu = wx.Menu()</span><br><span class="line">        fileItem = fileMenu.Append(wx.ID_EXIT, <span class="string">&#x27;Quit&#x27;</span>, <span class="string">&#x27;Quit application&#x27;</span>)</span><br><span class="line">        menubar.Append(fileMenu, <span class="string">&#x27;File&#x27;</span>)</span><br><span class="line">        self.SetMenuBar(menubar)</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_MENU, self.OnQuit, fileItem)</span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">300</span>, <span class="number">200</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Simple menu&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnQuit</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<p><img src="/images/wxpython/菜单栏.png" alt=""></p>
-<p>我们将菜单项追加到菜单对象中。 第一个参数是菜单项的 ID。 标准 id 会自动添加图标和快捷键（不同系统可能不同）。 第二个参数是菜单项的名称。 最后一个参数定义了选择菜单项时的简短帮助。 这里我们没有明确地创建一个 <code>wx.MenuItem</code> 。 它由幕后的 <code>Append()</code> 方法创建。 该方法返回创建的菜单项 menu item。 该引用在稍后将用于绑定到自定义的 <code>OnQuit()</code> 方法。<code>wx.EVT_MENU</code> 代表菜单退出事件绑定器。</p>
-<hr>
-<p><strong>当然我们也可以自定义菜单项</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">APP_EXIT=-<span class="number">1</span>   <span class="comment">#代表id</span></span><br><span class="line">fileMenu = wx.Menu()</span><br><span class="line">qmi = wx.MenuItem(fileMenu, APP_EXIT, <span class="string">&#x27;Quit\tCtrl+Q&#x27;</span>)</span><br><span class="line">qmi.SetBitmap(wx.Bitmap(<span class="string">&#x27;exit.png&#x27;</span>))</span><br><span class="line">fileMenu.Append(qmi)</span><br><span class="line"></span><br><span class="line">self.Bind(wx.EVT_MENU, self.OnQuit, <span class="built_in">id</span>=APP_EXIT)  <span class="comment">#绑定菜单退出事件</span></span><br></pre></td></tr></table></figure>
-<p> <code>SetBitmap()</code> 方法为菜单项添加一个图标。</p>
-<hr>
-<p><strong>分隔符和子菜单</strong></p>
-<p>使用方法如下，子菜单其实就是把一个wx.Menu添加进另一个wx.Menu，俄罗斯套娃🤣。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fileMenu = wx.Menu()</span><br><span class="line">fileMenu.Append(wx.ID_NEW, <span class="string">&#x27;New&#x27;</span>)</span><br><span class="line">fileMenu.Append(wx.ID_OPEN, <span class="string">&#x27;Open&#x27;</span>)</span><br><span class="line">fileMenu.AppendSeparator()         <span class="comment">#代表在这儿添加一个分隔符</span></span><br><span class="line">fileMenu.Append(wx.ID_SAVE, <span class="string">&#x27;Save&#x27;</span>)</span><br><span class="line"></span><br><span class="line">imp = wx.Menu()</span><br><span class="line">imp.Append(wx.ID_ANY, <span class="string">&#x27;Import newsfeed list...&#x27;</span>)</span><br><span class="line">imp.Append(wx.ID_ANY, <span class="string">&#x27;Import bookmarks...&#x27;</span>)</span><br><span class="line">imp.Append(wx.ID_ANY, <span class="string">&#x27;Import mail...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fileMenu.Append(wx.ID_ANY, <span class="string">&#x27;Import&#x27;</span>, imp)</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>勾选菜单项</strong></p>
-<p>类似这种</p>
-<p><img src="/images/wxpython/勾选菜单项.png" alt=""></p>
-<p>使用方法如下，其实就是设置kind参数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">menubar = wx.MenuBar()</span><br><span class="line">viewMenu = wx.Menu()</span><br><span class="line">self.shst = viewMenu.Append(wx.ID_ANY, <span class="string">&#x27;Show statusbar&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;Show Statusbar&#x27;</span>, kind=wx.ITEM_CHECK)</span><br><span class="line">self.shtl = viewMenu.Append(wx.ID_ANY, <span class="string">&#x27;Show toolbar&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;Show Toolbar&#x27;</span>, kind=wx.ITEM_CHECK)</span><br></pre></td></tr></table></figure>
-<p>我们也可以通过下面的方法来设置和获取勾选菜单项的状态。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">viewMenu.Check(self.shst.GetId(), <span class="literal">True</span>)  <span class="comment">#选中</span></span><br><span class="line">viewMenu.Check(self.shtl.GetId(), <span class="literal">False</span>) <span class="comment">#不选中</span></span><br><span class="line">self.shst.IsChecked()  <span class="comment">#检查是否选中</span></span><br></pre></td></tr></table></figure>
-<h1 id="上下文菜单"><a href="#上下文菜单" class="headerlink" title="上下文菜单"></a>上下文菜单</h1><p>上下文菜单是在某种上下文条件下出现的命令列表。 例如，在 Firefox 网页浏览器中，当我们右击一个网页时，我们会得到一个上下文菜单。在上下文菜单处，我们可以重新加载页面，返回或查看页面源代码。如果我们点击一个工具栏，我们会得到另一个用于管理工具栏的上下文菜单。上下文菜单有时称为弹出式菜单。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyPopupMenu</span>(wx.Menu):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent</span>):</span><br><span class="line">        <span class="built_in">super</span>(MyPopupMenu, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.parent = parent</span><br><span class="line"></span><br><span class="line">        mmi = wx.MenuItem(self, wx.NewId(), <span class="string">&#x27;Minimize&#x27;</span>)</span><br><span class="line">        self.Append(mmi)</span><br><span class="line">        self.Bind(wx.EVT_MENU, self.OnMinimize, mmi)</span><br><span class="line"></span><br><span class="line">        cmi = wx.MenuItem(self, wx.NewId(), <span class="string">&#x27;Close&#x27;</span>)</span><br><span class="line">        self.Append(cmi)</span><br><span class="line">        self.Bind(wx.EVT_MENU, self.OnClose, cmi)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnMinimize</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.parent.Iconize()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnClose</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.parent.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_RIGHT_DOWN, self.OnRightDown) <span class="comment">#绑定鼠标右键摁下事件</span></span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">350</span>, <span class="number">250</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Context menu&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnRightDown</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.PopupMenu(MyPopupMenu(self), e.GetPosition())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p>结果如下:</p>
-<p><img src="/images/wxpython/contextmenu.png" alt=""></p>
-<p>在 <code>OnRightDown()</code> 方法中，我们调用 <code>PopupMenu()</code> 方法，该方法显示上下文菜单。 第一个参数是要显示的菜单，第二个参数是上下文菜单出现的位置。上下文菜单出现在鼠标光标的位置。 为了获得实际的鼠标位置，我们调用提供的事件对象的 <code>GetPosition()</code> 方法。</p>
-<h1 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        toolbar = self.CreateToolBar()</span><br><span class="line">        qtool = toolbar.AddTool(wx.ID_ANY, <span class="string">&#x27;Quit&#x27;</span>, wx.Bitmap(<span class="string">&#x27;exit.png&#x27;</span>))</span><br><span class="line">        toolbar.Realize()</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)  <span class="comment">#绑定工具栏事件</span></span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">350</span>, <span class="number">250</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Simple toolbar&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnQuit</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<p><img src="/images/wxpython/simpletoolbar.png" alt=""></p>
-<p>我们创建一个工具栏。 默认情况下，工具栏是水平的，没有边框和显示。要创建一个工具栏工具，我们调用 <code>AddTool()</code> 方法。第二个参数是工具的标签，第三个参数是工具的图像。请注意，标签 label 不可见，因为默认样式仅显示图标。将我们的项目放到工具栏后，我们调用 <code>Realize()</code> 方法。 在 Linux 上调用此方法不是强制性的。 在 windows 上是必须的（不然不会添加工具）。</p>
-<hr>
-<p><strong>创建多个工具栏</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(wx.Frame):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(Example, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.InitUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InitUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        vbox = wx.BoxSizer(wx.VERTICAL)</span><br><span class="line"></span><br><span class="line">        toolbar1 = wx.ToolBar(self) </span><br><span class="line">        toolbar1.AddTool(wx.ID_ANY, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;tnew.png&#x27;</span>))</span><br><span class="line">        toolbar1.AddTool(wx.ID_ANY, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;topen.png&#x27;</span>))</span><br><span class="line">        toolbar1.AddTool(wx.ID_ANY, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;tsave.png&#x27;</span>))</span><br><span class="line">        toolbar1.Realize()</span><br><span class="line"></span><br><span class="line">        toolbar2 = wx.ToolBar(self)</span><br><span class="line">        qtool = toolbar2.AddTool(wx.ID_EXIT, <span class="string">&#x27;&#x27;</span>, wx.Bitmap(<span class="string">&#x27;texit.png&#x27;</span>))</span><br><span class="line">        toolbar2.Realize()</span><br><span class="line"></span><br><span class="line">        vbox.Add(toolbar1, <span class="number">0</span>, wx.EXPAND)</span><br><span class="line">        vbox.Add(toolbar2, <span class="number">0</span>, wx.EXPAND)</span><br><span class="line"></span><br><span class="line">        self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)</span><br><span class="line"></span><br><span class="line">        self.SetSizer(vbox)</span><br><span class="line"></span><br><span class="line">        self.SetSize((<span class="number">350</span>, <span class="number">250</span>))</span><br><span class="line">        self.SetTitle(<span class="string">&#x27;Toolbars&#x27;</span>)</span><br><span class="line">        self.Centre()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnQuit</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = wx.App()</span><br><span class="line">    ex = Example(<span class="literal">None</span>)</span><br><span class="line">    ex.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p>结果如下:</p>
-<p><img src="/images/wxpython/toolbars.png" alt=""></p>
-<p>在这儿我们用wx.ToolBar显式的创建了两个工具栏对象，并把它们放入一个垂直的盒子里。就像我们前面说过的，因为我们设置了ToolBar的父容器是Example，所以即使我们没有显式的把工具栏放进Example，它也会在后台自动的进行。</p>
-<hr>
-<p><strong>分割线</strong></p>
-<p>我们可以调用<code>toolbar.AddSeparator()</code>为工具栏添加一个分割线。</p>
-<hr>
-<p><strong>启用和禁用</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">toolbar.EnableTool(wx.ID_REDO, <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<p>我们可以调用EnableTool方法来启用或者禁用工具栏按钮，其中第一个参数代表要设置工具栏按钮的id，第二个参数表明是要禁用还是启动。</p>
-<h1 id="状态栏"><a href="#状态栏" class="headerlink" title="状态栏"></a>状态栏</h1><p>理解了上面的内容，状态栏就更好理解了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">statusBar = wx.StatusBar(self, -<span class="number">1</span>)<span class="comment"># 实例化 wx.StatusBar</span></span><br><span class="line">statusBar.SetFieldsCount(<span class="number">3</span>) <span class="comment"># 状态栏分成3个区域</span></span><br><span class="line">statusBar.SetStatusWidths([-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">1</span>]) <span class="comment">#区域宽度比列，用负数</span></span><br><span class="line">statusBar.SetStatusText(<span class="string">&quot;A Custom StatusBar...&quot;</span>, <span class="number">0</span>) <span class="comment">#给状态栏设文字，第二个而参数为状态栏区块序号，从0开始</span></span><br><span class="line"></span><br><span class="line">statusBar = self.CreateStatusBar() <span class="comment">#调用框架wx.frame的CreateStatusBar方法</span></span><br><span class="line">statusBar.statusBar.SetFieldsCount(<span class="number">3</span>) <span class="comment"># 状态栏分成3个区域</span></span><br><span class="line">statusBar.SetStatusWidths([-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">1</span>]) <span class="comment">#区域宽度比列，用负数</span></span><br><span class="line">statusBar.SetStatusText(<span class="string">&quot;A Custom StatusBar...&quot;</span>, <span class="number">0</span>) <span class="comment">#给状态栏设文字</span></span><br><span class="line"></span><br><span class="line">self.SetStatusBar(statusBar) <span class="comment">#将状态栏附加到框架上</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>wxpython</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>wxpython</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>人性的弱点</title>
-    <url>/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</url>
-    <content><![CDATA[<p>这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？</p>
-<span id="more"></span>
-<h1 id="人际交往的基本技巧"><a href="#人际交往的基本技巧" class="headerlink" title="人际交往的基本技巧"></a>人际交往的基本技巧</h1><ul>
-<li>不要批评、指责、抱怨他人。</li>
-<li>真诚的感谢、赞美他人。</li>
-<li>激发他人的需求，这样他才会心甘情愿的去做一件事。</li>
-</ul>
-<h1 id="赢得他人喜爱的六个方式"><a href="#赢得他人喜爱的六个方式" class="headerlink" title="赢得他人喜爱的六个方式"></a>赢得他人喜爱的六个方式</h1><ul>
-<li>建立对他人的兴趣，真诚的关注别人。</li>
-<li>微笑。</li>
-<li>记住对方的名字，对他来说他的名字是这个世界上最动听的语言。</li>
-<li>专心的倾听别人。</li>
-<li>谈论对方感兴趣的事情。</li>
-<li>真心实意的让对方知道他有多重要。</li>
-</ul>
-<h1 id="如何让他人想你之想"><a href="#如何让他人想你之想" class="headerlink" title="如何让他人想你之想"></a>如何让他人想你之想</h1><ul>
-<li>赢得争论的方式只有一个，那就是避免争论。</li>
-<li>如果你错了，请坚决果断的承认错误。</li>
-<li>沟通始于友善。</li>
-<li>让对方主导谈话。</li>
-<li>将心比心，体谅他人。</li>
-<li>激发对方内心深处的高尚情操。</li>
-</ul>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这儿我只列举了书中前面的一部分，我觉得能够不断向上面的规则对齐，就很了不起了，其他的规则基本上都是这些规则的衍生。</p>
-<p>希望你能生活的越来越好，这个世界更加和谐。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
-        <tag>心理学</tag>
-        <tag>人际交往</tag>
-      </tags>
-  </entry>
-</search>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/numpy/" rel="tag"># numpy</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/" rel="prev" title="wxpython基础">
+                  <i class="fa fa-chevron-left"></i> wxpython基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">探索者</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">21k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"ipvh4vR9poTUyGpYor1GxNDV-gzGzoHsz","appKey":"eItnIYFXKrIfzUuoUjghs561","serverURLs":"https://ipvh4vr9.lc-cn-n1-shared.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n并且填写邮箱可以收到通知哦\n评论后我会尽快回复，所以喜欢可以收藏本站","avatar":"robohash","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/2022/04/16/numpy/numpy%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>
