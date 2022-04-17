@@ -21,30 +21,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？">
+    <meta name="description" content="本篇文章主要介绍ndarray数据结构和常用的一些常量。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人性的弱点">
-<meta property="og:url" content="https://gxxtsz.cn/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/index.html">
+<meta property="og:title" content="numpy数据类型">
+<meta property="og:url" content="https://gxxtsz.cn/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="探索者">
-<meta property="og:description" content="这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？">
+<meta property="og:description" content="本篇文章主要介绍ndarray数据结构和常用的一些常量。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-14T15:31:35.000Z">
-<meta property="article:modified_time" content="2022-04-14T16:22:03.331Z">
+<meta property="article:published_time" content="2022-04-17T00:59:20.000Z">
+<meta property="article:modified_time" content="2022-04-17T01:31:49.892Z">
 <meta property="article:author" content="探索者">
-<meta property="article:tag" content="读书笔记">
-<meta property="article:tag" content="心理学">
-<meta property="article:tag" content="人际交往">
+<meta property="article:tag" content="numpy">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://gxxtsz.cn/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/">
+<link rel="canonical" href="https://gxxtsz.cn/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/","path":"2022/04/14/读书笔记/人性的弱点/","title":"人性的弱点"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/","path":"2022/04/17/numpy/numpy数据类型/","title":"numpy数据类型"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>人性的弱点 | 探索者</title>
+<title>numpy数据类型 | 探索者</title>
   
 
 
@@ -151,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E9%99%85%E4%BA%A4%E5%BE%80%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">人际交往的基本技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%A2%E5%BE%97%E4%BB%96%E4%BA%BA%E5%96%9C%E7%88%B1%E7%9A%84%E5%85%AD%E4%B8%AA%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">赢得他人喜爱的六个方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BB%96%E4%BA%BA%E6%83%B3%E4%BD%A0%E4%B9%8B%E6%83%B3"><span class="nav-number">3.</span> <span class="nav-text">如何让他人想你之想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#n%E7%BB%B4%E6%95%B0%E7%BB%84-ndarray-%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">n维数组 (ndarray ）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">常量</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +224,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/">
+    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpg">
@@ -238,12 +237,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="人性的弱点 | 探索者">
+      <meta itemprop="name" content="numpy数据类型 | 探索者">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          人性的弱点
+          numpy数据类型
         </h1>
 
         <div class="post-meta-container">
@@ -253,15 +252,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2022-04-14 23:31:35" itemprop="dateCreated datePublished" datetime="2022-04-14T23:31:35+08:00">2022-04-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-15 00:22:03" itemprop="dateModified" datetime="2022-04-15T00:22:03+08:00">2022-04-15</time>
+      <time title="创建时间：2022-04-17 08:59:20 / 修改时间：09:31:49" itemprop="dateCreated datePublished" datetime="2022-04-17T08:59:20+08:00">2022-04-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,7 +262,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+          <a href="/categories/numpy/" itemprop="url" rel="index"><span itemprop="name">numpy</span></a>
         </span>
     </span>
 
@@ -289,8 +282,8 @@
     </span>
     <span class="post-meta-item-text">Valine：</span>
   
-    <a title="valine" href="/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -300,7 +293,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>447</span>
+      <span>629</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -318,31 +311,136 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>这本书能畅销这么久是有原因的。书中描述的观点很像普通的鸡汤，但是真的如此吗？反正我是觉得虽然有些道理大家耳熟能详，但真正去遵守它的人并不是很多。就像这本书，虽然道理浅显易懂，但我们仍然应该时不时的拿出来看一看，反思一下：对于书中的观点，我们真的用行动做到了吗？</p>
+        <p>本篇文章主要介绍ndarray数据结构和常用的一些常量。</p>
 <span id="more"></span>
-<h1 id="人际交往的基本技巧"><a href="#人际交往的基本技巧" class="headerlink" title="人际交往的基本技巧"></a>人际交往的基本技巧</h1><ul>
-<li>不要批评、指责、抱怨他人。</li>
-<li>真诚的感谢、赞美他人。</li>
-<li>激发他人的需求，这样他才会心甘情愿的去做一件事。</li>
-</ul>
-<h1 id="赢得他人喜爱的六个方式"><a href="#赢得他人喜爱的六个方式" class="headerlink" title="赢得他人喜爱的六个方式"></a>赢得他人喜爱的六个方式</h1><ul>
-<li>建立对他人的兴趣，真诚的关注别人。</li>
-<li>微笑。</li>
-<li>记住对方的名字，对他来说他的名字是这个世界上最动听的语言。</li>
-<li>专心的倾听别人。</li>
-<li>谈论对方感兴趣的事情。</li>
-<li>真心实意的让对方知道他有多重要。</li>
-</ul>
-<h1 id="如何让他人想你之想"><a href="#如何让他人想你之想" class="headerlink" title="如何让他人想你之想"></a>如何让他人想你之想</h1><ul>
-<li>赢得争论的方式只有一个，那就是避免争论。</li>
-<li>如果你错了，请坚决果断的承认错误。</li>
-<li>沟通始于友善。</li>
-<li>让对方主导谈话。</li>
-<li>将心比心，体谅他人。</li>
-<li>激发对方内心深处的高尚情操。</li>
-</ul>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这儿我只列举了书中前面的一部分，我觉得能够不断向上面的规则对齐，就很了不起了，其他的规则基本上都是这些规则的衍生。</p>
-<p>希望你能生活的越来越好，这个世界更加和谐。</p>
+<h1 id="n维数组-ndarray-）"><a href="#n维数组-ndarray-）" class="headerlink" title="n维数组 (ndarray ）"></a>n维数组 (<code>ndarray</code> ）</h1><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p><strong>内存布局</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flags.html#numpy.ndarray.flags"><code>ndarray.flags</code></a></td>
+<td>有关阵列的内存布局的信息。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.shape.html#numpy.ndarray.shape"><code>ndarray.shape</code></a></td>
+<td>数组维度的元组。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.strides.html#numpy.ndarray.strides"><code>ndarray.strides</code></a></td>
+<td>遍历数组时要在每个维度中步进的字节元组。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.ndim.html#numpy.ndarray.ndim"><code>ndarray.ndim</code></a></td>
+<td>数组维数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.data.html#numpy.ndarray.data"><code>ndarray.data</code></a></td>
+<td>指向数组数据开头的 Python 缓冲区对象。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.size.html#numpy.ndarray.size"><code>ndarray.size</code></a></td>
+<td>数组中的元素数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.itemsize.html#numpy.ndarray.itemsize"><code>ndarray.itemsize</code></a></td>
+<td>一个数组元素的长度（以字节为单位）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.nbytes.html#numpy.ndarray.nbytes"><code>ndarray.nbytes</code></a></td>
+<td>数组元素消耗的总字节数。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.base.html#numpy.ndarray.base"><code>ndarray.base</code></a></td>
+<td>如果内存来自其他对象，则为基础对象。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  <strong>数据类型</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.dtype.html#numpy.ndarray.dtype"><code>ndarray.dtype</code></a></td>
+<td>数组元素的数据类型。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>其他属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T"><code>ndarray.T</code></a></td>
+<td>转置数组。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.real.html#numpy.ndarray.real"><code>ndarray.real</code></a></td>
+<td>数组的实部。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.imag.html#numpy.ndarray.imag"><code>ndarray.imag</code></a></td>
+<td>数组的虚部。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flat.html#numpy.ndarray.flat"><code>ndarray.flat</code></a></td>
+<td>数组上的一维迭代器。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>对于ndarray的方法，大部分都有对应的np.方法，其实np.方法在背后就是调用了ndarray的方法。</p>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>numpy.inf</code></td>
+<td>IEEE754（正）无穷大的浮点表示法。</td>
+</tr>
+<tr>
+<td><code>numpy.NINF</code></td>
+<td>IEEE754负无穷大的浮点表示法。</td>
+</tr>
+<tr>
+<td><code>numpy.nan</code></td>
+<td>IEEE754非数字的浮点表示法（NaN）。</td>
+</tr>
+<tr>
+<td><code>numpy.pi</code></td>
+<td>pi = 3.1415926535897932384626433…</td>
+</tr>
+<tr>
+<td><code>numpy.e</code></td>
+<td>e = 2.7182818284590452353602874…</td>
+</tr>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -374,7 +472,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://gxxtsz.cn/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/" title="人性的弱点">https://gxxtsz.cn/2022/04/14/读书笔记/人性的弱点/</a>
+      <a href="https://gxxtsz.cn/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="numpy数据类型">https://gxxtsz.cn/2022/04/17/numpy/numpy数据类型/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -383,19 +481,21 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
-              <a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag"># 心理学</a>
-              <a href="/tags/%E4%BA%BA%E9%99%85%E4%BA%A4%E5%BE%80/" rel="tag"># 人际交往</a>
+              <a href="/tags/numpy/" rel="tag"># numpy</a>
+              <a href="/tags/python/" rel="tag"># python</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/04/17/numpy/numpy%E6%95%B0%E7%BB%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="prev" title="numpy数组基本操作">
+                  <i class="fa fa-chevron-left"></i> numpy数组基本操作
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/15/wxpython/wxpython%E5%9F%BA%E7%A1%80/" rel="next" title="wxpython基础">
-                  wxpython基础 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/04/17/numpy/numpy%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="next" title="numpy函数式编程">
+                  numpy函数式编程 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -486,7 +586,7 @@
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"ipvh4vR9poTUyGpYor1GxNDV-gzGzoHsz","appKey":"eItnIYFXKrIfzUuoUjghs561","serverURLs":"https://ipvh4vr9.lc-cn-n1-shared.com","placeholder":"昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n填写邮箱可以收到通知哦\n经测试发现，评论服务过段时间会自动休眠，这样我就收不到通知，你可以发两次评论，这样第一次唤醒服务，第二次应该就可以收到通知了","avatar":"robohash","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/2022/04/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"ipvh4vR9poTUyGpYor1GxNDV-gzGzoHsz","appKey":"eItnIYFXKrIfzUuoUjghs561","serverURLs":"https://ipvh4vr9.lc-cn-n1-shared.com","placeholder":"昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n填写邮箱可以收到通知哦\n经测试发现，评论服务过段时间会自动休眠，这样我就收不到通知，你可以发两次评论，这样第一次唤醒服务，第二次应该就可以收到通知了","avatar":"robohash","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick"],"el":"#valine-comments","path":"/2022/04/17/numpy/numpy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
