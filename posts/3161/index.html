@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+  <link rel="manifest" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="git详解">
+<meta property="og:url" content="https://gxxtsz.cn/posts/3161/index.html">
+<meta property="og:site_name" content="探索者">
+<meta property="og:description" content="Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gxxtsz.cn/images/assert/1352126739_7909.jpg">
+<meta property="og:image" content="https://gxxtsz.cn/images/assert/git-process.png">
+<meta property="og:image" content="https://gxxtsz.cn/images/assert/git-command.jpg">
+<meta property="article:published_time" content="2023-04-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-26T17:05:35.683Z">
+<meta property="article:author" content="gxxtsz">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gxxtsz.cn/images/assert/1352126739_7909.jpg">
+
+
+<link rel="canonical" href="https://gxxtsz.cn/posts/3161/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/posts/3161/","path":"posts/3161/","title":"git详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>git详解 | 探索者</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">探索者</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">探索未知，责无旁贷。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Git 工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Git 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.</span> <span class="nav-text">用户信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E5%BC%82%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="nav-number">3.3.</span> <span class="nav-text">差异分析工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">3.4.</span> <span class="nav-text">查看配置信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">创建仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-init"><span class="nav-number">4.1.</span> <span class="nav-text">git init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone"><span class="nav-number">4.2.</span> <span class="nav-text">git clone</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-add"><span class="nav-number">5.1.</span> <span class="nav-text">git add</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-status"><span class="nav-number">5.2.</span> <span class="nav-text">git status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-diff"><span class="nav-number">5.3.</span> <span class="nav-text">git diff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-commit"><span class="nav-number">5.4.</span> <span class="nav-text">git commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset"><span class="nav-number">5.5.</span> <span class="nav-text">git reset</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="gxxtsz"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">gxxtsz</p>
+  <div class="site-description" itemprop="description">探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxxtsz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxxtsz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/posts/3161/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="gxxtsz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="探索者">
+      <meta itemprop="description" content="探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="git详解 | 探索者">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-07 00:00:00" itemprop="dateCreated datePublished" datetime="2023-04-07T00:00:00+08:00">2023-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-27 01:05:35" itemprop="dateModified" datetime="2023-07-27T01:05:35+08:00">2023-07-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Git
+是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+<span id="more"></span>
+<h2 id="基本概念">基本概念</h2>
+<ul>
+<li><strong>工作区：</strong>就是你在电脑里能看到的目录。</li>
+<li><strong>暂存区：</strong>英文叫 stage 或 index。一般存放在
+<strong>.git</strong> 目录下的 index
+文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
+<li><strong>版本库：</strong>工作区有一个隐藏目录
+<strong>.git</strong>，这个不算工作区，而是 Git 的版本库。</li>
+</ul>
+<p>下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：</p>
+<figure>
+<img src="/images/assert/1352126739_7909.jpg" alt="基本概念" />
+<figcaption aria-hidden="true">基本概念</figcaption>
+</figure>
+<ul>
+<li>图中左侧为工作区，右侧为版本库。在版本库中标记为 "index"
+的区域是暂存区（stage/index），标记为 "master" 的是 master
+分支所代表的目录树。</li>
+<li>图中我们可以看出此时 "HEAD" 实际是指向 master
+分支的一个"游标"。所以图示的命令中出现 HEAD 的地方可以用 master
+来替换。</li>
+<li>图中的 objects 标识的区域为 Git 的对象库，实际位于 ".git/objects"
+目录下，里面包含了创建的各种对象及内容。</li>
+<li>当对工作区修改（或新增）的文件执行 <code>git add</code>
+命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。</li>
+<li>当执行提交操作（git
+commit）时，暂存区的目录树写到版本库（对象库）中，master
+分支会做相应的更新。即 master
+指向的目录树就是提交时暂存区的目录树。</li>
+<li>当执行 <code>git reset HEAD</code>
+命令时，暂存区的目录树会被重写，被 master
+分支指向的目录树所替换，但是工作区不受影响。</li>
+<li>当执行 <code>git rm --cached &lt;file&gt;</code>
+命令时，会直接从暂存区删除文件，工作区则不做出改变。</li>
+<li>当执行<code>git checkout .</code>或者
+<code>git checkout -- &lt;file&gt;</code>
+命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</li>
+<li>当执行 <code>git checkout HEAD .</code> 或者
+<code>git checkout HEAD &lt;file&gt;</code>命令时，会用 HEAD 指向的
+master
+分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
+</ul>
+<h2 id="git-工作流程">Git 工作流程</h2>
+<p>一般工作流程如下：</p>
+<ul>
+<li>克隆 Git 资源作为工作目录。</li>
+<li>在克隆的资源上添加或修改文件。</li>
+<li>如果其他人修改了，你可以更新资源。</li>
+<li>在提交前查看修改。</li>
+<li>提交修改。</li>
+<li>在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。</li>
+</ul>
+<p>下图展示了 Git 的工作流程：</p>
+<figure>
+<img src="/images/assert/git-process.png" alt="git工作流程" />
+<figcaption aria-hidden="true">git工作流程</figcaption>
+</figure>
+<h2 id="git-配置">Git 配置</h2>
+<p>Git 提供了一个叫做 git config
+的工具，专门用来配置或读取相应的工作环境变量。</p>
+<p>这些环境变量，决定了 Git
+在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
+<ul>
+<li><code>/etc/gitconfig</code>
+文件：系统中对所有用户都普遍适用的配置。若使用 <code>git config</code>
+时用 <code>--system</code> 选项，读写的就是这个文件。</li>
+<li><code>~/.gitconfig</code>
+文件：用户目录下的配置文件只适用于该用户。若使用 <code>git config</code>
+时用 <code>--global</code> 选项，读写的就是这个文件。</li>
+<li>当前项目的 Git 目录中的配置文件（也就是工作目录中的
+<code>.git/config</code>
+文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以
+<code>.git/config</code> 里的配置会覆盖 <code>/etc/gitconfig</code>
+中的同名变量。</li>
+</ul>
+<h3 id="用户信息">用户信息</h3>
+<p>配置个人的用户名称和电子邮件地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;runoob&quot;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>如果用了 <strong>--global</strong>
+选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
+<p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global
+选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。</p>
+<h3 id="文本编辑器">文本编辑器</h3>
+<p>设置Git默认使用的文本编辑器, 一般可能会是 Vi 或者
+Vim。如果你有其他偏好，比如 Emacs 的话，可以重新设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global core.editor emacs</span><br></pre></td></tr></table></figure>
+<h3 id="差异分析工具">差异分析工具</h3>
+<p>还有一个比较常用的是，在解决合并冲突时使用哪种差异分析工具。比如要改用
+vimdiff 的话：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global merge.tool vimdiff</span><br></pre></td></tr></table></figure>
+<p>Git 可以理解
+kdiff3，tkdiff，meld，xxdiff，emerge，vimdiff，gvimdiff，ecmerge，和
+opendiff 等合并工具的输出信息。</p>
+<p>当然，你也可以指定使用自己开发的工具。</p>
+<h3 id="查看配置信息">查看配置信息</h3>
+<p>要检查已有的配置信息，可以使用 git config --list 命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">http.postbuffer=2M</span><br><span class="line">user.name=runoob</span><br><span class="line">user.email=test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>有时候会看到重复的变量名，那就说明它们来自不同的配置文件（比如
+/etc/gitconfig 和 ~/.gitconfig），不过最终 Git
+实际采用的是最后一个。</p>
+<p>这些配置我们也可以在 <strong>~/.gitconfig</strong> 或
+<strong>/etc/gitconfig</strong> 看到，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gitconfig </span><br></pre></td></tr></table></figure>
+<p>显示内容如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[http]</span><br><span class="line">    postBuffer = 2M</span><br><span class="line">[user]</span><br><span class="line">    name = runoob</span><br><span class="line">    email = test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>也可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">runoob</span><br></pre></td></tr></table></figure>
+<h2 id="创建仓库">创建仓库</h2>
+<h3 id="git-init">git init</h3>
+<p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git
+的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong>
+是使用 Git 的第一个命令。</p>
+<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git
+目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
+<p><strong>使用方法</strong></p>
+<p>使用当前目录作为 Git 仓库，我们只需使它初始化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>该命令执行完后会在当前目录生成一个 .git 目录。</p>
+<p>使用我们指定目录作为Git仓库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init newrepo</span><br></pre></td></tr></table></figure>
+<p>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录，所有 Git
+需要的数据和资源都存放在这个目录中。</p>
+<p>如果当前目录下有几个文件想要纳入版本控制，需要先用 git add 命令告诉
+Git 开始对这些文件进行跟踪，然后提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add *.c</span><br><span class="line">$ git add README</span><br><span class="line">$ git commit -m &#x27;初始化项目版本&#x27;</span><br></pre></td></tr></table></figure>
+<p>以上命令将目录下以 .c 结尾及 README 文件提交到仓库中。</p>
+<blockquote>
+<p><strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号
+<strong>'</strong>，Windows 系统，commit 信息使用双引号
+<strong>"</strong>。</p>
+<p>所以在 git bash 中 <strong>git commit -m '提交说明'</strong>
+这样是可以的，在 Windows 命令行中就要使用双引号 <strong>git commit -m
+"提交说明"</strong>。</p>
+</blockquote>
+<hr />
+<h3 id="git-clone">git clone</h3>
+<p>我们使用 <strong>git clone</strong> 从现有 Git 仓库中拷贝项目（类似
+<strong>svn checkout</strong>）。</p>
+<p>克隆仓库的命令格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;repo&gt;</span><br></pre></td></tr></table></figure>
+<p>如果我们需要克隆到指定的目录，可以使用以下命令格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;repo&gt; &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li><strong>repo:</strong>Git 仓库。</li>
+<li><strong>directory:</strong>本地目录。</li>
+</ul>
+<p>比如，要克隆 Ruby 语言的 Git 代码仓库 Grit，可以用下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git://github.com/schacon/grit.git</span><br></pre></td></tr></table></figure>
+<p>执行该命令后，会在当前目录下创建一个名为grit的目录，其中包含一个 .git
+的目录，用于保存下载下来的所有版本记录。</p>
+<p>如果要自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git://github.com/schacon/grit.git mygrit</span><br></pre></td></tr></table></figure>
+<h2 id="基本操作">基本操作</h2>
+<figure>
+<img src="../../images/assert/git-command.jpg" alt="基本操作" />
+<figcaption aria-hidden="true">基本操作</figcaption>
+</figure>
+<h3 id="git-add">git add</h3>
+<p><strong>git add</strong> 命令可将该文件的修改添加到暂存区。</p>
+<p>通过运行 <strong>git add</strong> 命令，你可以告诉 Git
+哪些文件的修改应该包含在下一次提交（commit）中。</p>
+<p>添加一个或多个文件到暂存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+<p>添加指定目录到暂存区，包括子目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+<p>添加当前目录下的所有文件到暂存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<h3 id="git-status">git status</h3>
+<p><strong>git status</strong> 是一个用于查看 Git
+仓库当前状态的命令。</p>
+<p><strong>git status</strong>
+命令可以查看在你上次提交之后是否有对文件进行再次修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   README</span><br><span class="line">    new file:   hello.php</span><br></pre></td></tr></table></figure>
+<p>git status 命令会显示以下信息：</p>
+<ul>
+<li>当前分支的名称。</li>
+<li>当前分支与远程分支的关系（例如，是否是最新的）。</li>
+<li>未暂存的修改：显示已修改但尚未使用 <code>git add</code>
+添加到暂存区的文件列表。</li>
+<li>未跟踪的文件：显示尚未纳入版本控制的新文件列表。</li>
+</ul>
+<p>根据 git status
+的输出，你可以判断当前工作目录中的文件状态，并采取适当的操作。</p>
+<p>通常我们使用 <strong>-s</strong> 参数来获得简短的输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status -s</span><br><span class="line">AM README</span><br><span class="line">A  hello.php</span><br></pre></td></tr></table></figure>
+<p><strong>AM</strong>
+状态的意思是这个文件在我们将它添加到缓存之后又有改动。</p>
+<h3 id="git-diff">git diff</h3>
+<h3 id="git-commit">git commit</h3>
+<p>git commit 命令将暂存区内容添加到本地仓库中。</p>
+<p>提交暂存区到本地仓库中:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
+<p>[message] 可以是一些备注信息。</p>
+<p>提交暂存区的指定文件到仓库区：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br></pre></td></tr></table></figure>
+<p><strong>-a</strong> 参数设置修改文件后不需要执行 git add
+命令，直接来提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -a</span><br></pre></td></tr></table></figure>
+<p><strong>设置提交代码时的用户信息</strong></p>
+<p>开始前我们需要先设置提交的用户信息，包括用户名和邮箱：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &#x27;runoob&#x27;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>如果去掉 --global 参数只对当前仓库有效。</p>
+<p><strong>提交修改</strong></p>
+<p>接下来我们就可以对 hello.php
+的所有改动从暂存区内容添加到本地仓库中。</p>
+<p>以下实例，我们使用 -m 选项以在命令行中提供提交注释。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git add hello.php</span><br><span class="line">$ git status -s</span><br><span class="line">A  README</span><br><span class="line">A  hello.php</span><br><span class="line">$ git commit -m &#x27;第一次版本提交&#x27;</span><br><span class="line">[master (root-commit) d32cf1f] 第一次版本提交</span><br><span class="line"> 2 files changed, 4 insertions(+)</span><br><span class="line"> create mode 100644 README</span><br><span class="line"> create mode 100644 hello.php</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>现在我们已经记录了快照。如果我们再执行 git status:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"># On branch master</span><br><span class="line">nothing to commit (working directory clean)</span><br></pre></td></tr></table></figure>
+<p>以上输出说明我们在最近一次提交之后，没有做任何改动，是一个 "working
+directory clean"，翻译过来就是干净的工作目录。</p>
+<p>如果你没有设置 -m 选项，Git 会尝试为你打开一个编辑器以填写提交信息。
+如果 Git 在你对它的配置中找不到相关信息，默认会打开
+vim。屏幕会像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#x27;#&#x27; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">#</span><br><span class="line"># modified:   hello.php</span><br><span class="line">#</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">&quot;.git/COMMIT_EDITMSG&quot; 9L, 257C</span><br></pre></td></tr></table></figure>
+<p>如果你觉得 git add 提交缓存的流程太过繁琐，Git 也允许你用 -a
+选项跳过这一步。命令格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<p>我们先修改 hello.php 文件为以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;菜鸟教程：www.runoob.com&#x27;;</span><br><span class="line">echo &#x27;菜鸟教程：www.runoob.com&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>再执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -am &#x27;修改 hello.php 文件&#x27;</span><br><span class="line">[master 71ee2cb] 修改 hello.php 文件</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+<h3 id="git-reset">git reset</h3>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="gxxtsz 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="gxxtsz 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>gxxtsz
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://gxxtsz.cn/posts/3161/" title="git详解">https://gxxtsz.cn/posts/3161/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
+              <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/25293/" rel="prev" title="人生的意义">
+                  <i class="fa fa-chevron-left"></i> 人生的意义
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3160/" rel="next" title="docker详解">
+                  docker详解 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxxtsz</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">74k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:30</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"gxxtsz/blog-comments","repo_id":"R_kgDOJclpDg","category":"Announcements","category_id":"DIC_kwDOJclpDs4CWIH9","mapping":"title","strict":1,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+  <link rel="manifest" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在机器学习中，我们经常用矩阵向量求导的方法来简化推导过程，这儿就对矩阵向量求导做一个整理总结。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="矩阵向量求导">
+<meta property="og:url" content="https://gxxtsz.cn/posts/4696/index.html">
+<meta property="og:site_name" content="探索者">
+<meta property="og:description" content="在机器学习中，我们经常用矩阵向量求导的方法来简化推导过程，这儿就对矩阵向量求导做一个整理总结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-23T16:17:28.400Z">
+<meta property="article:author" content="gxxtsz">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="矩阵">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gxxtsz.cn/posts/4696/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/posts/4696/","path":"posts/4696/","title":"矩阵向量求导"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>矩阵向量求导 | 探索者</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">探索者</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">探索未知，责无旁贷。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%B1%82%E5%AF%BC%E5%BC%95%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">矩阵向量求导引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%B1%82%E5%AF%BC%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">矩阵向量求导定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E6%B1%82%E5%AF%BC%E5%B8%83%E5%B1%80"><span class="nav-number">3.</span> <span class="nav-text">矩阵向量求导布局</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="gxxtsz"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">gxxtsz</p>
+  <div class="site-description" itemprop="description">探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxxtsz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxxtsz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/posts/53030/" rel="bookmark">
+        <time class="popular-posts-time">2023-01-01</time>
+        <br>
+      最小二乘法
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/posts/45571/" rel="bookmark">
+        <time class="popular-posts-time">2023-01-01</time>
+        <br>
+      梯度下降
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/posts/4696/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="gxxtsz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="探索者">
+      <meta itemprop="description" content="探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="矩阵向量求导 | 探索者">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          矩阵向量求导
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-07 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-07T00:00:00+08:00">2021-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-24 00:17:28" itemprop="dateModified" datetime="2023-07-24T00:17:28+08:00">2023-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/%E4%BB%A3%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">代数学</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在机器学习中，我们经常用矩阵向量求导的方法来简化推导过程，这儿就对矩阵向量求导做一个整理总结。</p>
+<span id="more"></span>
+<h2 id="矩阵向量求导引入">矩阵向量求导引入</h2>
+<p>在高等数学里面，我们已经学过了标量对标量的求导，比如标量 <span
+class="math inline">\(y\)</span> 对标量 <span
+class="math inline">\(x\)</span> 的求导，可以表示为 <span
+class="math inline">\(\frac{\partial y}{\partial x}\)</span> 。</p>
+<p>有些时候，我们会有一组标量 <span class="math inline">\(y_{i}, i=1,2,
+\ldots, m\)</span> 来对一个标量 <span class="math inline">\(x\)</span>
+求导的情况，那么我们会得到一组标量求导的结果：<span
+class="math inline">\(\frac{\partial y_{i}}{\partial x}, i=1,2,...,
+m\)</span>。如果我们把这组标量写成向量的形式，即得到维度为 <span
+class="math inline">\(m\)</span> 的一个向量 <span
+class="math inline">\(\mathbf{y}\)</span> 对一个标量 <span
+class="math inline">\(x\)</span> 的求导，那么结果也是一个 <span
+class="math inline">\(m\)</span> 维的向量: <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial x}\)</span> 。
+可见，所谓向量对标量的求导，其实就是向量里的每个分量分别对标量求导，最后把求导的结果排列在一起，按一个向量表示而已。</p>
+<p>类似的结论也存在于标量对向量的求导、向量对向量的求导、向量对矩阵的求导、矩阵对向量的求导、以及矩阵对矩阵的求导等。
+总而言之，所谓的向量矩阵求导本质上就是多元函数求导，仅仅是把函数的自变量、因变量以及标量求导的结果排列成了向量矩阵的形式，方便表达与计算，更加简洁而已。</p>
+<mark class="label ">为了便于描述，后面如果没有指明，则求导的自变量用 $x$ 表示标量， $\mathbf{x}$ 表示 $n$ 维向量， $\mathbf{X}$ 表示 $m \times n$ 维度的矩阵，求导的因变量用 $y$ 表示标量， $\mathbf{y}$ 表示 $m$ 维向量， $\mathbf{Y}$ 表示 $p \times q$ 维度的矩阵。</mark>
+<h2 id="矩阵向量求导定义">矩阵向量求导定义</h2>
+<p>根据求导的自变量和因变量是标量，向量还是矩阵，我们有9种可能的矩阵求导定义，如下：</p>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 31%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">标量 <span
+class="math inline">\(y\)</span></th>
+<th style="text-align: center;">向量 <span
+class="math inline">\(\mathbf{y}\)</span></th>
+<th style="text-align: center;">矩阵 <span
+class="math inline">\(\mathbf{Y}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">标量 <span
+class="math inline">\(x\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial y}{\partial x}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial
+x}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial \mathbf{Y}}{\partial
+x}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">向量 <span
+class="math inline">\(\mathbf{x}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial y}{\partial
+\mathbf{x}}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial
+\mathbf{x}}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial \mathbf{Y}}{\partial
+\mathbf{x}}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">矩阵 <span
+class="math inline">\(\mathbf{X}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial y}{\partial
+\mathbf{X}}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial
+\mathbf{X}}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(\frac{\partial \mathbf{Y}}{\partial
+\mathbf{X}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>维度为 <span class="math inline">\(m\)</span> 的一个向量 <span
+class="math inline">\(\mathbf{y}\)</span> 对一个标量 <span
+class="math inline">\(x\)</span> 的求导，那么结果也是一个 <span
+class="math inline">\(m\)</span> 维的向量: <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial x}\)</span>
+。这是我们表格里面向量对标量求导的情况。这里有一个问题没有讲到，就是这个
+<span class="math inline">\(m\)</span> 维的求导结果排列成的 <span
+class="math inline">\(m\)</span> 维向量到底应该是列向量还是行向量?</p>
+<p>这个问题的答案是: 行向量或者列向量皆可!
+毕竟我们求导的本质只是把标量求导的结果排列起来，至于是按行排列还是按列排列都是可以的。但是这样也有问题，在我们机器学习算法法优化过程中，如果行向量或者列向量随便写，那么结果就不唯一，乱套了。为了解决这个问题，我们引入求导布局的概念。</p>
+<h2 id="矩阵向量求导布局">矩阵向量求导布局</h2>
+<p>为了解决矩阵向量求导的结果不唯一，我们引入求导布局。<mark class="label ">最基本的求导布局有两个：分子布局(numerator layout)和分母布局(denominator layout )。</mark></p>
+<p>对于分子布局来说，我们求导结果的维度以分子为主，比如对于我们上面对标量求导的例子，结果的维度和分子的维度是一致的。也就是说，如果向量
+<span class="math inline">\(\mathbf{y}\)</span> 是一个 <span
+class="math inline">\(m\)</span> 维的列向量, 那么求导结果 <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial x}\)</span>
+也是一个 <span class="math inline">\(m\)</span> 维列向量。如果如果向量
+<span class="math inline">\(\mathbf{y}\)</span> 是一个 <span
+class="math inline">\(m\)</span> 维的行向量, 那么求导结果 <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial x}\)</span>
+也是一个 <span class="math inline">\(m\)</span> 维行向量。</p>
+<p>对于分母布局来说，我们求导结果的维度以分母为主，比如对于我们上面对标量求导的例子，如果向量
+<span class="math inline">\(\mathbf{y}\)</span> 是一个 <span
+class="math inline">\(m\)</span> 维的列向量，那么求导结果 <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial x}\)</span>
+是一个 <span class="math inline">\(m\)</span> 维行向量。如果如果向量
+<span class="math inline">\(\mathbf{y}\)</span> 是一个 <span
+class="math inline">\(m\)</span> 维的行向量，那么求导结果 <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial x}\)</span>
+是一个 <span class="math inline">\(m\)</span>
+维的列向量。<mark class="label ">可见，对于分子布局和分母布局的结果来说，两者相差一个转置。</mark></p>
+<p>再举一个例子，标量 <span class="math inline">\(y\)</span> 对矩阵
+<span class="math inline">\(\mathbf{X}\)</span>
+求导，那么如果按分母布局，则求导结果的维度和矩阵 <span
+class="math inline">\(X\)</span> 的维度 <span class="math inline">\(m
+\times n\)</span> 是一致的。如果是分子布局，则求导结果的维度 为 <span
+class="math inline">\(n \times m\)</span> 。<mark class="label ">这样，对于标量对向量或者矩阵求导，向量或者矩阵对标量求导这4种情况，对应的分子布局和分母布局的排列方式已经确定了。</mark></p>
+<p>稍微麻烦点的是向量对向量的求导，<mark class="label ">本文只讨论列向量对列向量的求导</mark>，其他的行向量求导只是差一个转置而已。比如
+<span class="math inline">\(m\)</span> 维列向量 <span
+class="math inline">\(\mathbf{y}\)</span> 对 <span
+class="math inline">\(n\)</span> 维列向量 <span
+class="math inline">\(\mathbf{x}\)</span> 求导。一共有 <span
+class="math inline">\(m \times n\)</span>
+个标量对标量的求导。求导的结果一般是排列为一个矩阵。<mark class="label ">如果是分子布局，则矩阵的第一个维度以分子为准</mark>，即结果是一个
+<span class="math inline">\(m \times n\)</span> 的矩阵，如下: <span
+class="math display">\[
+\frac{\partial \mathbf{y}}{\partial
+\mathbf{x}}=\left(\begin{array}{cccc}
+\frac{\partial y_{1}}{\partial x_{1}} &amp; \frac{\partial
+y_{1}}{\partial x_{2}} &amp; \cdots &amp; \frac{\partial y_{1}}{\partial
+x_{n}} \\
+\frac{\partial y_{2}}{\partial x_{1}} &amp; \frac{\partial
+y_{2}}{\partial x_{2}} &amp; \cdots &amp; \frac{\partial y_{2}}{\partial
+x_{n}} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial y_{m}}{\partial x_{1}} &amp; \frac{\partial
+y_{m}}{\partial x_{2}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial
+x_{n}}
+\end{array}\right)
+\]</span>
+上边这个按分子布局的向量对向量求导的结果矩阵，我们一般叫做雅克比
+(Jacobian)矩阵。有的资料上会使用 <span
+class="math inline">\(\frac{\partial \mathbf{y}}{\partial
+\mathbf{x}^{\mathbf{T}}}\)</span> 定义雅克比矩阵，意义是一样的。
+<mark class="label ">如果是按分母布局，则求导的结果矩阵的第一维度会以分母为准</mark>，即结果是一个 <span class="math inline">\(n \times
+m\)</span> 的矩阵，如下: <span class="math display">\[
+\frac{\partial \mathbf{y}}{\partial
+\mathbf{x}}=\left(\begin{array}{cccc}
+\frac{\partial y_{1}}{\partial x_{1}} &amp; \frac{\partial
+y_{2}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial
+x_{1}} \\
+\frac{\partial y_{1}}{\partial x_{2}} &amp; \frac{\partial
+y_{2}}{\partial x_{2}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial
+x_{2}} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial y_{1}}{\partial x_{n}} &amp; \frac{\partial
+y_{2}}{\partial x_{n}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial
+x_{n}}
+\end{array}\right)
+\]</span>
+上边这个按分母布局的向量对向量求导的结果矩阵，我们一般叫做梯度矩阵。有的资料上会使用
+<span class="math inline">\(\frac{\partial
+\mathbf{y}^{\mathbf{T}}}{\partial \mathbf{x}}\)</span>
+来定义梯度矩阵，意义是一样的。</p>
+<p>有了布局的概念，我们对于上面5种求导类型，可以各选择一种布局来求导。但是对于某一种求导类型，不能同时使用分子布局和分母布局求导。</p>
+<p>但是在机器学习算法原理的资料推导里，我们并没有看到说正在使用什么布局，也就是说布局被隐含了，这就需要自己去推演，比较麻烦。但是一般来说我们会使用一种叫混合布局的思路，即如果是向量或者矩阵对标量求导，则使用分子布局为准，如果是标量对向量或者矩阵求导，则以分母布局为准。对于向量对对向量求导，有些分歧，我的所有文章中会以分子布局的雅克比矩阵为主。</p>
+<p>具体总结如下：</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">自变量</th>
+<th style="text-align: left;">标量 <span
+class="math inline">\(y\)</span></th>
+<th style="text-align: left;">向量 <span
+class="math inline">\(\mathbf{y}\)</span></th>
+<th style="text-align: left;">矩阵 <span
+class="math inline">\(\mathbf{Y}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">标量 <span
+class="math inline">\(x\)</span></td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\partial
+\mathbf{y}}{\partial x}\)</span><br />分子布局：<span
+class="math inline">\(m\)</span>维列向量（默认布局）<br />分母布局：<span
+class="math inline">\(m\)</span>维行向量</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\partial
+\mathbf{Y}}{\partial x}\)</span><br />分子布局：<span
+class="math inline">\(p×q\)</span> 矩阵（默认布局）<br />分母布局：<span
+class="math inline">\(q×p\)</span> 矩阵</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">向量 <span
+class="math inline">\(\mathbf{x}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\partial
+y}{\partial \mathbf{x}}\)</span><br />分子布局：<span
+class="math inline">\(n\)</span>维行向量<br />分母布局：<span
+class="math inline">\(n\)</span>维列向量（默认布局）</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\partial
+\mathbf{y}}{\partial \mathbf{x}}\)</span><br />分子布局：<span
+class="math inline">\(m×n\)</span>
+雅克比矩阵（默认布局）<br />分母布局：<span
+class="math inline">\(n×m\)</span>梯度矩阵</td>
+<td style="text-align: left;">*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">矩阵 <span
+class="math inline">\(\mathbf{X}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\partial
+y}{\partial \mathbf{X}}\)</span><br />分子布局：<span
+class="math inline">\(n×m\)</span> 矩阵<br />分母布局：<span
+class="math inline">\(m×n\)</span> 矩阵（默认布局）</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">*</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="gxxtsz 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="gxxtsz 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>gxxtsz
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://gxxtsz.cn/posts/4696/" title="矩阵向量求导">https://gxxtsz.cn/posts/4696/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+              <a href="/tags/%E7%9F%A9%E9%98%B5/" rel="tag"><i class="fa fa-tag"></i> 矩阵</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9246/" rel="prev" title="月亮和六便士">
+                  <i class="fa fa-chevron-left"></i> 月亮和六便士
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/4604/" rel="next" title="django基本流程">
+                  django基本流程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxxtsz</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">74k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:30</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"gxxtsz/blog-comments","repo_id":"R_kgDOJclpDg","category":"Announcements","category_id":"DIC_kwDOJclpDs4CWIH9","mapping":"title","strict":1,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+</body>
+</html>

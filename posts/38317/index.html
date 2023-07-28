@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+  <link rel="manifest" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文介绍django模型相关知识点。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="django模型">
+<meta property="og:url" content="https://gxxtsz.cn/posts/38317/index.html">
+<meta property="og:site_name" content="探索者">
+<meta property="og:description" content="本文介绍django模型相关知识点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-28T01:05:02.236Z">
+<meta property="article:author" content="gxxtsz">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="django">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gxxtsz.cn/posts/38317/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/posts/38317/","path":"posts/38317/","title":"django模型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>django模型 | 探索者</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">探索者</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">探索未知，责无旁贷。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%94%AE"><span class="nav-number">2.</span> <span class="nav-text">自动设置主键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#autofield"><span class="nav-number">3.1.</span> <span class="nav-text">AutoField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bigautofield"><span class="nav-number">3.2.</span> <span class="nav-text">BigAutoField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bigintegerfield"><span class="nav-number">3.3.</span> <span class="nav-text">BigIntegerField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binaryfield%E4%B8%8D%E5%B8%B8%E7%94%A8"><span class="nav-number">3.4.</span> <span class="nav-text">BinaryField（不常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#booleanfield"><span class="nav-number">3.5.</span> <span class="nav-text">BooleanField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#charfield"><span class="nav-number">3.6.</span> <span class="nav-text">CharField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datefield"><span class="nav-number">3.7.</span> <span class="nav-text">DateField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datetimefield"><span class="nav-number">3.8.</span> <span class="nav-text">DateTimeField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decimalfield"><span class="nav-number">3.9.</span> <span class="nav-text">DecimalField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#durationfield"><span class="nav-number">3.10.</span> <span class="nav-text">DurationField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#emailfield"><span class="nav-number">3.11.</span> <span class="nav-text">EmailField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filefield%E4%B8%8D%E5%B8%B8%E7%94%A8"><span class="nav-number">3.12.</span> <span class="nav-text">FileField（不常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filepathfield%E4%B8%8D%E5%B8%B8%E7%94%A8"><span class="nav-number">3.13.</span> <span class="nav-text">FilePathField（不常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#floatfield"><span class="nav-number">3.14.</span> <span class="nav-text">FloatField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#genericipaddressfield%E4%B8%8D%E5%B8%B8%E7%94%A8"><span class="nav-number">3.15.</span> <span class="nav-text">GenericIPAddressField（不常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#imagefield%E4%B8%8D%E5%B8%B8%E7%94%A8"><span class="nav-number">3.16.</span> <span class="nav-text">ImageField（不常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#integerfield"><span class="nav-number">3.17.</span> <span class="nav-text">IntegerField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonfield"><span class="nav-number">3.18.</span> <span class="nav-text">JSONField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#positivebigintegerfield"><span class="nav-number">3.19.</span> <span class="nav-text">PositiveBigIntegerField</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#positiveintegerfield"><span class="nav-number">3.20.</span> <span class="nav-text">PositiveIntegerField</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="gxxtsz"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">gxxtsz</p>
+  <div class="site-description" itemprop="description">探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxxtsz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxxtsz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/posts/38317/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="gxxtsz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="探索者">
+      <meta itemprop="description" content="探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="django模型 | 探索者">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          django模型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-07 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-07T00:00:00+08:00">2021-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-28 09:05:02" itemprop="dateModified" datetime="2023-07-28T09:05:02+08:00">2023-07-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/django/" itemprop="url" rel="index"><span itemprop="name">django</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文介绍django模型相关知识点。</p>
+<span id="more"></span>
+<h2 id="基本概念">基本概念</h2>
+<ul>
+<li><p>每一个模型都映射一张数据库表。</p></li>
+<li><p>每个模型都是一个 Python 的类，这些类继承
+<code>django.db.models.Model</code></p></li>
+<li><p>模型类的每个属性都相当于一个数据库的字段。</p></li>
+</ul>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(models.Model):</span><br><span class="line">    first_name = models.CharField(max_length=<span class="number">30</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="自动设置主键">自动设置主键</h2>
+<p>默认情况下，Django 给每个模型一个自动递增的主键，其类型在
+<code>AppConfig.default_auto_field</code> 中指定，或者在
+<code>DEFAULT_AUTO_FIELD</code>配置中全局指定。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span> = models.BigAutoField(primary_key=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>如果你想自己指定主键， 在你想要设置为主键的字段上设置参数
+<code>primary_key=True</code>。如果 Django 看到你显式地设置了
+<code>Field.primary_key</code>，将不会自动在表（模型）中添加
+<code>id</code> 列。</p>
+<p>每个模型都需要拥有一个设置了
+<code>primary_key=True</code>的字段（无论是显式的设置还是 Django
+自动设置）。</p>
+<h2 id="字段类型">字段类型</h2>
+<h3 id="autofield">AutoField</h3>
+<p>一个 <code>IntegerField</code>，根据可用的 ID
+自动递增。你通常不需要直接使用它；如果你没有指定主键字段，此字段会自动添加到你的模型中。</p>
+<h3 id="bigautofield">BigAutoField</h3>
+<p>一个 64 位整数，与 AutoField 很相似，但保证适合 1 到
+9223372036854775807 的数字。</p>
+<h3 id="bigintegerfield">BigIntegerField</h3>
+<p>一个 64 位的整数，和 IntegerField 很像，只是它保证适合从
+-9223372036854775808 到 9223372036854775807 的数字。</p>
+<h3 id="binaryfield不常用">BinaryField（不常用）</h3>
+<p>一个用于存储原始二进制数据的字段。可以指定为 bytes、bytearray 或
+memoryview。</p>
+<h3 id="booleanfield">BooleanField</h3>
+<p>一个 true／false 字段。当 Field.default 没有定义时，BooleanField
+的默认值是 None。</p>
+<h3 id="charfield">CharField</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CharField</span>(max_length=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+<p>一个字符串字段，适用于小到大的字符串。对于大量的文本，使用
+TextField。</p>
+<h3 id="datefield">DateField</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DateField</span>(auto_now=<span class="literal">False</span>, auto_now_add=<span class="literal">False</span>, **options)</span><br></pre></td></tr></table></figure>
+<p>一个日期，在 Python 中用一个 datetime.date
+实例表示。有一些额外的、可选的参数。</p>
+<p><strong>DateField.auto_now</strong></p>
+<p>每次保存对象时，自动将该字段设置为现在。对于“最后修改”的时间戳很有用。只有在调用
+Model.save()
+时，该字段才会自动更新。当以其他方式对其他字段进行更新时，如
+QuerySet.update()，该字段不会被更新，尽管你可以在这样的更新中为该字段指定一个自定义值。</p>
+<p><strong>DateField.auto_now_add</strong></p>
+<p>当第一次创建对象时，自动将该字段设置为现在。对创建时间戳很有用。请注意，当前日期是始终使用的；它不是一个你可以覆盖的默认值。因此，即使你在创建对象时为该字段设置了一个值，它也会被忽略。如果你想修改这个字段，可以设置以下内容来代替
+：</p>
+<ul>
+<li><p>对于 DateField: default=date.today ——来自
+datetime.date.today()</p></li>
+<li><p>对于 DateTimeField: default=timezone.now ——来自
+django.utils.timezone.now()</p></li>
+</ul>
+<p>auto_now_add、auto_now 和 default
+选项是相互排斥的。这些选项的任何组合都会导致错误。</p>
+<h3 id="datetimefield">DateTimeField</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DateTimeField</span>(auto_now=<span class="literal">False</span>, auto_now_add=<span class="literal">False</span>, **options)</span><br></pre></td></tr></table></figure>
+<p>一个日期和时间，在 Python 中用一个 datetime.datetime 实例表示。与
+DateField 一样，使用相同的额外参数。</p>
+<h3 id="decimalfield">DecimalField</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DecimalField</span>(max_digits=<span class="literal">None</span>, decimal_places=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+<p>一个固定精度的十进制数，在 Python 中用一个 Decimal 实例来表示。它使用
+DecimalValidator 验证输入。</p>
+<p><strong>DecimalField.max_digits</strong></p>
+<p>数字中允许的最大位数。请注意，这个数字必须大于或等于
+decimal_places。</p>
+<p><strong>DecimalField.decimal_places</strong></p>
+<p>与数字一起存储的小数位数。</p>
+<p>例如，要存储最高为 999.99 的数字，精度为小数点后 2
+位，你可以使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">models.DecimalField(..., max_digits=<span class="number">5</span>, decimal_places=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="durationfield">DurationField</h3>
+<p>一个用于存储时间段的字段——在 Python 中用 timedelta 表示。</p>
+<h3 id="emailfield">EmailField</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">EmailField</span>(max_length=<span class="number">254</span>, **options)</span><br></pre></td></tr></table></figure>
+<p>一个 CharField，使用 EmailValidator
+来检查该值是否为有效的电子邮件地址。</p>
+<h3 id="filefield不常用">FileField（不常用）</h3>
+<p>一个文件上传字段</p>
+<h3 id="filepathfield不常用">FilePathField（不常用）</h3>
+<p>一个 CharField，其选择仅限于文件系统中某个目录下的文件名。</p>
+<h3 id="floatfield">FloatField</h3>
+<p>在 Python 中用一个 float 实例表示的浮点数。</p>
+<h3
+id="genericipaddressfield不常用">GenericIPAddressField（不常用）</h3>
+<p>IPv4 或 IPv6 地址</p>
+<h3 id="imagefield不常用">ImageField（不常用）</h3>
+<p>继承 FileField 的所有属性和方法，但也验证上传的对象是有效的图像。</p>
+<h3 id="integerfield">IntegerField</h3>
+<p>一个整数。从 -2147483648 到 2147483647 的值在 Django
+支持的所有数据库中都是安全的。它使用 MinValueValidator 和
+MaxValueValidator 根据默认数据库支持的值来验证输入。</p>
+<h3 id="jsonfield">JSONField</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">JSONField</span>(encoder=<span class="literal">None</span>, decoder=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+<p>一个用于存储 JSON 编码数据的字段。在 Python 中，数据以其 Python
+本地格式表示：字典、列表、字符串、数字、布尔值和 None。</p>
+<p><strong>JSONField.encoder</strong></p>
+<p>一个可选的 json.JSONEncoder 子类，用于序列化标准 JSON
+序列化器不支持的数据类型（例如 datetime.datetime 或 UUID
+）。例如，你可以使用 DjangoJSONEncoder 类。默认为 json.JSONEncoder。</p>
+<p><strong>JSONField.decoder</strong></p>
+<p>一个可选的 json.JSONDecoder
+子类，用于反序列化从数据库中获取的值。该值将采用自定义编码器选择的格式（通常是字符串）。你的反序列化可能需要考虑到你无法确定输入类型的事实。例如，你有可能返回一个
+datetime，实际上是一个字符串，而这个字符串恰好与 datetime
+选择的格式相同。默认为 json.JSONDecoder。</p>
+<h3 id="positivebigintegerfield">PositiveBigIntegerField</h3>
+<p>就像一个
+PositiveIntegerField，但只允许在某一特定点下的值（依赖于数据库）。0 到
+9223372036854775807 的值在 Django 支持的所有数据库中都是安全的。</p>
+<h3 id="positiveintegerfield">PositiveIntegerField</h3>
+<p>就像 IntegerField 一样，但必须是正值或零（ 0 ）。从 0 到 2147483647
+的值在 Django 支持的所有数据库中都是安全的。出于向后兼容的原因，接受 0
+的值。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="gxxtsz 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="gxxtsz 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>gxxtsz
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://gxxtsz.cn/posts/38317/" title="django模型">https://gxxtsz.cn/posts/38317/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+              <a href="/tags/django/" rel="tag"><i class="fa fa-tag"></i> django</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/4604/" rel="prev" title="django基本流程">
+                  <i class="fa fa-chevron-left"></i> django基本流程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/40216/" rel="next" title="心理学知识地图">
+                  心理学知识地图 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxxtsz</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">74k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:30</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"gxxtsz/blog-comments","repo_id":"R_kgDOJclpDg","category":"Announcements","category_id":"DIC_kwDOJclpDs4CWIH9","mapping":"title","strict":1,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+  <link rel="manifest" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gxxtsz.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降（Gradient Descent）是最常采用的方法之一，另一种常用的方法是最小二乘法。这里就对梯度下降法做一个完整的总结。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="梯度下降">
+<meta property="og:url" content="https://gxxtsz.cn/posts/45571/index.html">
+<meta property="og:site_name" content="探索者">
+<meta property="og:description" content="在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降（Gradient Descent）是最常采用的方法之一，另一种常用的方法是最小二乘法。这里就对梯度下降法做一个完整的总结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-22T14:51:45.890Z">
+<meta property="article:author" content="gxxtsz">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="梯度下降">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gxxtsz.cn/posts/45571/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gxxtsz.cn/posts/45571/","path":"posts/45571/","title":"梯度下降"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>梯度下降 | 探索者</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">探索者</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">探索未知，责无旁贷。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">梯度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E4%B8%8E%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87"><span class="nav-number">2.</span> <span class="nav-text">梯度下降与梯度上升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">梯度下降法算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E8%A7%82%E8%A7%A3%E9%87%8A"><span class="nav-number">3.1.</span> <span class="nav-text">直观解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">3.2.</span> <span class="nav-text">相关概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E6%95%B0%E6%96%B9%E5%BC%8F%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.3.</span> <span class="nav-text">代数方式描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E6%96%B9%E5%BC%8F%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.4.</span> <span class="nav-text">矩阵方式描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E8%B0%83%E4%BC%98"><span class="nav-number">4.</span> <span class="nav-text">算法调优</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E5%A4%A7%E5%AE%B6%E6%97%8F"><span class="nav-number">5.</span> <span class="nav-text">梯度下降法大家族</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C%E5%85%B6%E4%BB%96%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">6.</span> <span class="nav-text">和其他无约束优化算法的比较</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="gxxtsz"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">gxxtsz</p>
+  <div class="site-description" itemprop="description">探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxxtsz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxxtsz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/posts/53030/" rel="bookmark">
+        <time class="popular-posts-time">2023-01-01</time>
+        <br>
+      最小二乘法
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/posts/4696/" rel="bookmark">
+        <time class="popular-posts-time">2021-03-07</time>
+        <br>
+      矩阵向量求导
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gxxtsz.cn/posts/45571/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="gxxtsz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="探索者">
+      <meta itemprop="description" content="探寻宇宙真理，思考生命意义。<br>
+推理万物规律，实现人神合一。
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="梯度下降 | 探索者">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          梯度下降
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2023-01-01T00:00:00+08:00">2023-01-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-22 22:51:45" itemprop="dateModified" datetime="2023-07-22T22:51:45+08:00">2023-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降（Gradient
+Descent）是最常采用的方法之一，另一种常用的方法是最小二乘法。这里就对梯度下降法做一个完整的总结。</p>
+<span id="more"></span>
+<h2 id="梯度">梯度</h2>
+<p>在微积分里面，对多元函数的参数求 <span
+class="math inline">\(\partial\)</span>
+偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数
+<span class="math inline">\(f(x,y)\)</span> ，分别对 <span
+class="math inline">\(x,y\)</span> 求偏导数，求得的梯度向量就是 <span
+class="math inline">\(({\partial f}/{\partial x} , {\partial
+f}/{\partial y} )^T\)</span> ，简称 <span class="math inline">\(grad
+f(x,y)\)</span> 或者 <span class="math inline">\(\bigtriangledown
+f(x,y)\)</span> 。对于在点 <span
+class="math inline">\((x_0,y_0)\)</span> 的具体梯度向量就是 <span
+class="math inline">\(({\partial f}/{\partial x_0} , {\partial
+f}/{\partial y_0} )^T\)</span> 或者 <span
+class="math inline">\(\bigtriangledown f(x_0,y_0)\)</span>
+，如果是3个参数的向量梯度，就是 <span class="math inline">\(({\partial
+f}/{\partial x} , {\partial f}/{\partial y}, {\partial f}/{\partial z}
+)^T\)</span> ，以此类推。</p>
+<p>那么这个梯度向量求出来有什么意义呢？他的意义从几何意义上讲，就是函数变化增加最快的地方。具体来说，对于函数
+<span class="math inline">\(f(x,y)\)</span> ，在点 <span
+class="math inline">\((x_0,y_0)\)</span> ，沿着梯度向量的方向就是 <span
+class="math inline">\(({\partial f}/{\partial x_0} , {\partial
+f}/{\partial y_0} )^T\)</span> 的方向，是<span
+class="math inline">\(f(x,y)\)</span>增加最快的地方。或者说，沿着梯度向量的方向，更加容易找到函数的最大值。反过来说，沿着梯度向量相反的方向，也就是
+<span class="math inline">\(-({\partial f}/{\partial x_0} , {\partial
+f}/{\partial y_0} )^T\)</span>
+的方向，梯度减少最快，也就是更加容易找到函数的最小值。</p>
+<h2 id="梯度下降与梯度上升">梯度下降与梯度上升</h2>
+<p>在机器学习算法中，在最小化损失函数时，可以通过梯度下降法来一步步的迭代求解，得到最小化的损失函数和模型参数值。反过来，如果我们需要求解损失函数的最大值，这时就需要用梯度上升法来迭代了。</p>
+<p>梯度下降法和梯度上升法是可以互相转化的。比如我们需要求解损失函数
+<span class="math inline">\(f(\theta )\)</span>
+的最小值，这时我们需要用梯度下降法来迭代求解。但是实际上，我们可以反过来求解损失函数
+<span class="math inline">\(-f(\theta )\)</span>
+的最大值，这时梯度上升法就派上用场了。</p>
+<h2 id="梯度下降法算法详解">梯度下降法算法详解</h2>
+<h3 id="直观解释">直观解释</h3>
+<p>首先来看看梯度下降的一个直观的解释。比如我们在一座大山上的某处位置，由于我们不知道怎么下山，于是决定走一步算一步，也就是在每走到一个位置的时候，求解当前位置的梯度，沿着梯度的负方向，也就是当前最陡峭的位置向下走一步，然后继续求解当前位置梯度，向这一步所在位置沿着最陡峭最易下山的位置走一步。这样一步步的走下去，一直走到觉得我们已经到了山脚。当然这样走下去，有可能我们不能走到山脚，而是到了某一个局部的山峰低处。</p>
+<p>从上面的解释可以看出，梯度下降不一定能够找到全局的最优解，有可能是一个局部最优解。当然，如果损失函数是凸函数，梯度下降法得到的解就一定是全局最优解。</p>
+<figure>
+<img
+src="/images/assert/1042406-20161017221342935-1872962415-1689969183450-2.png"
+alt="梯度下降" />
+<figcaption aria-hidden="true">梯度下降</figcaption>
+</figure>
+<h3 id="相关概念">相关概念</h3>
+<p>在详细了解梯度下降的算法之前，我们先看看相关的一些概念。</p>
+<p>1、<mark class="label ">步长（Learning rate）</mark>：步长决定了在梯度下降迭代的过程中，每一步沿梯度负方向前进的长度。用上面下山的例子，步长就是在当前这一步所在位置沿着最陡峭最易下山的位置走的那一步的长度。</p>
+<p>2、<mark class="label ">特征（feature）</mark>：指的是样本中输入部分，比如2个单特征的样本 <span
+class="math inline">\((x^{(0)},y^{(0)}),(x^{(1)},y^{(1)})\)</span>
+，则第一个样本特征为 <span class="math inline">\(x^{(0)}\)</span>
+，第一个样本输出为 <span class="math inline">\(y^{(0)}\)</span> 。</p>
+<p>3、<mark class="label ">假设函数（hypothesis function）</mark>：在监督学习中，为了拟合输入样本，而使用的假设函数，记为
+<span class="math inline">\(h_{\theta}(x)\)</span>
+。比如对于单个特征的m个样本 <span
+class="math inline">\((x^{(i)},y^{(i)})(i=1,2,...m)\)</span>
+，可以采用拟合函数如下： <span class="math inline">\(h_{\theta}(x) =
+\theta_0+\theta_1x\)</span>。</p>
+<p>4、<mark class="label ">损失函数（loss function）</mark>：为了评估模型拟合的好坏，通常用损失函数来度量拟合的程度。损失函数极小化，意味着拟合程度最好，对应的模型参数即为最优参数。在线性回归中，损失函数通常为样本输出和假设函数的差取平方。比如对于m个样本
+<span class="math inline">\((x_i,y_i)(i=1,2,...m)\)</span>
+，采用线性回归，损失函数如下，其中 <span
+class="math inline">\(x_i\)</span> 表示第i个样本特征， <span
+class="math inline">\(y_i\)</span> 表示第i个样本对应的输出， <span
+class="math inline">\(h_\theta(x_i)\)</span> 为假设函数。<br />
+<span class="math display">\[
+J(\theta_0, \theta_1) = \sum\limits_{i=1}^{m}(h_\theta(x_i) - y_i)^2
+\]</span></p>
+<h3 id="代数方式描述">代数方式描述</h3>
+<p>1、<mark class="label ">先决条件</mark>： 确认优化模型的假设函数和损失函数。
+比如对于线性回归，假设函数表示为 <span
+class="math inline">\(h_\theta(x_1, x_2, ...x_n) = \theta_0 +
+\theta_{1}x_1 + ... + \theta_{n}x_{n}\)</span> ，其中 <span
+class="math inline">\(\theta_i\)</span> 为模型参数，<span
+class="math inline">\(x_i\)</span>
+为每个样本的n个特征值。这个表示可以简化，我们增加一个特征<span
+class="math inline">\(x_0 = 1\)</span>，这样<span
+class="math inline">\(h_\theta(x_0, x_1, ...x_n) =
+\sum\limits_{i=0}^{n}\theta_{i}x_{i}\)</span>。
+同样是线性回归，对应于上面的假设函数，损失函数为： <span
+class="math display">\[
+J(\theta_0, \theta_1..., \theta_n) =
+\frac{1}{2m}\sum\limits_{j=1}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{(j)}) - y_j)^2
+\]</span></p>
+<p>2、<mark class="label ">算法相关参数初始化</mark>：主要是初始化<span class="math inline">\(\theta_0,
+\theta_1..., \theta_n\)</span>，算法终止距离<span
+class="math inline">\(\epsilon\)</span>以及步长<span
+class="math inline">\(\alpha\)</span>。在没有任何先验知识的时候，我喜欢将所有的<span
+class="math inline">\(\theta\)</span>初始化为0，
+将步长初始化为1。在调优的时候再优化。</p>
+<p>3、<mark class="label ">算法过程</mark>：</p>
+<ol type="1">
+<li><p>确定当前位置的损失函数的梯度，对于<span
+class="math inline">\(\theta_i\)</span>​，其梯度表达式如下： <span
+class="math display">\[
+\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1..., \theta_n)
+\]</span></p></li>
+<li><p>用步长乘以损失函数的梯度，得到当前位置下降的距离，即: <span
+class="math display">\[
+\alpha\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1...,
+\theta_n)
+\]</span></p></li>
+<li><p>确定是否所有的<span
+class="math inline">\(\theta_i\)</span>，梯度下降的距离都小于<span
+class="math inline">\(\epsilon\)</span>，如果小于<span
+class="math inline">\(\epsilon\)</span>则算法终止，当前所有的<span
+class="math inline">\(\theta_i\)</span>即为最终结果。否则进入步骤4.</p></li>
+<li><p>更新所有的<span class="math inline">\(\theta\)</span>，对于<span
+class="math inline">\(\theta_i\)</span>​，其更新表达式如下。更新完毕后继续转入步骤1.
+<span class="math display">\[
+\theta_i = \theta_i - \alpha\frac{\partial}{\partial\theta_i}J(\theta_0,
+\theta_1..., \theta_n)
+\]</span></p></li>
+</ol>
+<p>下面用线性回归的例子来具体描述梯度下降。假设我们的样本是<span
+class="math inline">\((x_1^{(0)}, x_2^{(0)}, ...x_n^{(0)}, y_0),
+(x_1^{(1)}, x_2^{(1)}, ...x_n^{(1)},y_1), ... (x_1^{(m)}, x_2^{(m)},
+...x_n^{(m)}, y_m)\)</span>​，损失函数如前面先决条件所述： <span
+class="math display">\[
+J(\theta_0, \theta_1..., \theta_n) =
+\frac{1}{2m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{(j)})- y_j)^2
+\]</span> 则在算法过程步骤1中对于<span
+class="math inline">\(\theta_i\)</span>的偏导数计算如下： <span
+class="math display">\[
+\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1..., \theta_n)=
+\frac{1}{m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{(j)}) - y_j)x_i^{(j)}
+\]</span> 由于样本中没有<span
+class="math inline">\(x_0\)</span>，所以令所有的<span
+class="math inline">\(x_0^{j}\)</span>为1。步骤4中<span
+class="math inline">\(\theta_i\)</span>的更新表达式如下： <span
+class="math display">\[
+\theta_i = \theta_i -
+\alpha\frac{1}{m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{j}) - y_j)x_i^{(j)}
+\]</span>
+从这个例子可以看出当前点的梯度方向是由所有的样本决定的，加<span
+class="math inline">\(\frac{1}{m}\)</span>是为了好理解。由于步长也为常数，他们的乘积也为常数，所以这里
+<span class="math inline">\(\alpha\frac{1}{m}\)</span>
+可以用一个常数表示。</p>
+<p>在下面会详细讲到的梯度下降法的变种，他们主要的区别就是对样本的采用方法不同。这里我们采用的是用所有样本。</p>
+<h3 id="矩阵方式描述">矩阵方式描述</h3>
+<p>1、<mark class="label ">先决条件</mark>：对于线性回归，假设函数 <span
+class="math inline">\(h_{\theta}\left(x_{1}, x_{2}, \ldots
+x_{n}\right)=\theta_{0}+\theta_{1} x_{1}+\ldots+\theta_{n}
+x_{n}\)</span> 的矩阵表达方式为: <span
+class="math inline">\(h_{\theta}(\mathbf{X})=\mathbf{X} \theta\)</span>
+，其中，假设函数 <span
+class="math inline">\(h_\theta(\mathbf{X})\)</span> 为 <span
+class="math inline">\(m \times 1\)</span> 的向量, <span
+class="math inline">\(\theta\)</span> 为 <span
+class="math inline">\((\mathrm{n}+1) \times 1\)</span> 的向量，里面有
+n+1 个代数法的模型参数。 <span class="math inline">\(\mathbf{X}\)</span>
+为 <span class="math inline">\(m \times(n+1)\)</span> 维的矩阵。 m 代表
+样本的个数， n+1 代表样本的特征数。损失函数的表达式为: <span
+class="math inline">\(J(\theta)=\frac{1}{2}(\mathbf{X}
+\theta-\mathbf{Y})^{T}(\mathbf{X} \theta-\mathbf{Y})\)</span> ，其中
+<span class="math inline">\(\mathbf{Y}\)</span> 是样本的输出向量，维度为
+<span class="math inline">\(\mathrm{m} \times 1\)</span> .</p>
+<p>2、<mark class="label ">算法相关参数初始化</mark>: <span class="math inline">\(\theta\)</span>
+向量可以初始化为默认值，或者调优后的值。算法终止距离 <span
+class="math inline">\(\varepsilon\)</span> ，步长 <span
+class="math inline">\(\alpha\)</span> 之前比没有变化。</p>
+<p>3、<mark class="label ">算法过程</mark>:</p>
+<ol type="1">
+<li>确定当前位置的损失函数的梯度，对于 <span
+class="math inline">\(\theta\)</span> 向量,其梯度表达式如下:</li>
+</ol>
+<p><span class="math display">\[
+\frac{\partial}{\partial \theta} J(\theta)
+\]</span></p>
+<ol start="2" type="1">
+<li>用步长乘以损失函数的梯度，得到当前位置下降的距离，即 <span
+class="math inline">\(\alpha \frac{\partial}{\partial \theta}
+J(\theta)\)</span> 对应于前面登山例子中的某一步。</li>
+<li>确定 <span class="math inline">\(\theta\)</span>
+向量里面的每个值,梯度下降的距离都小于 <span
+class="math inline">\(\varepsilon\)</span> ，如果小于 <span
+class="math inline">\(\varepsilon\)</span> 则算法终止，当前 <span
+class="math inline">\(\theta\)</span> 向量即为最终结果。否则进入步骤 4
+.</li>
+<li>更新 <span class="math inline">\(\theta\)</span>
+向量，其更新表达式如下。更新完毕后继续转入步骤1.</li>
+</ol>
+<p><span class="math display">\[
+\theta=\theta-\alpha \frac{\partial}{\partial \theta} J(\theta)
+\]</span></p>
+<p>还是用线性回归的例子来描述具体的算法过程。 损失函数对于 <span
+class="math inline">\(\theta\)</span> 向量的偏导数计算如下: <span
+class="math display">\[
+\frac{\partial}{\partial \theta} J(\theta)=\mathbf{X}^{T}(\mathbf{X}
+\theta-\mathbf{Y})
+\]</span> 步骤4中 <span class="math inline">\(\theta\)</span>
+向量的更新表达式如下:<br />
+<span class="math display">\[
+\theta=\theta-\alpha \mathbf{X}^{T}(\mathbf{X} \theta-\mathbf{Y})
+\]</span>
+相比代数法，可以看到矩阵法要简洁很多。这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。</p>
+<p>公式1: <span class="math inline">\(\frac{\partial}{\partial
+\mathbf{x}}\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2
+\mathbf{x}\)</span> ，<span class="math inline">\(x\)</span> 为向量</p>
+<p>公式2: <span class="math inline">\(\nabla_{X} f(A X+B)=A^{T}
+\nabla_{Y} f, Y=A X+B\)</span>，<span
+class="math inline">\(f(Y)\)</span> 为标量</p>
+<h2 id="算法调优">算法调优</h2>
+<p>1、<mark class="label ">算法的步长选择</mark>。在前面的算法描述中，我提到取步长为 1
+，但是实际上取值取决于数据样本，可以多取一些值，从大到小，分别运行算法，看看迭代效果，如果损失函数在变小，说明取值有效，否则要增大步长。前面说了。步长太大，会导致迭代过快，甚至有可能错过最优解。步长太小，迭代速度太慢，
+很长时间算法都不能结束。所以算法的步长需要多次运行后才能得到一个较为优的值。</p>
+<p>2、<mark class="label ">算法参数的初始值选择</mark>。初始值不同，获得的最小值也有可能不同，因此梯度下降求得的只是局部最小值；当然如果损失函数是凸函数则一定是最优
+解。由于有局部最优解的风险，需要多次用不同初始值运行算法，关注损失函数的最小值，选择损失函数最小化的初始值。</p>
+<p>3、<mark class="label ">归一化</mark>。由于样本不同特征的取值范围不一样，可能导致迭代很慢，为了减少特征取值的影响，可以对特征数据归一化，也就是对于每个特征
+<span class="math inline">\(\mathrm{x}\)</span> ，求出 它的期望 <span
+class="math inline">\(\bar{x}\)</span> 和标准差 <span
+class="math inline">\(\operatorname{std}(x)\)</span> ，然后转化为: <span
+class="math display">\[
+\frac{x-\bar{x}}{\operatorname{std}(x)}
+\]</span> 这样特征的新期望为 0 ，新方差为 1 ，迭代速度可以大大加快。</p>
+<h2 id="梯度下降法大家族">梯度下降法大家族</h2>
+<p><strong>批量梯度下降法（Batch Gradient Descent）</strong></p>
+<p>批量梯度下降法，是梯度下降法最常用的形式，具体做法也就是在更新参数时使用所有的样本来进行更新：</p>
+<p><span class="math display">\[
+\theta_{i}=\theta_{i}-\alpha
+\sum_{j=1}^{m}\left(h_{\theta}\left(x_{0}^{(j)}, x_{1}^{(j)}, \ldots
+x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
+\]</span> <strong>随机梯度下降法（Stochastic Gradient
+Descent）</strong></p>
+<p>随机梯度下降法，其实和批量梯度下降法原理类似，区别在与求梯度时没有用所有的
+<span class="math inline">\(\mathrm{m}\)</span>
+个样本的数据，而是仅仅选取一个样本 <span
+class="math inline">\(\mathrm{j}\)</span>
+来求梯度。对应的更新公式是:</p>
+<p><span class="math display">\[
+\theta_{i}=\theta_{i}-\alpha\left(h_{\theta}\left(x_{0}^{(j)},
+x_{1}^{(j)}, \ldots x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
+\]</span>
+随机梯度下降法和批量梯度下降法是两个极端，一个采用所有数据来梯度下降，一个用一个样本来梯度下降。自然各自的优缺点都非常突出。对于训练速度来说，随机梯度下降法由于每次仅仅采用一个样本来迭代，训练速度很快，而批量梯度下降法在样本量很大的时候，训练速度不能让人满意。对于准确度来说，随机梯度下降法用于仅仅用一个样本决定梯度方向，导致解很有可能不是最优。对于收敛速度来说，由于随机梯度下降法一次迭代一个样本，导致迭
+代方向变化很大，不能很快的收敛到局部最优解。那么，有没有一个中庸的办法能够结合两种方法的优点呢?
+有! 这就是小批量梯度下降法。</p>
+<p><strong>小批量梯度下降法（Mini-batch Gradient Descent）</strong></p>
+<p>小批量梯度下降法是批量梯度下降法和随机梯度下降法的折䩖，也就是对于
+<span class="math inline">\(m\)</span> 个样本，我们采用 <span
+class="math inline">\(x\)</span> 个样子来迭代， <span
+class="math inline">\(1&lt;x&lt;m\)</span> 。一般可以取 <span
+class="math inline">\(x=10\)</span> ，当然根据样本的数据，可以调整这个
+<span class="math inline">\(x\)</span> 的值。对应的更新公式是:</p>
+<p><span class="math display">\[
+\theta_{i}=\theta_{i}-\alpha
+\sum_{j=t}^{t+x-1}\left(h_{\theta}\left(x_{0}^{(j)}, x_{1}^{(j)}, \ldots
+x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
+\]</span></p>
+<h2 id="和其他无约束优化算法的比较">和其他无约束优化算法的比较</h2>
+<p>在机器学习中的无约束优化算法，除了梯度下降以外，还有前面提到的最小二乘法，此外还有牛顿法和拟牛顿法。</p>
+<p>梯度下降法和最小二乘法相比，梯度下降法需要选择步长，而最小二乘法不需要。梯度下降法是迭代求解，最小二乘法是计算解析解。如果样本量不算很大，且存在解析解，最小二乘法比起梯度下降法要有优势，计算速度很快。但是如果样本量很大，用最小二乘法由于需要求一个超级大的逆矩阵，这时就很难或者很慢才能求解解析解了，使用迭代的梯度下降法比较有优势。</p>
+<p>梯度下降法和牛顿法/拟牛顿法相比，两者都是迭代求解，不过梯度下降法是梯度求解，而牛顿法/拟牛顿法是用二阶的海森矩阵的逆矩阵或伪逆矩阵求解。相对而言，使用牛顿法/拟牛顿法收敛更快。但是每次迭代的时间比梯度下降法长。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="gxxtsz 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="gxxtsz 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>gxxtsz
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://gxxtsz.cn/posts/45571/" title="梯度下降">https://gxxtsz.cn/posts/45571/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+              <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" rel="tag"><i class="fa fa-tag"></i> 梯度下降</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/39466/" rel="prev" title="用hexo建一个个人博客">
+                  <i class="fa fa-chevron-left"></i> 用hexo建一个个人博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/53030/" rel="next" title="最小二乘法">
+                  最小二乘法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gxxtsz</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">74k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:30</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"gxxtsz/blog-comments","repo_id":"R_kgDOJclpDg","category":"Announcements","category_id":"DIC_kwDOJclpDs4CWIH9","mapping":"title","strict":1,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+</body>
+</html>
