@@ -1,88 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>c++核心编程</title>
-    <url>/posts/61419/</url>
-    <content><![CDATA[<p>本文主要针对C++面向对象编程技术做详细讲解，探讨C++中的核心和精髓。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>c++</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>c++核心编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用hexo建一个个人博客</title>
-    <url>/posts/39466/</url>
-    <content><![CDATA[<p>本文记录了用hexo建立一个个人博客网站需要用到哪些工具。</p>
-<span id="more"></span>
-<h2 id="查看hexo官方文档">查看hexo官方文档</h2>
-<p>这个不用多说，建站第一步，先跟着官方文档把流程跑起来，在本地浏览器可以预览跑起来的网站。</p>
-<p><a href="https://hexo.io/zh-cn/docs/">hexo官方文档</a></p>
-<h2 id="选一个喜欢的主题">选一个喜欢的主题</h2>
-<p>跑起来基本流程后，可以发现默认的主题很丑，所以我们可以在<a
-href="https://hexo.io/themes/">官方主题界面</a>选择自己喜欢的一个主题，主题配置方法可以参考<a
-href="https://hexo.io/zh-cn/docs/">hexo官方文档</a>和你选择的主题的文档，我的这个网站用的是<a
-href="https://theme-next.js.org/">next</a>主题，这个主题比较简约，另外推介一个好看的主题：<a
-href="https://xaoxuu.com/wiki/stellar/">stellar</a>。</p>
-<p>选择主题并配置好后，可以安装各种插件，来实现各种花里胡哨的功能。</p>
-<h2 id="部署">部署</h2>
-<p>我用的是GitHub
-Page托管，免费方便，就是速度有点慢。按照网上的教程安装配置好git后，在了解下GitHub
-Page的使用，最后根据官网的<a
-href="https://hexo.io/zh-cn/docs/github-pages">一键部署</a>说明进行配置，之后就可以通过<code>hexo d</code>命令实现一键部署。</p>
-<p>除了GitHub
-Page托管，还有许多其他的托管平台，也可以自己搭建或买一个服务器。</p>
-<h2 id="评论插件">评论插件</h2>
-<p>我用的是<a href="https://giscus.app/zh-CN">giscus</a>。</p>
-<h2 id="博客配置">博客配置</h2>
-<p>有时候看了文档也搞不明白怎么配置，可以参考一些开放源代码的博客，比如next主题就可以参考<a
-href="https://theme-next.js.org/">官方文档网站</a>的<a
-href="https://github.com/next-theme/theme-next-docs/tree/master">源代码</a>，对应的配置文件是<a
-href="https://github.com/next-theme/theme-next-docs/blob/master/_config.next.yml">_config.next.yml</a>。</p>
-<h2 id="设置超链接样式">设置超链接样式</h2>
-<p>找到<code>\node_modules\hexo-theme-next\source\css\_common\components\post\post-body.styl</code>文件，在最后添加下面代码，就可以实现本站的超链接样式。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// 文章内链接文本样式</span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#0593d3</span>;</span><br><span class="line">  <span class="attribute">border-bottom</span>: none;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#0593d3</span>;</span><br><span class="line">  &amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fc6423</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: none;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#fc6423</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="显示图像">显示图像</h2>
-<p>最简单的方法就是将它们放在 <code>source/images</code>
-文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code>
-的方法访问它们。</p>
-<h2 id="显示数学公式">显示数学公式</h2>
-<p><a
-href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math">官方推介使用pandoc</a>。需要注意的是，配置好后需要去<a
-href="https://pandoc.org/installing.html">pandoc官网</a>安装pandoc并重启电脑才能生效。</p>
-<h2 id="部署时报错spawn-failed">部署时报错：Spawn failed</h2>
-<figure>
-<img src="/images/assert/image-20230721010441906.png"
-alt="spawn failed报错截图" />
-<figcaption aria-hidden="true">spawn failed报错截图</figcaption>
-</figure>
-<p>出现上面错误时，执行下面步骤：</p>
-<ol type="1">
-<li>删除git提交内容文件夹：<code>.deploy_git</code></li>
-<li>执行：<code>git config --global core.autocrlf false</code></li>
-<li>重新部署</li>
-</ol>
-<p>其中第二步的作用是：关闭git对文件换行符的修改,如自动把CRLF换成LF等。</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>建站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/posts/1/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
     <title>c++基础入门</title>
     <url>/posts/39442/</url>
     <content><![CDATA[<p>本文主要介绍c++的一些基础概念，相当于学习c++的一个快速入门，也可以当作c++基础知识的一个整理记录。</p>
@@ -659,6 +577,82 @@ alt="spawn failed报错截图" />
       </tags>
   </entry>
   <entry>
+    <title>c++核心编程</title>
+    <url>/posts/61419/</url>
+    <content><![CDATA[<p>本文主要针对C++面向对象编程技术做详细讲解，探讨C++中的核心和精髓。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>c++核心编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用hexo建一个个人博客</title>
+    <url>/posts/39466/</url>
+    <content><![CDATA[<p>本文记录了用hexo建立一个个人博客网站需要用到哪些工具。</p>
+<span id="more"></span>
+<h2 id="查看hexo官方文档">查看hexo官方文档</h2>
+<p>这个不用多说，建站第一步，先跟着官方文档把流程跑起来，在本地浏览器可以预览跑起来的网站。</p>
+<p><a href="https://hexo.io/zh-cn/docs/">hexo官方文档</a></p>
+<h2 id="选一个喜欢的主题">选一个喜欢的主题</h2>
+<p>跑起来基本流程后，可以发现默认的主题很丑，所以我们可以在<a
+href="https://hexo.io/themes/">官方主题界面</a>选择自己喜欢的一个主题，主题配置方法可以参考<a
+href="https://hexo.io/zh-cn/docs/">hexo官方文档</a>和你选择的主题的文档，我的这个网站用的是<a
+href="https://theme-next.js.org/">next</a>主题，这个主题比较简约，另外推介一个好看的主题：<a
+href="https://xaoxuu.com/wiki/stellar/">stellar</a>。</p>
+<p>选择主题并配置好后，可以安装各种插件，来实现各种花里胡哨的功能。</p>
+<h2 id="部署">部署</h2>
+<p>我用的是GitHub
+Page托管，免费方便，就是速度有点慢。按照网上的教程安装配置好git后，在了解下GitHub
+Page的使用，最后根据官网的<a
+href="https://hexo.io/zh-cn/docs/github-pages">一键部署</a>说明进行配置，之后就可以通过<code>hexo d</code>命令实现一键部署。</p>
+<p>除了GitHub
+Page托管，还有许多其他的托管平台，也可以自己搭建或买一个服务器。</p>
+<h2 id="评论插件">评论插件</h2>
+<p>我用的是<a href="https://giscus.app/zh-CN">giscus</a>。</p>
+<h2 id="博客配置">博客配置</h2>
+<p>有时候看了文档也搞不明白怎么配置，可以参考一些开放源代码的博客，比如next主题就可以参考<a
+href="https://theme-next.js.org/">官方文档网站</a>的<a
+href="https://github.com/next-theme/theme-next-docs/tree/master">源代码</a>，对应的配置文件是<a
+href="https://github.com/next-theme/theme-next-docs/blob/master/_config.next.yml">_config.next.yml</a>。</p>
+<h2 id="设置超链接样式">设置超链接样式</h2>
+<p>找到<code>\node_modules\hexo-theme-next\source\css\_common\components\post\post-body.styl</code>文件，在最后添加下面代码，就可以实现本站的超链接样式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// 文章内链接文本样式</span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#0593d3</span>;</span><br><span class="line">  <span class="attribute">border-bottom</span>: none;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#0593d3</span>;</span><br><span class="line">  &amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fc6423</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: none;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#fc6423</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="显示图像">显示图像</h2>
+<p>最简单的方法就是将它们放在 <code>source/images</code>
+文件夹中。然后通过类似于 <code>![](/images/image.jpg)</code>
+的方法访问它们。</p>
+<h2 id="显示数学公式">显示数学公式</h2>
+<p><a
+href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=math">官方推介使用pandoc</a>。需要注意的是，配置好后需要去<a
+href="https://pandoc.org/installing.html">pandoc官网</a>安装pandoc并重启电脑才能生效。</p>
+<h2 id="部署时报错spawn-failed">部署时报错：Spawn failed</h2>
+<figure>
+<img src="/images/assert/image-20230721010441906.png"
+alt="spawn failed报错截图" />
+<figcaption aria-hidden="true">spawn failed报错截图</figcaption>
+</figure>
+<p>出现上面错误时，执行下面步骤：</p>
+<ol type="1">
+<li>删除git提交内容文件夹：<code>.deploy_git</code></li>
+<li>执行：<code>git config --global core.autocrlf false</code></li>
+<li>重新部署</li>
+</ol>
+<p>其中第二步的作用是：关闭git对文件换行符的修改,如自动把CRLF换成LF等。</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>建站</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux命令行</title>
     <url>/posts/28634/</url>
     <content><![CDATA[<p>简介</p>
@@ -759,6 +753,251 @@ shell的名字玩的是一个文字游戏，即Bourne again shell。</p>
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/posts/1/</url>
+    <content><![CDATA[
+]]></content>
+  </entry>
+  <entry>
+    <title>git详解</title>
+    <url>/posts/3161/</url>
+    <content><![CDATA[<p>Git
+是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+<span id="more"></span>
+<h2 id="基本概念">基本概念</h2>
+<ul>
+<li><strong>工作区：</strong>就是你在电脑里能看到的目录。</li>
+<li><strong>暂存区：</strong>英文叫 stage 或 index。一般存放在
+<strong>.git</strong> 目录下的 index
+文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
+<li><strong>版本库：</strong>工作区有一个隐藏目录
+<strong>.git</strong>，这个不算工作区，而是 Git 的版本库。</li>
+</ul>
+<p>下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：</p>
+<figure>
+<img src="/images/assert/1352126739_7909.jpg" alt="基本概念" />
+<figcaption aria-hidden="true">基本概念</figcaption>
+</figure>
+<ul>
+<li>图中左侧为工作区，右侧为版本库。在版本库中标记为 "index"
+的区域是暂存区（stage/index），标记为 "master" 的是 master
+分支所代表的目录树。</li>
+<li>图中我们可以看出此时 "HEAD" 实际是指向 master
+分支的一个"游标"。所以图示的命令中出现 HEAD 的地方可以用 master
+来替换。</li>
+<li>图中的 objects 标识的区域为 Git 的对象库，实际位于 ".git/objects"
+目录下，里面包含了创建的各种对象及内容。</li>
+<li>当对工作区修改（或新增）的文件执行 <code>git add</code>
+命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。</li>
+<li>当执行提交操作（git
+commit）时，暂存区的目录树写到版本库（对象库）中，master
+分支会做相应的更新。即 master
+指向的目录树就是提交时暂存区的目录树。</li>
+<li>当执行 <code>git reset HEAD</code>
+命令时，暂存区的目录树会被重写，被 master
+分支指向的目录树所替换，但是工作区不受影响。</li>
+<li>当执行 <code>git rm --cached &lt;file&gt;</code>
+命令时，会直接从暂存区删除文件，工作区则不做出改变。</li>
+<li>当执行<code>git checkout .</code>或者
+<code>git checkout -- &lt;file&gt;</code>
+命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</li>
+<li>当执行 <code>git checkout HEAD .</code> 或者
+<code>git checkout HEAD &lt;file&gt;</code>命令时，会用 HEAD 指向的
+master
+分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
+</ul>
+<h2 id="git-工作流程">Git 工作流程</h2>
+<p>一般工作流程如下：</p>
+<ul>
+<li>克隆 Git 资源作为工作目录。</li>
+<li>在克隆的资源上添加或修改文件。</li>
+<li>如果其他人修改了，你可以更新资源。</li>
+<li>在提交前查看修改。</li>
+<li>提交修改。</li>
+<li>在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。</li>
+</ul>
+<p>下图展示了 Git 的工作流程：</p>
+<figure>
+<img src="/images/assert/git-process.png" alt="git工作流程" />
+<figcaption aria-hidden="true">git工作流程</figcaption>
+</figure>
+<h2 id="git-配置">Git 配置</h2>
+<p>Git 提供了一个叫做 git config
+的工具，专门用来配置或读取相应的工作环境变量。</p>
+<p>这些环境变量，决定了 Git
+在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
+<ul>
+<li><code>/etc/gitconfig</code>
+文件：系统中对所有用户都普遍适用的配置。若使用 <code>git config</code>
+时用 <code>--system</code> 选项，读写的就是这个文件。</li>
+<li><code>~/.gitconfig</code>
+文件：用户目录下的配置文件只适用于该用户。若使用 <code>git config</code>
+时用 <code>--global</code> 选项，读写的就是这个文件。</li>
+<li>当前项目的 Git 目录中的配置文件（也就是工作目录中的
+<code>.git/config</code>
+文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以
+<code>.git/config</code> 里的配置会覆盖 <code>/etc/gitconfig</code>
+中的同名变量。</li>
+</ul>
+<h3 id="用户信息">用户信息</h3>
+<p>配置个人的用户名称和电子邮件地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;runoob&quot;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>如果用了 <strong>--global</strong>
+选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
+<p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global
+选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。</p>
+<h3 id="文本编辑器">文本编辑器</h3>
+<p>设置Git默认使用的文本编辑器, 一般可能会是 Vi 或者
+Vim。如果你有其他偏好，比如 Emacs 的话，可以重新设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global core.editor emacs</span><br></pre></td></tr></table></figure>
+<h3 id="差异分析工具">差异分析工具</h3>
+<p>还有一个比较常用的是，在解决合并冲突时使用哪种差异分析工具。比如要改用
+vimdiff 的话：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global merge.tool vimdiff</span><br></pre></td></tr></table></figure>
+<p>Git 可以理解
+kdiff3，tkdiff，meld，xxdiff，emerge，vimdiff，gvimdiff，ecmerge，和
+opendiff 等合并工具的输出信息。</p>
+<p>当然，你也可以指定使用自己开发的工具。</p>
+<h3 id="查看配置信息">查看配置信息</h3>
+<p>要检查已有的配置信息，可以使用 git config --list 命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">http.postbuffer=2M</span><br><span class="line">user.name=runoob</span><br><span class="line">user.email=test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>有时候会看到重复的变量名，那就说明它们来自不同的配置文件（比如
+/etc/gitconfig 和 ~/.gitconfig），不过最终 Git
+实际采用的是最后一个。</p>
+<p>这些配置我们也可以在 <strong>~/.gitconfig</strong> 或
+<strong>/etc/gitconfig</strong> 看到，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.gitconfig </span><br></pre></td></tr></table></figure>
+<p>显示内容如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[http]</span><br><span class="line">    postBuffer = 2M</span><br><span class="line">[user]</span><br><span class="line">    name = runoob</span><br><span class="line">    email = test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>也可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">runoob</span><br></pre></td></tr></table></figure>
+<h2 id="创建仓库">创建仓库</h2>
+<h3 id="git-init">git init</h3>
+<p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git
+的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong>
+是使用 Git 的第一个命令。</p>
+<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git
+目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
+<p><strong>使用方法</strong></p>
+<p>使用当前目录作为 Git 仓库，我们只需使它初始化。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>该命令执行完后会在当前目录生成一个 .git 目录。</p>
+<p>使用我们指定目录作为Git仓库。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init newrepo</span><br></pre></td></tr></table></figure>
+<p>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录，所有 Git
+需要的数据和资源都存放在这个目录中。</p>
+<p>如果当前目录下有几个文件想要纳入版本控制，需要先用 git add 命令告诉
+Git 开始对这些文件进行跟踪，然后提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add *.c</span><br><span class="line">$ git add README</span><br><span class="line">$ git commit -m &#x27;初始化项目版本&#x27;</span><br></pre></td></tr></table></figure>
+<p>以上命令将目录下以 .c 结尾及 README 文件提交到仓库中。</p>
+<blockquote>
+<p><strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号
+<strong>'</strong>，Windows 系统，commit 信息使用双引号
+<strong>"</strong>。</p>
+<p>所以在 git bash 中 <strong>git commit -m '提交说明'</strong>
+这样是可以的，在 Windows 命令行中就要使用双引号 <strong>git commit -m
+"提交说明"</strong>。</p>
+</blockquote>
+<hr />
+<h3 id="git-clone">git clone</h3>
+<p>我们使用 <strong>git clone</strong> 从现有 Git 仓库中拷贝项目（类似
+<strong>svn checkout</strong>）。</p>
+<p>克隆仓库的命令格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone &lt;repo&gt;</span><br></pre></td></tr></table></figure>
+<p>如果我们需要克隆到指定的目录，可以使用以下命令格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone &lt;repo&gt; &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li><strong>repo:</strong>Git 仓库。</li>
+<li><strong>directory:</strong>本地目录。</li>
+</ul>
+<p>比如，要克隆 Ruby 语言的 Git 代码仓库 Grit，可以用下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://github.com/schacon/grit.git</span><br></pre></td></tr></table></figure>
+<p>执行该命令后，会在当前目录下创建一个名为grit的目录，其中包含一个 .git
+的目录，用于保存下载下来的所有版本记录。</p>
+<p>如果要自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://github.com/schacon/grit.git mygrit</span><br></pre></td></tr></table></figure>
+<h2 id="基本操作">基本操作</h2>
+<figure>
+<img src="../../images/assert/git-command.jpg" alt="基本操作" />
+<figcaption aria-hidden="true">基本操作</figcaption>
+</figure>
+<h3 id="git-add">git add</h3>
+<p><strong>git add</strong> 命令可将该文件的修改添加到暂存区。</p>
+<p>通过运行 <strong>git add</strong> 命令，你可以告诉 Git
+哪些文件的修改应该包含在下一次提交（commit）中。</p>
+<p>添加一个或多个文件到暂存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+<p>添加指定目录到暂存区，包括子目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+<p>添加当前目录下的所有文件到暂存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<h3 id="git-status">git status</h3>
+<p><strong>git status</strong> 是一个用于查看 Git
+仓库当前状态的命令。</p>
+<p><strong>git status</strong>
+命令可以查看在你上次提交之后是否有对文件进行再次修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   README</span><br><span class="line">    new file:   hello.php</span><br></pre></td></tr></table></figure>
+<p>git status 命令会显示以下信息：</p>
+<ul>
+<li>当前分支的名称。</li>
+<li>当前分支与远程分支的关系（例如，是否是最新的）。</li>
+<li>未暂存的修改：显示已修改但尚未使用 <code>git add</code>
+添加到暂存区的文件列表。</li>
+<li>未跟踪的文件：显示尚未纳入版本控制的新文件列表。</li>
+</ul>
+<p>根据 git status
+的输出，你可以判断当前工作目录中的文件状态，并采取适当的操作。</p>
+<p>通常我们使用 <strong>-s</strong> 参数来获得简短的输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status -s</span><br><span class="line">AM README</span><br><span class="line">A  hello.php</span><br></pre></td></tr></table></figure>
+<p><strong>AM</strong>
+状态的意思是这个文件在我们将它添加到缓存之后又有改动。</p>
+<h3 id="git-diff">git diff</h3>
+<h3 id="git-commit">git commit</h3>
+<p>git commit 命令将暂存区内容添加到本地仓库中。</p>
+<p>提交暂存区到本地仓库中:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
+<p>[message] 可以是一些备注信息。</p>
+<p>提交暂存区的指定文件到仓库区：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br></pre></td></tr></table></figure>
+<p><strong>-a</strong> 参数设置修改文件后不需要执行 git add
+命令，直接来提交</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -a</span><br></pre></td></tr></table></figure>
+<p><strong>设置提交代码时的用户信息</strong></p>
+<p>开始前我们需要先设置提交的用户信息，包括用户名和邮箱：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &#x27;runoob&#x27;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
+<p>如果去掉 --global 参数只对当前仓库有效。</p>
+<p><strong>提交修改</strong></p>
+<p>接下来我们就可以对 hello.php
+的所有改动从暂存区内容添加到本地仓库中。</p>
+<p>以下实例，我们使用 -m 选项以在命令行中提供提交注释。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add hello.php</span><br><span class="line">$ git status -s</span><br><span class="line">A  README</span><br><span class="line">A  hello.php</span><br><span class="line">$ git commit -m &#x27;第一次版本提交&#x27;</span><br><span class="line">[master (root-commit) d32cf1f] 第一次版本提交</span><br><span class="line"> 2 files changed, 4 insertions(+)</span><br><span class="line"> create mode 100644 README</span><br><span class="line"> create mode 100644 hello.php</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>现在我们已经记录了快照。如果我们再执行 git status:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"># On branch master</span><br><span class="line">nothing to commit (working directory clean)</span><br></pre></td></tr></table></figure>
+<p>以上输出说明我们在最近一次提交之后，没有做任何改动，是一个 "working
+directory clean"，翻译过来就是干净的工作目录。</p>
+<p>如果你没有设置 -m 选项，Git 会尝试为你打开一个编辑器以填写提交信息。
+如果 Git 在你对它的配置中找不到相关信息，默认会打开
+vim。屏幕会像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#x27;#&#x27; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">#</span><br><span class="line"># modified:   hello.php</span><br><span class="line">#</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">&quot;.git/COMMIT_EDITMSG&quot; 9L, 257C</span><br></pre></td></tr></table></figure>
+<p>如果你觉得 git add 提交缓存的流程太过繁琐，Git 也允许你用 -a
+选项跳过这一步。命令格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<p>我们先修改 hello.php 文件为以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;菜鸟教程：www.runoob.com&#x27;;</span><br><span class="line">echo &#x27;菜鸟教程：www.runoob.com&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>再执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -am &#x27;修改 hello.php 文件&#x27;</span><br><span class="line">[master 71ee2cb] 修改 hello.php 文件</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+<h3 id="git-reset">git reset</h3>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1457,245 +1696,6 @@ YML 解析器不会将其转换为 True 或 False。</p>
       </tags>
   </entry>
   <entry>
-    <title>git详解</title>
-    <url>/posts/3161/</url>
-    <content><![CDATA[<p>Git
-是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
-<span id="more"></span>
-<h2 id="基本概念">基本概念</h2>
-<ul>
-<li><strong>工作区：</strong>就是你在电脑里能看到的目录。</li>
-<li><strong>暂存区：</strong>英文叫 stage 或 index。一般存放在
-<strong>.git</strong> 目录下的 index
-文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
-<li><strong>版本库：</strong>工作区有一个隐藏目录
-<strong>.git</strong>，这个不算工作区，而是 Git 的版本库。</li>
-</ul>
-<p>下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：</p>
-<figure>
-<img src="/images/assert/1352126739_7909.jpg" alt="基本概念" />
-<figcaption aria-hidden="true">基本概念</figcaption>
-</figure>
-<ul>
-<li>图中左侧为工作区，右侧为版本库。在版本库中标记为 "index"
-的区域是暂存区（stage/index），标记为 "master" 的是 master
-分支所代表的目录树。</li>
-<li>图中我们可以看出此时 "HEAD" 实际是指向 master
-分支的一个"游标"。所以图示的命令中出现 HEAD 的地方可以用 master
-来替换。</li>
-<li>图中的 objects 标识的区域为 Git 的对象库，实际位于 ".git/objects"
-目录下，里面包含了创建的各种对象及内容。</li>
-<li>当对工作区修改（或新增）的文件执行 <code>git add</code>
-命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。</li>
-<li>当执行提交操作（git
-commit）时，暂存区的目录树写到版本库（对象库）中，master
-分支会做相应的更新。即 master
-指向的目录树就是提交时暂存区的目录树。</li>
-<li>当执行 <code>git reset HEAD</code>
-命令时，暂存区的目录树会被重写，被 master
-分支指向的目录树所替换，但是工作区不受影响。</li>
-<li>当执行 <code>git rm --cached &lt;file&gt;</code>
-命令时，会直接从暂存区删除文件，工作区则不做出改变。</li>
-<li>当执行<code>git checkout .</code>或者
-<code>git checkout -- &lt;file&gt;</code>
-命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区中的改动。</li>
-<li>当执行 <code>git checkout HEAD .</code> 或者
-<code>git checkout HEAD &lt;file&gt;</code>命令时，会用 HEAD 指向的
-master
-分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
-</ul>
-<h2 id="git-工作流程">Git 工作流程</h2>
-<p>一般工作流程如下：</p>
-<ul>
-<li>克隆 Git 资源作为工作目录。</li>
-<li>在克隆的资源上添加或修改文件。</li>
-<li>如果其他人修改了，你可以更新资源。</li>
-<li>在提交前查看修改。</li>
-<li>提交修改。</li>
-<li>在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。</li>
-</ul>
-<p>下图展示了 Git 的工作流程：</p>
-<figure>
-<img src="/images/assert/git-process.png" alt="git工作流程" />
-<figcaption aria-hidden="true">git工作流程</figcaption>
-</figure>
-<h2 id="git-配置">Git 配置</h2>
-<p>Git 提供了一个叫做 git config
-的工具，专门用来配置或读取相应的工作环境变量。</p>
-<p>这些环境变量，决定了 Git
-在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
-<ul>
-<li><code>/etc/gitconfig</code>
-文件：系统中对所有用户都普遍适用的配置。若使用 <code>git config</code>
-时用 <code>--system</code> 选项，读写的就是这个文件。</li>
-<li><code>~/.gitconfig</code>
-文件：用户目录下的配置文件只适用于该用户。若使用 <code>git config</code>
-时用 <code>--global</code> 选项，读写的就是这个文件。</li>
-<li>当前项目的 Git 目录中的配置文件（也就是工作目录中的
-<code>.git/config</code>
-文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以
-<code>.git/config</code> 里的配置会覆盖 <code>/etc/gitconfig</code>
-中的同名变量。</li>
-</ul>
-<h3 id="用户信息">用户信息</h3>
-<p>配置个人的用户名称和电子邮件地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;runoob&quot;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
-<p>如果用了 <strong>--global</strong>
-选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
-<p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global
-选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。</p>
-<h3 id="文本编辑器">文本编辑器</h3>
-<p>设置Git默认使用的文本编辑器, 一般可能会是 Vi 或者
-Vim。如果你有其他偏好，比如 Emacs 的话，可以重新设置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global core.editor emacs</span><br></pre></td></tr></table></figure>
-<h3 id="差异分析工具">差异分析工具</h3>
-<p>还有一个比较常用的是，在解决合并冲突时使用哪种差异分析工具。比如要改用
-vimdiff 的话：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global merge.tool vimdiff</span><br></pre></td></tr></table></figure>
-<p>Git 可以理解
-kdiff3，tkdiff，meld，xxdiff，emerge，vimdiff，gvimdiff，ecmerge，和
-opendiff 等合并工具的输出信息。</p>
-<p>当然，你也可以指定使用自己开发的工具。</p>
-<h3 id="查看配置信息">查看配置信息</h3>
-<p>要检查已有的配置信息，可以使用 git config --list 命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">http.postbuffer=2M</span><br><span class="line">user.name=runoob</span><br><span class="line">user.email=test@runoob.com</span><br></pre></td></tr></table></figure>
-<p>有时候会看到重复的变量名，那就说明它们来自不同的配置文件（比如
-/etc/gitconfig 和 ~/.gitconfig），不过最终 Git
-实际采用的是最后一个。</p>
-<p>这些配置我们也可以在 <strong>~/.gitconfig</strong> 或
-<strong>/etc/gitconfig</strong> 看到，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.gitconfig </span><br></pre></td></tr></table></figure>
-<p>显示内容如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[http]</span><br><span class="line">    postBuffer = 2M</span><br><span class="line">[user]</span><br><span class="line">    name = runoob</span><br><span class="line">    email = test@runoob.com</span><br></pre></td></tr></table></figure>
-<p>也可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">runoob</span><br></pre></td></tr></table></figure>
-<h2 id="创建仓库">创建仓库</h2>
-<h3 id="git-init">git init</h3>
-<p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git
-的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong>
-是使用 Git 的第一个命令。</p>
-<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git
-目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
-<p><strong>使用方法</strong></p>
-<p>使用当前目录作为 Git 仓库，我们只需使它初始化。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>该命令执行完后会在当前目录生成一个 .git 目录。</p>
-<p>使用我们指定目录作为Git仓库。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init newrepo</span><br></pre></td></tr></table></figure>
-<p>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录，所有 Git
-需要的数据和资源都存放在这个目录中。</p>
-<p>如果当前目录下有几个文件想要纳入版本控制，需要先用 git add 命令告诉
-Git 开始对这些文件进行跟踪，然后提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add *.c</span><br><span class="line">$ git add README</span><br><span class="line">$ git commit -m &#x27;初始化项目版本&#x27;</span><br></pre></td></tr></table></figure>
-<p>以上命令将目录下以 .c 结尾及 README 文件提交到仓库中。</p>
-<blockquote>
-<p><strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号
-<strong>'</strong>，Windows 系统，commit 信息使用双引号
-<strong>"</strong>。</p>
-<p>所以在 git bash 中 <strong>git commit -m '提交说明'</strong>
-这样是可以的，在 Windows 命令行中就要使用双引号 <strong>git commit -m
-"提交说明"</strong>。</p>
-</blockquote>
-<hr />
-<h3 id="git-clone">git clone</h3>
-<p>我们使用 <strong>git clone</strong> 从现有 Git 仓库中拷贝项目（类似
-<strong>svn checkout</strong>）。</p>
-<p>克隆仓库的命令格式为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone &lt;repo&gt;</span><br></pre></td></tr></table></figure>
-<p>如果我们需要克隆到指定的目录，可以使用以下命令格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone &lt;repo&gt; &lt;directory&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>参数说明：</strong></p>
-<ul>
-<li><strong>repo:</strong>Git 仓库。</li>
-<li><strong>directory:</strong>本地目录。</li>
-</ul>
-<p>比如，要克隆 Ruby 语言的 Git 代码仓库 Grit，可以用下面的命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://github.com/schacon/grit.git</span><br></pre></td></tr></table></figure>
-<p>执行该命令后，会在当前目录下创建一个名为grit的目录，其中包含一个 .git
-的目录，用于保存下载下来的所有版本记录。</p>
-<p>如果要自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://github.com/schacon/grit.git mygrit</span><br></pre></td></tr></table></figure>
-<h2 id="基本操作">基本操作</h2>
-<figure>
-<img src="../../images/assert/git-command.jpg" alt="基本操作" />
-<figcaption aria-hidden="true">基本操作</figcaption>
-</figure>
-<h3 id="git-add">git add</h3>
-<p><strong>git add</strong> 命令可将该文件的修改添加到暂存区。</p>
-<p>通过运行 <strong>git add</strong> 命令，你可以告诉 Git
-哪些文件的修改应该包含在下一次提交（commit）中。</p>
-<p>添加一个或多个文件到暂存区：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add [file1] [file2] ...</span><br></pre></td></tr></table></figure>
-<p>添加指定目录到暂存区，包括子目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
-<p>添加当前目录下的所有文件到暂存区：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<h3 id="git-status">git status</h3>
-<p><strong>git status</strong> 是一个用于查看 Git
-仓库当前状态的命令。</p>
-<p><strong>git status</strong>
-命令可以查看在你上次提交之后是否有对文件进行再次修改。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">    new file:   README</span><br><span class="line">    new file:   hello.php</span><br></pre></td></tr></table></figure>
-<p>git status 命令会显示以下信息：</p>
-<ul>
-<li>当前分支的名称。</li>
-<li>当前分支与远程分支的关系（例如，是否是最新的）。</li>
-<li>未暂存的修改：显示已修改但尚未使用 <code>git add</code>
-添加到暂存区的文件列表。</li>
-<li>未跟踪的文件：显示尚未纳入版本控制的新文件列表。</li>
-</ul>
-<p>根据 git status
-的输出，你可以判断当前工作目录中的文件状态，并采取适当的操作。</p>
-<p>通常我们使用 <strong>-s</strong> 参数来获得简短的输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status -s</span><br><span class="line">AM README</span><br><span class="line">A  hello.php</span><br></pre></td></tr></table></figure>
-<p><strong>AM</strong>
-状态的意思是这个文件在我们将它添加到缓存之后又有改动。</p>
-<h3 id="git-diff">git diff</h3>
-<h3 id="git-commit">git commit</h3>
-<p>git commit 命令将暂存区内容添加到本地仓库中。</p>
-<p>提交暂存区到本地仓库中:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
-<p>[message] 可以是一些备注信息。</p>
-<p>提交暂存区的指定文件到仓库区：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br></pre></td></tr></table></figure>
-<p><strong>-a</strong> 参数设置修改文件后不需要执行 git add
-命令，直接来提交</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -a</span><br></pre></td></tr></table></figure>
-<p><strong>设置提交代码时的用户信息</strong></p>
-<p>开始前我们需要先设置提交的用户信息，包括用户名和邮箱：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &#x27;runoob&#x27;</span><br><span class="line">$ git config --global user.email test@runoob.com</span><br></pre></td></tr></table></figure>
-<p>如果去掉 --global 参数只对当前仓库有效。</p>
-<p><strong>提交修改</strong></p>
-<p>接下来我们就可以对 hello.php
-的所有改动从暂存区内容添加到本地仓库中。</p>
-<p>以下实例，我们使用 -m 选项以在命令行中提供提交注释。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add hello.php</span><br><span class="line">$ git status -s</span><br><span class="line">A  README</span><br><span class="line">A  hello.php</span><br><span class="line">$ git commit -m &#x27;第一次版本提交&#x27;</span><br><span class="line">[master (root-commit) d32cf1f] 第一次版本提交</span><br><span class="line"> 2 files changed, 4 insertions(+)</span><br><span class="line"> create mode 100644 README</span><br><span class="line"> create mode 100644 hello.php</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<p>现在我们已经记录了快照。如果我们再执行 git status:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"># On branch master</span><br><span class="line">nothing to commit (working directory clean)</span><br></pre></td></tr></table></figure>
-<p>以上输出说明我们在最近一次提交之后，没有做任何改动，是一个 "working
-directory clean"，翻译过来就是干净的工作目录。</p>
-<p>如果你没有设置 -m 选项，Git 会尝试为你打开一个编辑器以填写提交信息。
-如果 Git 在你对它的配置中找不到相关信息，默认会打开
-vim。屏幕会像这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &#x27;#&#x27; will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">#</span><br><span class="line"># modified:   hello.php</span><br><span class="line">#</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">&quot;.git/COMMIT_EDITMSG&quot; 9L, 257C</span><br></pre></td></tr></table></figure>
-<p>如果你觉得 git add 提交缓存的流程太过繁琐，Git 也允许你用 -a
-选项跳过这一步。命令格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
-<p>我们先修改 hello.php 文件为以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;菜鸟教程：www.runoob.com&#x27;;</span><br><span class="line">echo &#x27;菜鸟教程：www.runoob.com&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>再执行以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -am &#x27;修改 hello.php 文件&#x27;</span><br><span class="line">[master 71ee2cb] 修改 hello.php 文件</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
-<h3 id="git-reset">git reset</h3>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>心理学通识总述</title>
     <url>/posts/40296/</url>
     <content><![CDATA[<p>系统学习心理学真正的目的，是为了帮助我们过得更好。</p>
@@ -1731,6 +1731,413 @@ vim。屏幕会像这样：</p>
         <tag>心理学通识总述</tag>
         <tag>心理学</tag>
         <tag>通识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梯度下降</title>
+    <url>/posts/45571/</url>
+    <content><![CDATA[<p>在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降（Gradient
+Descent）是最常采用的方法之一，另一种常用的方法是最小二乘法。这里就对梯度下降法做一个完整的总结。</p>
+<span id="more"></span>
+<h2 id="梯度">梯度</h2>
+<p>在微积分里面，对多元函数的参数求 <span
+class="math inline">\(\partial\)</span>
+偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数
+<span class="math inline">\(f(x,y)\)</span> ，分别对 <span
+class="math inline">\(x,y\)</span> 求偏导数，求得的梯度向量就是 <span
+class="math inline">\(({\partial f}/{\partial x} , {\partial
+f}/{\partial y} )^T\)</span> ，简称 <span class="math inline">\(grad
+f(x,y)\)</span> 或者 <span class="math inline">\(\bigtriangledown
+f(x,y)\)</span> 。对于在点 <span
+class="math inline">\((x_0,y_0)\)</span> 的具体梯度向量就是 <span
+class="math inline">\(({\partial f}/{\partial x_0} , {\partial
+f}/{\partial y_0} )^T\)</span> 或者 <span
+class="math inline">\(\bigtriangledown f(x_0,y_0)\)</span>
+，如果是3个参数的向量梯度，就是 <span class="math inline">\(({\partial
+f}/{\partial x} , {\partial f}/{\partial y}, {\partial f}/{\partial z}
+)^T\)</span> ，以此类推。</p>
+<p>那么这个梯度向量求出来有什么意义呢？他的意义从几何意义上讲，就是函数变化增加最快的地方。具体来说，对于函数
+<span class="math inline">\(f(x,y)\)</span> ，在点 <span
+class="math inline">\((x_0,y_0)\)</span> ，沿着梯度向量的方向就是 <span
+class="math inline">\(({\partial f}/{\partial x_0} , {\partial
+f}/{\partial y_0} )^T\)</span> 的方向，是<span
+class="math inline">\(f(x,y)\)</span>增加最快的地方。或者说，沿着梯度向量的方向，更加容易找到函数的最大值。反过来说，沿着梯度向量相反的方向，也就是
+<span class="math inline">\(-({\partial f}/{\partial x_0} , {\partial
+f}/{\partial y_0} )^T\)</span>
+的方向，梯度减少最快，也就是更加容易找到函数的最小值。</p>
+<h2 id="梯度下降与梯度上升">梯度下降与梯度上升</h2>
+<p>在机器学习算法中，在最小化损失函数时，可以通过梯度下降法来一步步的迭代求解，得到最小化的损失函数和模型参数值。反过来，如果我们需要求解损失函数的最大值，这时就需要用梯度上升法来迭代了。</p>
+<p>梯度下降法和梯度上升法是可以互相转化的。比如我们需要求解损失函数
+<span class="math inline">\(f(\theta )\)</span>
+的最小值，这时我们需要用梯度下降法来迭代求解。但是实际上，我们可以反过来求解损失函数
+<span class="math inline">\(-f(\theta )\)</span>
+的最大值，这时梯度上升法就派上用场了。</p>
+<h2 id="梯度下降法算法详解">梯度下降法算法详解</h2>
+<h3 id="直观解释">直观解释</h3>
+<p>首先来看看梯度下降的一个直观的解释。比如我们在一座大山上的某处位置，由于我们不知道怎么下山，于是决定走一步算一步，也就是在每走到一个位置的时候，求解当前位置的梯度，沿着梯度的负方向，也就是当前最陡峭的位置向下走一步，然后继续求解当前位置梯度，向这一步所在位置沿着最陡峭最易下山的位置走一步。这样一步步的走下去，一直走到觉得我们已经到了山脚。当然这样走下去，有可能我们不能走到山脚，而是到了某一个局部的山峰低处。</p>
+<p>从上面的解释可以看出，梯度下降不一定能够找到全局的最优解，有可能是一个局部最优解。当然，如果损失函数是凸函数，梯度下降法得到的解就一定是全局最优解。</p>
+<figure>
+<img
+src="/images/assert/1042406-20161017221342935-1872962415-1689969183450-2.png"
+alt="梯度下降" />
+<figcaption aria-hidden="true">梯度下降</figcaption>
+</figure>
+<h3 id="相关概念">相关概念</h3>
+<p>在详细了解梯度下降的算法之前，我们先看看相关的一些概念。</p>
+<p>1、<mark class="label ">步长（Learning rate）</mark>：步长决定了在梯度下降迭代的过程中，每一步沿梯度负方向前进的长度。用上面下山的例子，步长就是在当前这一步所在位置沿着最陡峭最易下山的位置走的那一步的长度。</p>
+<p>2、<mark class="label ">特征（feature）</mark>：指的是样本中输入部分，比如2个单特征的样本 <span
+class="math inline">\((x^{(0)},y^{(0)}),(x^{(1)},y^{(1)})\)</span>
+，则第一个样本特征为 <span class="math inline">\(x^{(0)}\)</span>
+，第一个样本输出为 <span class="math inline">\(y^{(0)}\)</span> 。</p>
+<p>3、<mark class="label ">假设函数（hypothesis function）</mark>：在监督学习中，为了拟合输入样本，而使用的假设函数，记为
+<span class="math inline">\(h_{\theta}(x)\)</span>
+。比如对于单个特征的m个样本 <span
+class="math inline">\((x^{(i)},y^{(i)})(i=1,2,...m)\)</span>
+，可以采用拟合函数如下： <span class="math inline">\(h_{\theta}(x) =
+\theta_0+\theta_1x\)</span>。</p>
+<p>4、<mark class="label ">损失函数（loss function）</mark>：为了评估模型拟合的好坏，通常用损失函数来度量拟合的程度。损失函数极小化，意味着拟合程度最好，对应的模型参数即为最优参数。在线性回归中，损失函数通常为样本输出和假设函数的差取平方。比如对于m个样本
+<span class="math inline">\((x_i,y_i)(i=1,2,...m)\)</span>
+，采用线性回归，损失函数如下，其中 <span
+class="math inline">\(x_i\)</span> 表示第i个样本特征， <span
+class="math inline">\(y_i\)</span> 表示第i个样本对应的输出， <span
+class="math inline">\(h_\theta(x_i)\)</span> 为假设函数。<br />
+<span class="math display">\[
+J(\theta_0, \theta_1) = \sum\limits_{i=1}^{m}(h_\theta(x_i) - y_i)^2
+\]</span></p>
+<h3 id="代数方式描述">代数方式描述</h3>
+<p>1、<mark class="label ">先决条件</mark>： 确认优化模型的假设函数和损失函数。
+比如对于线性回归，假设函数表示为 <span
+class="math inline">\(h_\theta(x_1, x_2, ...x_n) = \theta_0 +
+\theta_{1}x_1 + ... + \theta_{n}x_{n}\)</span> ，其中 <span
+class="math inline">\(\theta_i\)</span> 为模型参数，<span
+class="math inline">\(x_i\)</span>
+为每个样本的n个特征值。这个表示可以简化，我们增加一个特征<span
+class="math inline">\(x_0 = 1\)</span>，这样<span
+class="math inline">\(h_\theta(x_0, x_1, ...x_n) =
+\sum\limits_{i=0}^{n}\theta_{i}x_{i}\)</span>。
+同样是线性回归，对应于上面的假设函数，损失函数为： <span
+class="math display">\[
+J(\theta_0, \theta_1..., \theta_n) =
+\frac{1}{2m}\sum\limits_{j=1}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{(j)}) - y_j)^2
+\]</span></p>
+<p>2、<mark class="label ">算法相关参数初始化</mark>：主要是初始化<span class="math inline">\(\theta_0,
+\theta_1..., \theta_n\)</span>，算法终止距离<span
+class="math inline">\(\epsilon\)</span>以及步长<span
+class="math inline">\(\alpha\)</span>。在没有任何先验知识的时候，我喜欢将所有的<span
+class="math inline">\(\theta\)</span>初始化为0，
+将步长初始化为1。在调优的时候再优化。</p>
+<p>3、<mark class="label ">算法过程</mark>：</p>
+<ol type="1">
+<li><p>确定当前位置的损失函数的梯度，对于<span
+class="math inline">\(\theta_i\)</span>​，其梯度表达式如下： <span
+class="math display">\[
+\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1..., \theta_n)
+\]</span></p></li>
+<li><p>用步长乘以损失函数的梯度，得到当前位置下降的距离，即: <span
+class="math display">\[
+\alpha\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1...,
+\theta_n)
+\]</span></p></li>
+<li><p>确定是否所有的<span
+class="math inline">\(\theta_i\)</span>，梯度下降的距离都小于<span
+class="math inline">\(\epsilon\)</span>，如果小于<span
+class="math inline">\(\epsilon\)</span>则算法终止，当前所有的<span
+class="math inline">\(\theta_i\)</span>即为最终结果。否则进入步骤4.</p></li>
+<li><p>更新所有的<span class="math inline">\(\theta\)</span>，对于<span
+class="math inline">\(\theta_i\)</span>​，其更新表达式如下。更新完毕后继续转入步骤1.
+<span class="math display">\[
+\theta_i = \theta_i - \alpha\frac{\partial}{\partial\theta_i}J(\theta_0,
+\theta_1..., \theta_n)
+\]</span></p></li>
+</ol>
+<p>下面用线性回归的例子来具体描述梯度下降。假设我们的样本是<span
+class="math inline">\((x_1^{(0)}, x_2^{(0)}, ...x_n^{(0)}, y_0),
+(x_1^{(1)}, x_2^{(1)}, ...x_n^{(1)},y_1), ... (x_1^{(m)}, x_2^{(m)},
+...x_n^{(m)}, y_m)\)</span>​，损失函数如前面先决条件所述： <span
+class="math display">\[
+J(\theta_0, \theta_1..., \theta_n) =
+\frac{1}{2m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{(j)})- y_j)^2
+\]</span> 则在算法过程步骤1中对于<span
+class="math inline">\(\theta_i\)</span>的偏导数计算如下： <span
+class="math display">\[
+\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1..., \theta_n)=
+\frac{1}{m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{(j)}) - y_j)x_i^{(j)}
+\]</span> 由于样本中没有<span
+class="math inline">\(x_0\)</span>，所以令所有的<span
+class="math inline">\(x_0^{j}\)</span>为1。步骤4中<span
+class="math inline">\(\theta_i\)</span>的更新表达式如下： <span
+class="math display">\[
+\theta_i = \theta_i -
+\alpha\frac{1}{m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
+...x_n^{j}) - y_j)x_i^{(j)}
+\]</span>
+从这个例子可以看出当前点的梯度方向是由所有的样本决定的，加<span
+class="math inline">\(\frac{1}{m}\)</span>是为了好理解。由于步长也为常数，他们的乘积也为常数，所以这里
+<span class="math inline">\(\alpha\frac{1}{m}\)</span>
+可以用一个常数表示。</p>
+<p>在下面会详细讲到的梯度下降法的变种，他们主要的区别就是对样本的采用方法不同。这里我们采用的是用所有样本。</p>
+<h3 id="矩阵方式描述">矩阵方式描述</h3>
+<p>1、<mark class="label ">先决条件</mark>：对于线性回归，假设函数 <span
+class="math inline">\(h_{\theta}\left(x_{1}, x_{2}, \ldots
+x_{n}\right)=\theta_{0}+\theta_{1} x_{1}+\ldots+\theta_{n}
+x_{n}\)</span> 的矩阵表达方式为: <span
+class="math inline">\(h_{\theta}(\mathbf{X})=\mathbf{X} \theta\)</span>
+，其中，假设函数 <span
+class="math inline">\(h_\theta(\mathbf{X})\)</span> 为 <span
+class="math inline">\(m \times 1\)</span> 的向量, <span
+class="math inline">\(\theta\)</span> 为 <span
+class="math inline">\((\mathrm{n}+1) \times 1\)</span> 的向量，里面有
+n+1 个代数法的模型参数。 <span class="math inline">\(\mathbf{X}\)</span>
+为 <span class="math inline">\(m \times(n+1)\)</span> 维的矩阵。 m 代表
+样本的个数， n+1 代表样本的特征数。损失函数的表达式为: <span
+class="math inline">\(J(\theta)=\frac{1}{2}(\mathbf{X}
+\theta-\mathbf{Y})^{T}(\mathbf{X} \theta-\mathbf{Y})\)</span> ，其中
+<span class="math inline">\(\mathbf{Y}\)</span> 是样本的输出向量，维度为
+<span class="math inline">\(\mathrm{m} \times 1\)</span> .</p>
+<p>2、<mark class="label ">算法相关参数初始化</mark>: <span class="math inline">\(\theta\)</span>
+向量可以初始化为默认值，或者调优后的值。算法终止距离 <span
+class="math inline">\(\varepsilon\)</span> ，步长 <span
+class="math inline">\(\alpha\)</span> 之前比没有变化。</p>
+<p>3、<mark class="label ">算法过程</mark>:</p>
+<ol type="1">
+<li>确定当前位置的损失函数的梯度，对于 <span
+class="math inline">\(\theta\)</span> 向量,其梯度表达式如下:</li>
+</ol>
+<p><span class="math display">\[
+\frac{\partial}{\partial \theta} J(\theta)
+\]</span></p>
+<ol start="2" type="1">
+<li>用步长乘以损失函数的梯度，得到当前位置下降的距离，即 <span
+class="math inline">\(\alpha \frac{\partial}{\partial \theta}
+J(\theta)\)</span> 对应于前面登山例子中的某一步。</li>
+<li>确定 <span class="math inline">\(\theta\)</span>
+向量里面的每个值,梯度下降的距离都小于 <span
+class="math inline">\(\varepsilon\)</span> ，如果小于 <span
+class="math inline">\(\varepsilon\)</span> 则算法终止，当前 <span
+class="math inline">\(\theta\)</span> 向量即为最终结果。否则进入步骤 4
+.</li>
+<li>更新 <span class="math inline">\(\theta\)</span>
+向量，其更新表达式如下。更新完毕后继续转入步骤1.</li>
+</ol>
+<p><span class="math display">\[
+\theta=\theta-\alpha \frac{\partial}{\partial \theta} J(\theta)
+\]</span></p>
+<p>还是用线性回归的例子来描述具体的算法过程。 损失函数对于 <span
+class="math inline">\(\theta\)</span> 向量的偏导数计算如下: <span
+class="math display">\[
+\frac{\partial}{\partial \theta} J(\theta)=\mathbf{X}^{T}(\mathbf{X}
+\theta-\mathbf{Y})
+\]</span> 步骤4中 <span class="math inline">\(\theta\)</span>
+向量的更新表达式如下:<br />
+<span class="math display">\[
+\theta=\theta-\alpha \mathbf{X}^{T}(\mathbf{X} \theta-\mathbf{Y})
+\]</span>
+相比代数法，可以看到矩阵法要简洁很多。这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。</p>
+<p>公式1: <span class="math inline">\(\frac{\partial}{\partial
+\mathbf{x}}\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2
+\mathbf{x}\)</span> ，<span class="math inline">\(x\)</span> 为向量</p>
+<p>公式2: <span class="math inline">\(\nabla_{X} f(A X+B)=A^{T}
+\nabla_{Y} f, Y=A X+B\)</span>，<span
+class="math inline">\(f(Y)\)</span> 为标量</p>
+<h2 id="算法调优">算法调优</h2>
+<p>1、<mark class="label ">算法的步长选择</mark>。在前面的算法描述中，我提到取步长为 1
+，但是实际上取值取决于数据样本，可以多取一些值，从大到小，分别运行算法，看看迭代效果，如果损失函数在变小，说明取值有效，否则要增大步长。前面说了。步长太大，会导致迭代过快，甚至有可能错过最优解。步长太小，迭代速度太慢，
+很长时间算法都不能结束。所以算法的步长需要多次运行后才能得到一个较为优的值。</p>
+<p>2、<mark class="label ">算法参数的初始值选择</mark>。初始值不同，获得的最小值也有可能不同，因此梯度下降求得的只是局部最小值；当然如果损失函数是凸函数则一定是最优
+解。由于有局部最优解的风险，需要多次用不同初始值运行算法，关注损失函数的最小值，选择损失函数最小化的初始值。</p>
+<p>3、<mark class="label ">归一化</mark>。由于样本不同特征的取值范围不一样，可能导致迭代很慢，为了减少特征取值的影响，可以对特征数据归一化，也就是对于每个特征
+<span class="math inline">\(\mathrm{x}\)</span> ，求出 它的期望 <span
+class="math inline">\(\bar{x}\)</span> 和标准差 <span
+class="math inline">\(\operatorname{std}(x)\)</span> ，然后转化为: <span
+class="math display">\[
+\frac{x-\bar{x}}{\operatorname{std}(x)}
+\]</span> 这样特征的新期望为 0 ，新方差为 1 ，迭代速度可以大大加快。</p>
+<h2 id="梯度下降法大家族">梯度下降法大家族</h2>
+<p><strong>批量梯度下降法（Batch Gradient Descent）</strong></p>
+<p>批量梯度下降法，是梯度下降法最常用的形式，具体做法也就是在更新参数时使用所有的样本来进行更新：</p>
+<p><span class="math display">\[
+\theta_{i}=\theta_{i}-\alpha
+\sum_{j=1}^{m}\left(h_{\theta}\left(x_{0}^{(j)}, x_{1}^{(j)}, \ldots
+x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
+\]</span> <strong>随机梯度下降法（Stochastic Gradient
+Descent）</strong></p>
+<p>随机梯度下降法，其实和批量梯度下降法原理类似，区别在与求梯度时没有用所有的
+<span class="math inline">\(\mathrm{m}\)</span>
+个样本的数据，而是仅仅选取一个样本 <span
+class="math inline">\(\mathrm{j}\)</span>
+来求梯度。对应的更新公式是:</p>
+<p><span class="math display">\[
+\theta_{i}=\theta_{i}-\alpha\left(h_{\theta}\left(x_{0}^{(j)},
+x_{1}^{(j)}, \ldots x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
+\]</span>
+随机梯度下降法和批量梯度下降法是两个极端，一个采用所有数据来梯度下降，一个用一个样本来梯度下降。自然各自的优缺点都非常突出。对于训练速度来说，随机梯度下降法由于每次仅仅采用一个样本来迭代，训练速度很快，而批量梯度下降法在样本量很大的时候，训练速度不能让人满意。对于准确度来说，随机梯度下降法用于仅仅用一个样本决定梯度方向，导致解很有可能不是最优。对于收敛速度来说，由于随机梯度下降法一次迭代一个样本，导致迭
+代方向变化很大，不能很快的收敛到局部最优解。那么，有没有一个中庸的办法能够结合两种方法的优点呢?
+有! 这就是小批量梯度下降法。</p>
+<p><strong>小批量梯度下降法（Mini-batch Gradient Descent）</strong></p>
+<p>小批量梯度下降法是批量梯度下降法和随机梯度下降法的折䩖，也就是对于
+<span class="math inline">\(m\)</span> 个样本，我们采用 <span
+class="math inline">\(x\)</span> 个样子来迭代， <span
+class="math inline">\(1&lt;x&lt;m\)</span> 。一般可以取 <span
+class="math inline">\(x=10\)</span> ，当然根据样本的数据，可以调整这个
+<span class="math inline">\(x\)</span> 的值。对应的更新公式是:</p>
+<p><span class="math display">\[
+\theta_{i}=\theta_{i}-\alpha
+\sum_{j=t}^{t+x-1}\left(h_{\theta}\left(x_{0}^{(j)}, x_{1}^{(j)}, \ldots
+x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
+\]</span></p>
+<h2 id="和其他无约束优化算法的比较">和其他无约束优化算法的比较</h2>
+<p>在机器学习中的无约束优化算法，除了梯度下降以外，还有前面提到的最小二乘法，此外还有牛顿法和拟牛顿法。</p>
+<p>梯度下降法和最小二乘法相比，梯度下降法需要选择步长，而最小二乘法不需要。梯度下降法是迭代求解，最小二乘法是计算解析解。如果样本量不算很大，且存在解析解，最小二乘法比起梯度下降法要有优势，计算速度很快。但是如果样本量很大，用最小二乘法由于需要求一个超级大的逆矩阵，这时就很难或者很慢才能求解解析解了，使用迭代的梯度下降法比较有优势。</p>
+<p>梯度下降法和牛顿法/拟牛顿法相比，两者都是迭代求解，不过梯度下降法是梯度求解，而牛顿法/拟牛顿法是用二阶的海森矩阵的逆矩阵或伪逆矩阵求解。相对而言，使用牛顿法/拟牛顿法收敛更快。但是每次迭代的时间比梯度下降法长。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>梯度下降</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最小二乘法</title>
+    <url>/posts/53030/</url>
+    <content><![CDATA[<p>最小二乘法是用来做函数拟合或者求函数极值的方法。</p>
+<span id="more"></span>
+<h2 id="引入">引入</h2>
+<p>最小二乘法是由勒让德在19世纪发现的，原理的一般形式很简单，当然发现的过程是非常艰难的。形式如下式:</p>
+<p><span class="math display">\[
+\text { 目标函数 }=\sum(\text { 观测值 }- \text { 理论值 })^{2}
+\]</span>
+观测值就是我们的多组样本，理论值就是我们的假设拟合函数。目标函数也就是在机器学习中常说的损失函数，我们的目标是得到使目标函数最小化的拟合函数的模型。举一个最简单的线性回归的简单例子，比如我们有
+<span class="math inline">\(m\)</span> 个只有一个特征的样本:</p>
+<p><span class="math display">\[
+\left(x^{(1)}, y^{(1)}\right),\left(x^{(2)}, y^{(2)}\right),
+\ldots\left(x^{(m)}, y^{(m)}\right)
+\]</span> 样本采用下面的拟合函数:</p>
+<p><span class="math display">\[
+h_{\theta}(x)=\theta_{0}+\theta_{1} x
+\]</span> 这样我们的样本有一个特征 <span
+class="math inline">\(x\)</span> ，对应的拟合函数有两个参数 <span
+class="math inline">\(\theta_{0}\)</span> 和 <span
+class="math inline">\(\theta_{1}\)</span> 需要求出。</p>
+<p>我们的目标函数为: <span class="math display">\[
+J\left(\theta_{0},
+\theta_{1}\right)=\sum_{i=1}^{m}\left(y^{(i)}-h_{\theta}\left(x^{(i)}\right)\right)^{2}=\sum_{i=1}^{m}\left(y^{(i)}-\theta_{0}-\theta_{1}
+x^{(i)}\right)^{2}
+\]</span> 用最小二乘法求出使 <span
+class="math inline">\(J\left(\theta_{0}, \theta_{1}\right)\)</span>
+最小时的 <span class="math inline">\(\theta_{0}\)</span> 和 <span
+class="math inline">\(\theta_{1}\)</span> ，这样拟合函数就得出了。</p>
+<h2 id="代数法求解">代数法求解</h2>
+<p>上面提到要使 <span class="math inline">\(J\left(\theta_{0},
+\theta_{1}\right)\)</span> 最小，方法就是对 <span
+class="math inline">\(\theta_{0}\)</span> 和 <span
+class="math inline">\(\theta_{1}\)</span> 分别来求偏导数，令偏导数为 0
+，得到一个关于 <span class="math inline">\(\theta_{0}\)</span> 和 <span
+class="math inline">\(\theta_{1}\)</span>
+的二元方程组。求解这个二元方程组，就可以 得到 <span
+class="math inline">\(\theta_{0}\)</span> 和 <span
+class="math inline">\(\theta_{1}\)</span>
+的值。下面我们具体看看过程。</p>
+<p><span class="math inline">\(J\left(\theta_{0},
+\theta_{1}\right)\)</span> 对 <span
+class="math inline">\(\theta_{0}\)</span> 求导，得到如下方程: <span
+class="math display">\[
+\sum_{i=1}^{m}\left(y^{(i)}-\theta_{0}-\theta_{1} x^{(i)}\right)=0
+\]</span> <span class="math inline">\(J\left(\theta_{0},
+\theta_{1}\right)\)</span> 对 <span
+class="math inline">\(\theta_{1}\)</span> 求导，得到如下方程:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{m}\left(y^{(i)}-\theta_{0}-\theta_{1} x^{(i)}\right)
+x^{(i)}=0
+\]</span> 容易求出 <span class="math inline">\(\theta_{0}\)</span> 和
+<span class="math inline">\(\theta_{1}\)</span> 的值:</p>
+<p><span class="math display">\[
+\theta_{0}=\sum_{i=1}^{m}\left(x^{(i)}\right)^{2} \sum_{i=1}^{m}
+y^{(i)}-\sum_{i=1}^{m} x^{(i)} \sum_{i=1}^{m} x^{(i)} y^{(i)} / m
+\sum_{i=1}^{m}\left(x^{(i)}\right)^{2}-\left(\sum_{i=1}^{m}
+x^{(i)}\right)^{2}
+\]</span></p>
+<p><span class="math display">\[
+\theta_{1}=m \sum_{i=1}^{m} x^{(i)} y^{(i)}-\sum_{i=1}^{m} x^{(i)}
+\sum_{i=1}^{m} y^{(i)} / m
+\sum_{i=1}^{m}\left(x^{(i)}\right)^{2}-\left(\sum_{i=1}^{m}
+x^{(i)}\right)^{2}
+\]</span></p>
+<p>这个方法很容易推广到多个样本特征的线性拟合和非线性拟合。</p>
+<h2 id="矩阵法求解">矩阵法求解</h2>
+<p>假设函数 <span class="math inline">\(h_{\theta}\left(x_{1}, x_{2},
+\ldots x_{n}\right)=\theta_{0}+\theta_{1} x_{1}+\ldots+\theta_{n-1}
+x_{n-1}\)</span> 的矩阵表达方式为:</p>
+<p><span class="math display">\[
+h_{\theta}(\mathbf{X})=\mathbf{X} \theta
+\]</span> 其中，假设函数 <span
+class="math inline">\(h_{\theta}(\mathbf{x})\)</span> 为 <span
+class="math inline">\(m \times 1\)</span> 的向量, <span
+class="math inline">\(\theta\)</span> 为 <span class="math inline">\(n
+\times 1\)</span> 的向量，里面有 <span class="math inline">\(n\)</span>
+个代数法的模型参数。 <span class="math inline">\(\mathbf{X}\)</span> 为
+<span class="math inline">\(m \times n\)</span> 维的矩阵。 <span
+class="math inline">\(m\)</span> 代表样本的个数， <span
+class="math inline">\(n\)</span> 代表样本的特征数。 损失函数定义为 :
+<span class="math display">\[
+J(\theta)=\frac{1}{2}(\mathbf{X} \theta-\mathbf{Y})^{T}(\mathbf{X}
+\theta-\mathbf{Y})
+\]</span> 其中 <span class="math inline">\(\mathbf{Y}\)</span>
+是样本的输出向量，维度为 <span class="math inline">\(m \times 1\)</span>
+。<span class="math inline">\(\frac{1}{2}\)</span>
+在这主要是为了求导后系数为 1 ，方便计算。</p>
+<p>根据最小二乘法的原理，我们要对这个损失函数对 <span
+class="math inline">\(\theta\)</span> 向量求导取 0 。结果如下式: <span
+class="math display">\[
+\frac{\partial}{\partial \theta} J(\theta)=\mathbf{X}^{T}(\mathbf{X}
+\theta-\mathbf{Y})=0
+\]</span> 这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。</p>
+<p>公式1: <span class="math inline">\(\frac{\partial}{\partial
+\mathbf{x}}\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2
+\mathbf{x}\)</span></p>
+<p>公式2: <span class="math inline">\(\nabla_{X} f(A X+B)=A^{T}
+\nabla_{Y} f, Y=A X+B,\)</span></p>
+<p>对上述求导等式整理后可得: <span class="math display">\[
+\mathbf{X}^{\mathbf{T}} \mathbf{X} \theta=\mathbf{X}^{\mathbf{T}}
+\mathbf{Y}
+\]</span> 两边同时左乘 <span
+class="math inline">\(\left(\mathbf{X}^{\mathbf{T}}
+\mathbf{X}\right)^{-1}\)</span> 可得:</p>
+<p><span class="math display">\[
+\theta=\left(\mathbf{X}^{\mathbf{T}} \mathbf{X}\right)^{-1}
+\mathbf{X}^{\mathbf{T}} \mathbf{Y}
+\]</span></p>
+<h2 id="局限性">局限性</h2>
+<p>首先，最小二乘法需要计算 <span
+class="math inline">\(\mathbf{X}^{\mathbf{T}} \mathbf{X}\)</span>
+的逆矩阵，有可能它的逆矩阵不存在，这样就没有办法直接用最小二乘法了，此时梯度下降法仍然可以使用。当然，
+我们可以通过对样本数据进行整理，去掉冗余特征。让 <span
+class="math inline">\(\mathbf{X}^{\mathbf{T}} \mathbf{X}\)</span>
+的行列式不为 0 ，然后继续使用最小二乘法。</p>
+<p>第二，当样本特征 n 非常的大的时候，计算 <span
+class="math inline">\(\mathbf{X}^{\mathbf{T}} \mathbf{X}\)</span>
+的逆矩阵是一个非常耗时的工作 ( <span class="math inline">\(n \times
+n\)</span> 的矩阵求逆)，甚至不可行。此时以梯度下降为代表的迭代法仍
+然可以使用。建议超过 10000
+个特征就用迭代法吧。或者通过主成分分析降低特征的维度后再用最小二乘法。</p>
+<p>第三，如果拟合函数不是线性的，这时无法使用最小二乘法，需要通过一些技巧转化为线性才能使用，此时梯度下降仍然可以用。</p>
+<p>第四，当样本量 <span class="math inline">\(m\)</span>
+很少，小于特征数 <span class="math inline">\(n\)</span>
+的时候，这时拟合方程是欠定的，常用的优化方法都无法去拟合数据。当样本量等于特征数的时候，用方程组求解就可以了。当
+<span class="math inline">\(m\)</span> 大于 <span
+class="math inline">\(n\)</span>
+时，拟合方程是超定的，也就是我们常用与最小二乘法的场景了。</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>最小二乘法</tag>
       </tags>
   </entry>
   <entry>
@@ -2042,435 +2449,6 @@ vim。屏幕会像这样：</p>
       </tags>
   </entry>
   <entry>
-    <title>人生的意义</title>
-    <url>/posts/25293/</url>
-    <content><![CDATA[<p>客观上看，人的目的是好好活，而人生的意义取决于我们对“好好活”的认识和理解。</p>
-<span id="more"></span>
-<p>首先我们需要清楚意义这个词的意思：指一个事物对另一个事物的价值。</p>
-<p>这句话怎么理解呢？我们假设有两个事物，或者说两个系统，他们其中一个有自己的目的。比如说人的目的是好好活着，而食物能帮助我们更好的达到这个目的，我们就说食物对人是有价值的，也就是有意义的。</p>
-<p>上面说的虽然是两个事物，但是从广义上来说，意义这个词最终指向的是人类自身的目的。因为正是我们来讨论各个事物的意义。</p>
-<p>那么问题来了，人活着的意义是什么？也就是人活着的价值是什么？要讨论这个问题我们首先需要确定意义是对谁来说的。</p>
-<p>如果对自己来说，那么人活着这本身是一种目的，相当于问人活着对自己活着有什么意义，讨论这个是无意义的。除非你觉得你的人生目的是其他，而不是好好活着。但是你要知道，你的一切决定都是你综合理性和感性做出的，这个决定必定在当时对你来说令你觉得更能满足自己的内心，而满足自己的内心本身也是好好活着的范畴。（好好活着并非是好死不如赖活着，而是看你对他的认识）</p>
-<p>如果对别人来说，那么你活着的目的当然是给别人做出贡献，能让别人更好的达到他的目的。</p>
-<p>而社会大部分的都是别人，且社会的好坏也直接影响着自身。所以这才出现了国家倡导的人生最高价值：无私奉献。</p>
-<p>而很多书中从自身出发讨论人生的意义，其实本质就是在解读好好活着是什么，怎么才算好好活着。对这个概念的解读，会受到历史背景，文化因素等等的影响。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>人生的意义</tag>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>最小二乘法</title>
-    <url>/posts/53030/</url>
-    <content><![CDATA[<p>最小二乘法是用来做函数拟合或者求函数极值的方法。</p>
-<span id="more"></span>
-<h2 id="引入">引入</h2>
-<p>最小二乘法是由勒让德在19世纪发现的，原理的一般形式很简单，当然发现的过程是非常艰难的。形式如下式:</p>
-<p><span class="math display">\[
-\text { 目标函数 }=\sum(\text { 观测值 }- \text { 理论值 })^{2}
-\]</span>
-观测值就是我们的多组样本，理论值就是我们的假设拟合函数。目标函数也就是在机器学习中常说的损失函数，我们的目标是得到使目标函数最小化的拟合函数的模型。举一个最简单的线性回归的简单例子，比如我们有
-<span class="math inline">\(m\)</span> 个只有一个特征的样本:</p>
-<p><span class="math display">\[
-\left(x^{(1)}, y^{(1)}\right),\left(x^{(2)}, y^{(2)}\right),
-\ldots\left(x^{(m)}, y^{(m)}\right)
-\]</span> 样本采用下面的拟合函数:</p>
-<p><span class="math display">\[
-h_{\theta}(x)=\theta_{0}+\theta_{1} x
-\]</span> 这样我们的样本有一个特征 <span
-class="math inline">\(x\)</span> ，对应的拟合函数有两个参数 <span
-class="math inline">\(\theta_{0}\)</span> 和 <span
-class="math inline">\(\theta_{1}\)</span> 需要求出。</p>
-<p>我们的目标函数为: <span class="math display">\[
-J\left(\theta_{0},
-\theta_{1}\right)=\sum_{i=1}^{m}\left(y^{(i)}-h_{\theta}\left(x^{(i)}\right)\right)^{2}=\sum_{i=1}^{m}\left(y^{(i)}-\theta_{0}-\theta_{1}
-x^{(i)}\right)^{2}
-\]</span> 用最小二乘法求出使 <span
-class="math inline">\(J\left(\theta_{0}, \theta_{1}\right)\)</span>
-最小时的 <span class="math inline">\(\theta_{0}\)</span> 和 <span
-class="math inline">\(\theta_{1}\)</span> ，这样拟合函数就得出了。</p>
-<h2 id="代数法求解">代数法求解</h2>
-<p>上面提到要使 <span class="math inline">\(J\left(\theta_{0},
-\theta_{1}\right)\)</span> 最小，方法就是对 <span
-class="math inline">\(\theta_{0}\)</span> 和 <span
-class="math inline">\(\theta_{1}\)</span> 分别来求偏导数，令偏导数为 0
-，得到一个关于 <span class="math inline">\(\theta_{0}\)</span> 和 <span
-class="math inline">\(\theta_{1}\)</span>
-的二元方程组。求解这个二元方程组，就可以 得到 <span
-class="math inline">\(\theta_{0}\)</span> 和 <span
-class="math inline">\(\theta_{1}\)</span>
-的值。下面我们具体看看过程。</p>
-<p><span class="math inline">\(J\left(\theta_{0},
-\theta_{1}\right)\)</span> 对 <span
-class="math inline">\(\theta_{0}\)</span> 求导，得到如下方程: <span
-class="math display">\[
-\sum_{i=1}^{m}\left(y^{(i)}-\theta_{0}-\theta_{1} x^{(i)}\right)=0
-\]</span> <span class="math inline">\(J\left(\theta_{0},
-\theta_{1}\right)\)</span> 对 <span
-class="math inline">\(\theta_{1}\)</span> 求导，得到如下方程:</p>
-<p><span class="math display">\[
-\sum_{i=1}^{m}\left(y^{(i)}-\theta_{0}-\theta_{1} x^{(i)}\right)
-x^{(i)}=0
-\]</span> 容易求出 <span class="math inline">\(\theta_{0}\)</span> 和
-<span class="math inline">\(\theta_{1}\)</span> 的值:</p>
-<p><span class="math display">\[
-\theta_{0}=\sum_{i=1}^{m}\left(x^{(i)}\right)^{2} \sum_{i=1}^{m}
-y^{(i)}-\sum_{i=1}^{m} x^{(i)} \sum_{i=1}^{m} x^{(i)} y^{(i)} / m
-\sum_{i=1}^{m}\left(x^{(i)}\right)^{2}-\left(\sum_{i=1}^{m}
-x^{(i)}\right)^{2}
-\]</span></p>
-<p><span class="math display">\[
-\theta_{1}=m \sum_{i=1}^{m} x^{(i)} y^{(i)}-\sum_{i=1}^{m} x^{(i)}
-\sum_{i=1}^{m} y^{(i)} / m
-\sum_{i=1}^{m}\left(x^{(i)}\right)^{2}-\left(\sum_{i=1}^{m}
-x^{(i)}\right)^{2}
-\]</span></p>
-<p>这个方法很容易推广到多个样本特征的线性拟合和非线性拟合。</p>
-<h2 id="矩阵法求解">矩阵法求解</h2>
-<p>假设函数 <span class="math inline">\(h_{\theta}\left(x_{1}, x_{2},
-\ldots x_{n}\right)=\theta_{0}+\theta_{1} x_{1}+\ldots+\theta_{n-1}
-x_{n-1}\)</span> 的矩阵表达方式为:</p>
-<p><span class="math display">\[
-h_{\theta}(\mathbf{X})=\mathbf{X} \theta
-\]</span> 其中，假设函数 <span
-class="math inline">\(h_{\theta}(\mathbf{x})\)</span> 为 <span
-class="math inline">\(m \times 1\)</span> 的向量, <span
-class="math inline">\(\theta\)</span> 为 <span class="math inline">\(n
-\times 1\)</span> 的向量，里面有 <span class="math inline">\(n\)</span>
-个代数法的模型参数。 <span class="math inline">\(\mathbf{X}\)</span> 为
-<span class="math inline">\(m \times n\)</span> 维的矩阵。 <span
-class="math inline">\(m\)</span> 代表样本的个数， <span
-class="math inline">\(n\)</span> 代表样本的特征数。 损失函数定义为 :
-<span class="math display">\[
-J(\theta)=\frac{1}{2}(\mathbf{X} \theta-\mathbf{Y})^{T}(\mathbf{X}
-\theta-\mathbf{Y})
-\]</span> 其中 <span class="math inline">\(\mathbf{Y}\)</span>
-是样本的输出向量，维度为 <span class="math inline">\(m \times 1\)</span>
-。<span class="math inline">\(\frac{1}{2}\)</span>
-在这主要是为了求导后系数为 1 ，方便计算。</p>
-<p>根据最小二乘法的原理，我们要对这个损失函数对 <span
-class="math inline">\(\theta\)</span> 向量求导取 0 。结果如下式: <span
-class="math display">\[
-\frac{\partial}{\partial \theta} J(\theta)=\mathbf{X}^{T}(\mathbf{X}
-\theta-\mathbf{Y})=0
-\]</span> 这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。</p>
-<p>公式1: <span class="math inline">\(\frac{\partial}{\partial
-\mathbf{x}}\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2
-\mathbf{x}\)</span></p>
-<p>公式2: <span class="math inline">\(\nabla_{X} f(A X+B)=A^{T}
-\nabla_{Y} f, Y=A X+B,\)</span></p>
-<p>对上述求导等式整理后可得: <span class="math display">\[
-\mathbf{X}^{\mathbf{T}} \mathbf{X} \theta=\mathbf{X}^{\mathbf{T}}
-\mathbf{Y}
-\]</span> 两边同时左乘 <span
-class="math inline">\(\left(\mathbf{X}^{\mathbf{T}}
-\mathbf{X}\right)^{-1}\)</span> 可得:</p>
-<p><span class="math display">\[
-\theta=\left(\mathbf{X}^{\mathbf{T}} \mathbf{X}\right)^{-1}
-\mathbf{X}^{\mathbf{T}} \mathbf{Y}
-\]</span></p>
-<h2 id="局限性">局限性</h2>
-<p>首先，最小二乘法需要计算 <span
-class="math inline">\(\mathbf{X}^{\mathbf{T}} \mathbf{X}\)</span>
-的逆矩阵，有可能它的逆矩阵不存在，这样就没有办法直接用最小二乘法了，此时梯度下降法仍然可以使用。当然，
-我们可以通过对样本数据进行整理，去掉冗余特征。让 <span
-class="math inline">\(\mathbf{X}^{\mathbf{T}} \mathbf{X}\)</span>
-的行列式不为 0 ，然后继续使用最小二乘法。</p>
-<p>第二，当样本特征 n 非常的大的时候，计算 <span
-class="math inline">\(\mathbf{X}^{\mathbf{T}} \mathbf{X}\)</span>
-的逆矩阵是一个非常耗时的工作 ( <span class="math inline">\(n \times
-n\)</span> 的矩阵求逆)，甚至不可行。此时以梯度下降为代表的迭代法仍
-然可以使用。建议超过 10000
-个特征就用迭代法吧。或者通过主成分分析降低特征的维度后再用最小二乘法。</p>
-<p>第三，如果拟合函数不是线性的，这时无法使用最小二乘法，需要通过一些技巧转化为线性才能使用，此时梯度下降仍然可以用。</p>
-<p>第四，当样本量 <span class="math inline">\(m\)</span>
-很少，小于特征数 <span class="math inline">\(n\)</span>
-的时候，这时拟合方程是欠定的，常用的优化方法都无法去拟合数据。当样本量等于特征数的时候，用方程组求解就可以了。当
-<span class="math inline">\(m\)</span> 大于 <span
-class="math inline">\(n\)</span>
-时，拟合方程是超定的，也就是我们常用与最小二乘法的场景了。</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>最小二乘法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>梯度下降</title>
-    <url>/posts/45571/</url>
-    <content><![CDATA[<p>在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降（Gradient
-Descent）是最常采用的方法之一，另一种常用的方法是最小二乘法。这里就对梯度下降法做一个完整的总结。</p>
-<span id="more"></span>
-<h2 id="梯度">梯度</h2>
-<p>在微积分里面，对多元函数的参数求 <span
-class="math inline">\(\partial\)</span>
-偏导数，把求得的各个参数的偏导数以向量的形式写出来，就是梯度。比如函数
-<span class="math inline">\(f(x,y)\)</span> ，分别对 <span
-class="math inline">\(x,y\)</span> 求偏导数，求得的梯度向量就是 <span
-class="math inline">\(({\partial f}/{\partial x} , {\partial
-f}/{\partial y} )^T\)</span> ，简称 <span class="math inline">\(grad
-f(x,y)\)</span> 或者 <span class="math inline">\(\bigtriangledown
-f(x,y)\)</span> 。对于在点 <span
-class="math inline">\((x_0,y_0)\)</span> 的具体梯度向量就是 <span
-class="math inline">\(({\partial f}/{\partial x_0} , {\partial
-f}/{\partial y_0} )^T\)</span> 或者 <span
-class="math inline">\(\bigtriangledown f(x_0,y_0)\)</span>
-，如果是3个参数的向量梯度，就是 <span class="math inline">\(({\partial
-f}/{\partial x} , {\partial f}/{\partial y}, {\partial f}/{\partial z}
-)^T\)</span> ，以此类推。</p>
-<p>那么这个梯度向量求出来有什么意义呢？他的意义从几何意义上讲，就是函数变化增加最快的地方。具体来说，对于函数
-<span class="math inline">\(f(x,y)\)</span> ，在点 <span
-class="math inline">\((x_0,y_0)\)</span> ，沿着梯度向量的方向就是 <span
-class="math inline">\(({\partial f}/{\partial x_0} , {\partial
-f}/{\partial y_0} )^T\)</span> 的方向，是<span
-class="math inline">\(f(x,y)\)</span>增加最快的地方。或者说，沿着梯度向量的方向，更加容易找到函数的最大值。反过来说，沿着梯度向量相反的方向，也就是
-<span class="math inline">\(-({\partial f}/{\partial x_0} , {\partial
-f}/{\partial y_0} )^T\)</span>
-的方向，梯度减少最快，也就是更加容易找到函数的最小值。</p>
-<h2 id="梯度下降与梯度上升">梯度下降与梯度上升</h2>
-<p>在机器学习算法中，在最小化损失函数时，可以通过梯度下降法来一步步的迭代求解，得到最小化的损失函数和模型参数值。反过来，如果我们需要求解损失函数的最大值，这时就需要用梯度上升法来迭代了。</p>
-<p>梯度下降法和梯度上升法是可以互相转化的。比如我们需要求解损失函数
-<span class="math inline">\(f(\theta )\)</span>
-的最小值，这时我们需要用梯度下降法来迭代求解。但是实际上，我们可以反过来求解损失函数
-<span class="math inline">\(-f(\theta )\)</span>
-的最大值，这时梯度上升法就派上用场了。</p>
-<h2 id="梯度下降法算法详解">梯度下降法算法详解</h2>
-<h3 id="直观解释">直观解释</h3>
-<p>首先来看看梯度下降的一个直观的解释。比如我们在一座大山上的某处位置，由于我们不知道怎么下山，于是决定走一步算一步，也就是在每走到一个位置的时候，求解当前位置的梯度，沿着梯度的负方向，也就是当前最陡峭的位置向下走一步，然后继续求解当前位置梯度，向这一步所在位置沿着最陡峭最易下山的位置走一步。这样一步步的走下去，一直走到觉得我们已经到了山脚。当然这样走下去，有可能我们不能走到山脚，而是到了某一个局部的山峰低处。</p>
-<p>从上面的解释可以看出，梯度下降不一定能够找到全局的最优解，有可能是一个局部最优解。当然，如果损失函数是凸函数，梯度下降法得到的解就一定是全局最优解。</p>
-<figure>
-<img
-src="/images/assert/1042406-20161017221342935-1872962415-1689969183450-2.png"
-alt="梯度下降" />
-<figcaption aria-hidden="true">梯度下降</figcaption>
-</figure>
-<h3 id="相关概念">相关概念</h3>
-<p>在详细了解梯度下降的算法之前，我们先看看相关的一些概念。</p>
-<p>1、<mark class="label ">步长（Learning rate）</mark>：步长决定了在梯度下降迭代的过程中，每一步沿梯度负方向前进的长度。用上面下山的例子，步长就是在当前这一步所在位置沿着最陡峭最易下山的位置走的那一步的长度。</p>
-<p>2、<mark class="label ">特征（feature）</mark>：指的是样本中输入部分，比如2个单特征的样本 <span
-class="math inline">\((x^{(0)},y^{(0)}),(x^{(1)},y^{(1)})\)</span>
-，则第一个样本特征为 <span class="math inline">\(x^{(0)}\)</span>
-，第一个样本输出为 <span class="math inline">\(y^{(0)}\)</span> 。</p>
-<p>3、<mark class="label ">假设函数（hypothesis function）</mark>：在监督学习中，为了拟合输入样本，而使用的假设函数，记为
-<span class="math inline">\(h_{\theta}(x)\)</span>
-。比如对于单个特征的m个样本 <span
-class="math inline">\((x^{(i)},y^{(i)})(i=1,2,...m)\)</span>
-，可以采用拟合函数如下： <span class="math inline">\(h_{\theta}(x) =
-\theta_0+\theta_1x\)</span>。</p>
-<p>4、<mark class="label ">损失函数（loss function）</mark>：为了评估模型拟合的好坏，通常用损失函数来度量拟合的程度。损失函数极小化，意味着拟合程度最好，对应的模型参数即为最优参数。在线性回归中，损失函数通常为样本输出和假设函数的差取平方。比如对于m个样本
-<span class="math inline">\((x_i,y_i)(i=1,2,...m)\)</span>
-，采用线性回归，损失函数如下，其中 <span
-class="math inline">\(x_i\)</span> 表示第i个样本特征， <span
-class="math inline">\(y_i\)</span> 表示第i个样本对应的输出， <span
-class="math inline">\(h_\theta(x_i)\)</span> 为假设函数。<br />
-<span class="math display">\[
-J(\theta_0, \theta_1) = \sum\limits_{i=1}^{m}(h_\theta(x_i) - y_i)^2
-\]</span></p>
-<h3 id="代数方式描述">代数方式描述</h3>
-<p>1、<mark class="label ">先决条件</mark>： 确认优化模型的假设函数和损失函数。
-比如对于线性回归，假设函数表示为 <span
-class="math inline">\(h_\theta(x_1, x_2, ...x_n) = \theta_0 +
-\theta_{1}x_1 + ... + \theta_{n}x_{n}\)</span> ，其中 <span
-class="math inline">\(\theta_i\)</span> 为模型参数，<span
-class="math inline">\(x_i\)</span>
-为每个样本的n个特征值。这个表示可以简化，我们增加一个特征<span
-class="math inline">\(x_0 = 1\)</span>，这样<span
-class="math inline">\(h_\theta(x_0, x_1, ...x_n) =
-\sum\limits_{i=0}^{n}\theta_{i}x_{i}\)</span>。
-同样是线性回归，对应于上面的假设函数，损失函数为： <span
-class="math display">\[
-J(\theta_0, \theta_1..., \theta_n) =
-\frac{1}{2m}\sum\limits_{j=1}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
-...x_n^{(j)}) - y_j)^2
-\]</span></p>
-<p>2、<mark class="label ">算法相关参数初始化</mark>：主要是初始化<span class="math inline">\(\theta_0,
-\theta_1..., \theta_n\)</span>，算法终止距离<span
-class="math inline">\(\epsilon\)</span>以及步长<span
-class="math inline">\(\alpha\)</span>。在没有任何先验知识的时候，我喜欢将所有的<span
-class="math inline">\(\theta\)</span>初始化为0，
-将步长初始化为1。在调优的时候再优化。</p>
-<p>3、<mark class="label ">算法过程</mark>：</p>
-<ol type="1">
-<li><p>确定当前位置的损失函数的梯度，对于<span
-class="math inline">\(\theta_i\)</span>​，其梯度表达式如下： <span
-class="math display">\[
-\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1..., \theta_n)
-\]</span></p></li>
-<li><p>用步长乘以损失函数的梯度，得到当前位置下降的距离，即: <span
-class="math display">\[
-\alpha\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1...,
-\theta_n)
-\]</span></p></li>
-<li><p>确定是否所有的<span
-class="math inline">\(\theta_i\)</span>，梯度下降的距离都小于<span
-class="math inline">\(\epsilon\)</span>，如果小于<span
-class="math inline">\(\epsilon\)</span>则算法终止，当前所有的<span
-class="math inline">\(\theta_i\)</span>即为最终结果。否则进入步骤4.</p></li>
-<li><p>更新所有的<span class="math inline">\(\theta\)</span>，对于<span
-class="math inline">\(\theta_i\)</span>​，其更新表达式如下。更新完毕后继续转入步骤1.
-<span class="math display">\[
-\theta_i = \theta_i - \alpha\frac{\partial}{\partial\theta_i}J(\theta_0,
-\theta_1..., \theta_n)
-\]</span></p></li>
-</ol>
-<p>下面用线性回归的例子来具体描述梯度下降。假设我们的样本是<span
-class="math inline">\((x_1^{(0)}, x_2^{(0)}, ...x_n^{(0)}, y_0),
-(x_1^{(1)}, x_2^{(1)}, ...x_n^{(1)},y_1), ... (x_1^{(m)}, x_2^{(m)},
-...x_n^{(m)}, y_m)\)</span>​，损失函数如前面先决条件所述： <span
-class="math display">\[
-J(\theta_0, \theta_1..., \theta_n) =
-\frac{1}{2m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
-...x_n^{(j)})- y_j)^2
-\]</span> 则在算法过程步骤1中对于<span
-class="math inline">\(\theta_i\)</span>的偏导数计算如下： <span
-class="math display">\[
-\frac{\partial}{\partial\theta_i}J(\theta_0, \theta_1..., \theta_n)=
-\frac{1}{m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
-...x_n^{(j)}) - y_j)x_i^{(j)}
-\]</span> 由于样本中没有<span
-class="math inline">\(x_0\)</span>，所以令所有的<span
-class="math inline">\(x_0^{j}\)</span>为1。步骤4中<span
-class="math inline">\(\theta_i\)</span>的更新表达式如下： <span
-class="math display">\[
-\theta_i = \theta_i -
-\alpha\frac{1}{m}\sum\limits_{j=0}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)},
-...x_n^{j}) - y_j)x_i^{(j)}
-\]</span>
-从这个例子可以看出当前点的梯度方向是由所有的样本决定的，加<span
-class="math inline">\(\frac{1}{m}\)</span>是为了好理解。由于步长也为常数，他们的乘积也为常数，所以这里
-<span class="math inline">\(\alpha\frac{1}{m}\)</span>
-可以用一个常数表示。</p>
-<p>在下面会详细讲到的梯度下降法的变种，他们主要的区别就是对样本的采用方法不同。这里我们采用的是用所有样本。</p>
-<h3 id="矩阵方式描述">矩阵方式描述</h3>
-<p>1、<mark class="label ">先决条件</mark>：对于线性回归，假设函数 <span
-class="math inline">\(h_{\theta}\left(x_{1}, x_{2}, \ldots
-x_{n}\right)=\theta_{0}+\theta_{1} x_{1}+\ldots+\theta_{n}
-x_{n}\)</span> 的矩阵表达方式为: <span
-class="math inline">\(h_{\theta}(\mathbf{X})=\mathbf{X} \theta\)</span>
-，其中，假设函数 <span
-class="math inline">\(h_\theta(\mathbf{X})\)</span> 为 <span
-class="math inline">\(m \times 1\)</span> 的向量, <span
-class="math inline">\(\theta\)</span> 为 <span
-class="math inline">\((\mathrm{n}+1) \times 1\)</span> 的向量，里面有
-n+1 个代数法的模型参数。 <span class="math inline">\(\mathbf{X}\)</span>
-为 <span class="math inline">\(m \times(n+1)\)</span> 维的矩阵。 m 代表
-样本的个数， n+1 代表样本的特征数。损失函数的表达式为: <span
-class="math inline">\(J(\theta)=\frac{1}{2}(\mathbf{X}
-\theta-\mathbf{Y})^{T}(\mathbf{X} \theta-\mathbf{Y})\)</span> ，其中
-<span class="math inline">\(\mathbf{Y}\)</span> 是样本的输出向量，维度为
-<span class="math inline">\(\mathrm{m} \times 1\)</span> .</p>
-<p>2、<mark class="label ">算法相关参数初始化</mark>: <span class="math inline">\(\theta\)</span>
-向量可以初始化为默认值，或者调优后的值。算法终止距离 <span
-class="math inline">\(\varepsilon\)</span> ，步长 <span
-class="math inline">\(\alpha\)</span> 之前比没有变化。</p>
-<p>3、<mark class="label ">算法过程</mark>:</p>
-<ol type="1">
-<li>确定当前位置的损失函数的梯度，对于 <span
-class="math inline">\(\theta\)</span> 向量,其梯度表达式如下:</li>
-</ol>
-<p><span class="math display">\[
-\frac{\partial}{\partial \theta} J(\theta)
-\]</span></p>
-<ol start="2" type="1">
-<li>用步长乘以损失函数的梯度，得到当前位置下降的距离，即 <span
-class="math inline">\(\alpha \frac{\partial}{\partial \theta}
-J(\theta)\)</span> 对应于前面登山例子中的某一步。</li>
-<li>确定 <span class="math inline">\(\theta\)</span>
-向量里面的每个值,梯度下降的距离都小于 <span
-class="math inline">\(\varepsilon\)</span> ，如果小于 <span
-class="math inline">\(\varepsilon\)</span> 则算法终止，当前 <span
-class="math inline">\(\theta\)</span> 向量即为最终结果。否则进入步骤 4
-.</li>
-<li>更新 <span class="math inline">\(\theta\)</span>
-向量，其更新表达式如下。更新完毕后继续转入步骤1.</li>
-</ol>
-<p><span class="math display">\[
-\theta=\theta-\alpha \frac{\partial}{\partial \theta} J(\theta)
-\]</span></p>
-<p>还是用线性回归的例子来描述具体的算法过程。 损失函数对于 <span
-class="math inline">\(\theta\)</span> 向量的偏导数计算如下: <span
-class="math display">\[
-\frac{\partial}{\partial \theta} J(\theta)=\mathbf{X}^{T}(\mathbf{X}
-\theta-\mathbf{Y})
-\]</span> 步骤4中 <span class="math inline">\(\theta\)</span>
-向量的更新表达式如下:<br />
-<span class="math display">\[
-\theta=\theta-\alpha \mathbf{X}^{T}(\mathbf{X} \theta-\mathbf{Y})
-\]</span>
-相比代数法，可以看到矩阵法要简洁很多。这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。</p>
-<p>公式1: <span class="math inline">\(\frac{\partial}{\partial
-\mathbf{x}}\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2
-\mathbf{x}\)</span> ，<span class="math inline">\(x\)</span> 为向量</p>
-<p>公式2: <span class="math inline">\(\nabla_{X} f(A X+B)=A^{T}
-\nabla_{Y} f, Y=A X+B\)</span>，<span
-class="math inline">\(f(Y)\)</span> 为标量</p>
-<h2 id="算法调优">算法调优</h2>
-<p>1、<mark class="label ">算法的步长选择</mark>。在前面的算法描述中，我提到取步长为 1
-，但是实际上取值取决于数据样本，可以多取一些值，从大到小，分别运行算法，看看迭代效果，如果损失函数在变小，说明取值有效，否则要增大步长。前面说了。步长太大，会导致迭代过快，甚至有可能错过最优解。步长太小，迭代速度太慢，
-很长时间算法都不能结束。所以算法的步长需要多次运行后才能得到一个较为优的值。</p>
-<p>2、<mark class="label ">算法参数的初始值选择</mark>。初始值不同，获得的最小值也有可能不同，因此梯度下降求得的只是局部最小值；当然如果损失函数是凸函数则一定是最优
-解。由于有局部最优解的风险，需要多次用不同初始值运行算法，关注损失函数的最小值，选择损失函数最小化的初始值。</p>
-<p>3、<mark class="label ">归一化</mark>。由于样本不同特征的取值范围不一样，可能导致迭代很慢，为了减少特征取值的影响，可以对特征数据归一化，也就是对于每个特征
-<span class="math inline">\(\mathrm{x}\)</span> ，求出 它的期望 <span
-class="math inline">\(\bar{x}\)</span> 和标准差 <span
-class="math inline">\(\operatorname{std}(x)\)</span> ，然后转化为: <span
-class="math display">\[
-\frac{x-\bar{x}}{\operatorname{std}(x)}
-\]</span> 这样特征的新期望为 0 ，新方差为 1 ，迭代速度可以大大加快。</p>
-<h2 id="梯度下降法大家族">梯度下降法大家族</h2>
-<p><strong>批量梯度下降法（Batch Gradient Descent）</strong></p>
-<p>批量梯度下降法，是梯度下降法最常用的形式，具体做法也就是在更新参数时使用所有的样本来进行更新：</p>
-<p><span class="math display">\[
-\theta_{i}=\theta_{i}-\alpha
-\sum_{j=1}^{m}\left(h_{\theta}\left(x_{0}^{(j)}, x_{1}^{(j)}, \ldots
-x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
-\]</span> <strong>随机梯度下降法（Stochastic Gradient
-Descent）</strong></p>
-<p>随机梯度下降法，其实和批量梯度下降法原理类似，区别在与求梯度时没有用所有的
-<span class="math inline">\(\mathrm{m}\)</span>
-个样本的数据，而是仅仅选取一个样本 <span
-class="math inline">\(\mathrm{j}\)</span>
-来求梯度。对应的更新公式是:</p>
-<p><span class="math display">\[
-\theta_{i}=\theta_{i}-\alpha\left(h_{\theta}\left(x_{0}^{(j)},
-x_{1}^{(j)}, \ldots x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
-\]</span>
-随机梯度下降法和批量梯度下降法是两个极端，一个采用所有数据来梯度下降，一个用一个样本来梯度下降。自然各自的优缺点都非常突出。对于训练速度来说，随机梯度下降法由于每次仅仅采用一个样本来迭代，训练速度很快，而批量梯度下降法在样本量很大的时候，训练速度不能让人满意。对于准确度来说，随机梯度下降法用于仅仅用一个样本决定梯度方向，导致解很有可能不是最优。对于收敛速度来说，由于随机梯度下降法一次迭代一个样本，导致迭
-代方向变化很大，不能很快的收敛到局部最优解。那么，有没有一个中庸的办法能够结合两种方法的优点呢?
-有! 这就是小批量梯度下降法。</p>
-<p><strong>小批量梯度下降法（Mini-batch Gradient Descent）</strong></p>
-<p>小批量梯度下降法是批量梯度下降法和随机梯度下降法的折䩖，也就是对于
-<span class="math inline">\(m\)</span> 个样本，我们采用 <span
-class="math inline">\(x\)</span> 个样子来迭代， <span
-class="math inline">\(1&lt;x&lt;m\)</span> 。一般可以取 <span
-class="math inline">\(x=10\)</span> ，当然根据样本的数据，可以调整这个
-<span class="math inline">\(x\)</span> 的值。对应的更新公式是:</p>
-<p><span class="math display">\[
-\theta_{i}=\theta_{i}-\alpha
-\sum_{j=t}^{t+x-1}\left(h_{\theta}\left(x_{0}^{(j)}, x_{1}^{(j)}, \ldots
-x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
-\]</span></p>
-<h2 id="和其他无约束优化算法的比较">和其他无约束优化算法的比较</h2>
-<p>在机器学习中的无约束优化算法，除了梯度下降以外，还有前面提到的最小二乘法，此外还有牛顿法和拟牛顿法。</p>
-<p>梯度下降法和最小二乘法相比，梯度下降法需要选择步长，而最小二乘法不需要。梯度下降法是迭代求解，最小二乘法是计算解析解。如果样本量不算很大，且存在解析解，最小二乘法比起梯度下降法要有优势，计算速度很快。但是如果样本量很大，用最小二乘法由于需要求一个超级大的逆矩阵，这时就很难或者很慢才能求解解析解了，使用迭代的梯度下降法比较有优势。</p>
-<p>梯度下降法和牛顿法/拟牛顿法相比，两者都是迭代求解，不过梯度下降法是梯度求解，而牛顿法/拟牛顿法是用二阶的海森矩阵的逆矩阵或伪逆矩阵求解。相对而言，使用牛顿法/拟牛顿法收敛更快。但是每次迭代的时间比梯度下降法长。</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>梯度下降</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的系统观</title>
     <url>/posts/45607/</url>
     <content><![CDATA[<p>系统论是一种系统的看待某些事物的思维方式，深入理解系统论可以让我们更清晰的了解这个世界。</p>
@@ -2536,8 +2514,8 @@ x_{n}^{(j)}\right)-y_{j}\right) x_{i}^{(j)}
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>随笔</tag>
         <tag>系统论</tag>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -2697,232 +2675,6 @@ PositiveIntegerField，但只允许在某一特定点下的值（依赖于数据
       <tags>
         <tag>python</tag>
         <tag>django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Numpy基础</title>
-    <url>/posts/21796/</url>
-    <content><![CDATA[<p>Numpy是用于处理多维数组的数值运算库，不仅可以用于机器学习，还可以用于图像处理、自然语言处理等任务。本文主要介绍关于Numpy底层的一些基本概念。</p>
-<span id="more"></span>
-<mark class="label danger">本文现在还很简略，等需要的时候再补充吧</mark>
-<h2 id="多维数组ndarray">多维数组ndarray</h2>
-<p>ndarray本质就是一个N维数组，由多个具有相同类型和尺寸的元素组成。</p>
-<h3 id="属性">属性</h3>
-<table>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 75%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">T</td>
-<td>返回经过转置的矩阵，当ndim&lt;2时返回原数组</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">data</td>
-<td>数组中的数据在内存中的开始地址</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">dtype</td>
-<td>元素的数据类型</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">flags（不常用）</td>
-<td>数据的内存布局信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">flat</td>
-<td>将原数组转为一维数组的迭代器（返回新的，原数组不变）</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">imag</td>
-<td>元素虚数部分</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">real</td>
-<td>元素实数部分</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">size</td>
-<td>元素数量</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">itemsize</td>
-<td>每个元素的大小（以字节为单位）</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">nbytes</td>
-<td>所有元素的总字节数</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ndim</td>
-<td>维数</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">shape</td>
-<td>形状</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">strides（不常用）</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ctypes（不常用）</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">base（不常用）</td>
-<td>返回基类，不是视图时，返回None</td>
-</tr>
-</tbody>
-</table>
-<h3 id="其他">其他</h3>
-<p>下面记录一下一些不常用的概念，以后需要时再补充吧。</p>
-<ul>
-<li>内存布局：行主序和列主序</li>
-<li>步长相关概念</li>
-</ul>
-<h2 id="广播">广播</h2>
-<ul>
-<li>如果维数不同，在其shape的开头加入1以对其形状进行调整。</li>
-<li>可以进行广播的条件是：每个维度的元素数量与最大数量相等或为1。</li>
-<li>对于元素数量为1的维度，使用相同的值进行重复填充</li>
-</ul>
-<h2 id="副本视图">副本视图</h2>
-<p><strong>副本</strong>：使用与原数组不同的内存空间，但数据内容相同。</p>
-<p><strong>视图</strong>：与原数组引用的是同一个内存地址。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">c = a  <span class="comment"># 视图</span></span><br><span class="line">a = a + <span class="number">1</span>  <span class="comment"># 副本</span></span><br><span class="line">a += <span class="number">1</span>    <span class="comment"># 视图</span></span><br><span class="line">np.add(a, <span class="number">1</span>, out=a) <span class="comment">#视图</span></span><br></pre></td></tr></table></figure>
-<p>一般而言，视图操作比副本操作要快。</p>
-<p><strong>副本与视图的分辨方法：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.may_share_memory(a, b)  <span class="comment"># 返回True，说明b是a的视图</span></span><br></pre></td></tr></table></figure>
-<h2 id="数组操作">数组操作</h2>
-<p>对于Numpy数组操作的大部分函数，既可以通过<code>ndarray.</code>的方式调用，也可以通过<code>np.</code>的方式调用。</p>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-        <category>numpy</category>
-      </categories>
-      <tags>
-        <tag>numpy</tag>
-        <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>围城</title>
-    <url>/posts/39443/</url>
-    <content><![CDATA[<p>在本书里,钱钟书为我们描述了二十世纪三十年代海外留学生归国之后所经历的故事。在抗日战争的历史背景下，穿插讲述了主人公的四段爱情经历和三段工作经历。故事虽然发生在精英知识分子身上，但是却揭示了当时社会中人们都会面临的婚姻与事业的困境，以及困于内心而无法自拔的深刻矛盾。</p>
-<span id="more"></span>
-<h2 id="关于作者">关于作者</h2>
-<p>钱钟书，中国现代文学史上非常重要的一位“才子型”文学家。他1933年从清华大学外文系毕业，作为最早的庚子赔款留学生之一前往英国牛津大学留学。除了著名的长篇小说《围城》之外，他还著有短篇小说集《人鬼兽》和散文集《写在人生边上》；他在学术研究上的成就甚至要高于他的文学成就，《宋诗选注》与《管锥编》等研究专著在学术史上有着非常重要的地位——一方面，作为作家的他幽默犀利，另一方面，作为学者的他又严谨敦实。无论是文学著作还是学术专著，都一直深深地感染着他的读者们。</p>
-<h2 id="核心内容">核心内容</h2>
-<p>本书思想核心是：<mark class="label ">人的一生中可能会遇到各种不同类型的爱情，但是最终走向婚姻之后却会发现，原来它就像是一座围城，城外的人想进去，而城里的人却又想出来；同样，无论是从事哪种工作，都会在追求事业的过程中遇到理想与现实之间的巨大落差，从而再次陷入两难选择的困境。而这都是因为人们往往无法认清自己的内心，为了迎合外界以致活成了别人所期待的模样，这才是人们心中最牢固、最难冲破的一座围城。</mark></p>
-<h2 id="前言">前言</h2>
-<p>即使你没有读过《围城》这本书，也一定听说过这样一句话：“婚姻是一座围城，外面的人想进去，里面的人想出来。”但是如果你以为这句话就是本书的全部主旨，那就太辜负作者钱钟书的一片苦心了。</p>
-<p>《围城》是钱钟书唯一一部长篇小说，他是在1945年到1946年这段非常动荡的战争年代里完成的。据他的太太杨绛女士回忆，当时他只有晚上才有时间写小说，而且每天只能写500字左右。但是这样一天一天地聚沙成塔，最后竟然也完成了一部二十多万字的著作！</p>
-<p>而且，钱钟书的真实身份根本就不是一位作家，而是地地道道的学者：1935年，钱钟书从清华大学毕业后，又去英国牛津大学留学，终身都致力于翻译和文学研究工作。他在学术史上的影响力甚至要盖过他在文坛上的光芒。如果硬要给钱钟书选一部代表作，那么其实《围城》是不够格的，因为无论是《谈艺录》《宋诗选注》，还是《管锥编》，这些研究专著都更加光彩夺目。而且你知道吗？甚至还有一门专门的学问来研究钱钟书在国学和文化批评等方面的成就，就叫做“钱学”！</p>
-<p>写书对于大学者钱钟书来说，顶多只能算是一种兴趣爱好。但是有时候，才子的“信手拈来”却胜过平庸之辈的“呕心沥血”，这部偶然间的兴趣之作却在文坛引起了巨大的反响。虽然在起初发表的30年时间里，它始终都是一本“禁书”，很少有人问津，但是自从1980年重印之后，它不仅超级受到读者的欢迎，屡次被重印，而且还被翻译成英文、法文、德文、俄文等许多版本在全世界各地流传。即使是在小说已经出版了七十年后的今天，你还是常常能够在畅销书排行榜上看到《围城》的身影。</p>
-<p>《围城》之所以能这么受欢迎，跟它独特的语言风格绝对分不开。钱钟书挖苦别人的才能几乎没人能比得上，而且几乎每一句讽刺都能够不偏不倚地戳中读者的笑点，既辛辣又幽默。用今天的话来说，他绝对算得上是一位名副其实的“民国段子手”。</p>
-<h2 id="第一部分">第一部分</h2>
-<p>下面我们就来仔细地读一读这部有趣的小说。当我们翻开小说第一页的时候，仿佛看到作者给我们画了一幅油画：浩瀚的印度洋上漂着一艘法国邮轮，主人公方鸿渐刚刚留学毕业，乘坐轮船回国。当时正是1937年，一个尴尬的年份：抗日战争尚未正式打响，但是中国社会却早已不复原来的模样。在这样不新不旧的尴尬年代里，主人公却恰恰拥有一个不中不洋的尴尬身份：留学生。</p>
-<p>当时的留学生跟今天的留学生绝不相同，因为在当时，有机会并且有经济条件出国深造的人本来就极为罕有，更何况还要有胆识肯到那遥远、未知的外国去“犯险”；但当时的留学生和今天的留学生又面临很多相似的问题：海外知识分子归国后往往都会发现自己与本土文化变得格格不入，不仅会感到彷徨迷失，甚至还会陷入无法自拔的孤独。</p>
-<p>作者钱钟书年轻的时候也曾经是一名留学生，1935年他以第一名的成绩考取了庚子赔款公派留学生。这个庚子赔款留学生项目听起来普通，实际上非同小可，它几乎撼动并改变了整个近代中国的教育格局。著名的詹天佑、陶行知、竺可桢、赵元任，都曾经是庚子赔款留学生。那么，庚子赔款是怎么回事？八国联军侵占紫禁城，逼着清政府签订了《辛丑条约》，规定中国必须赔偿4亿5千万两白银给各国，这笔钱就叫“庚子赔款”。可是出乎意料的是，美国人竟然说赔的钱太多了——你没有听错！他们居然说赔的太多了！而且还要返还一部分给中国！而这部分钱就用作每年的公派留学生费用，从中国拣选优秀的青少年去世界各地留学。</p>
-<p>这件事情确实匪夷所思，但是不管怎么说，钱钟书和其他中国的青年才俊们正是凭借这个契机才获得了留学的机会，这段经历也改变了他们许多人的一生。当时，钱钟书后来的太太杨绛刚刚与他相恋不久，就毅然跟他一起去英国，而且杨绛可是自费留学的，可见一片痴心。留学的虽然是一小撮人，但是这一小撮人的经历却像是一个极为精彩的万花筒，透过它仿佛能够照见当时整个中国社会的人生百态。</p>
-<p>在《围城》这本书中，留洋归来的钱钟书塑造了一个同样留洋归来的小说主人公：方鸿渐。整本书写的都是这个人的故事，但是这个故事不仅不高大上，而且还鸡零狗碎，甚至让人啼笑皆非。</p>
-<p>下面我们就来了解一下这位方先生的奇妙经历。伴随着他的奇妙经历，我们还将会看到钱钟书在这部书里深深预埋的人生智慧。智慧太多太深刻，我们今天只挑选两个最重要的主题来讲。<mark class="label ">第一个主题，是世间的四种爱情；第二个主题，是人生的三座围城。</mark></p>
-<h2 id="第二部分">第二部分</h2>
-<p>首先我们来说“人生的四种爱情”。难道爱情还分这么多的种类？不错！主人公方鸿渐不仅深谙这种分类，还亲身经历过其中的每一种爱情，真是让人羡慕。</p>
-<p>方鸿渐是一个运气好到爆炸的青年人，他出身于书香世家，父亲是前清的举人。虽然清朝不复存在之后，举人自然也就成了虚头衔，但是这却没有熄灭老父亲心中希望家族后人通过读书来光耀门楣的火种，他费尽了心思供方鸿渐去读大学。为什么要说方鸿渐运气好到爆炸呢？因为他除了有一位举人父亲，还有一位银行家岳父。很小的时候他和银行家的千金就被指腹为婚，岳父因此一直出钱赞助他求学。这份运气可真不是吹的，就在方鸿渐大学快要毕业不得不返回家迎娶素昧平生的未婚妻时，未婚妻居然病死了！方鸿渐像是死刑犯人蒙获了恩赦，急忙写了一封悼亡信给岳父表示安慰。结果岳父被他深深感动，把原先准备办婚礼的钱都拿来供方鸿渐出国留学。从此方鸿渐像一只小鸟一样快活地飞走了，展开了他曲折离奇的情感经历——岳父真的是用自己女儿的嫁妆，成全了方鸿渐的四段爱情。</p>
-<p>很多人读《围城》，都会把它当做一部爱情小说来读。这当然不算错，因为纵览整部小说，方鸿渐的身边从来都没有缺少过女人，但是实际上，钱钟书想要说的却又不仅仅是爱情这回事。不过不管怎样，我们首先都必须来看一看，方鸿渐桃花朵朵的人生中究竟遇到了哪些风姿不同的女人？</p>
-<p>方鸿渐的艳遇从回国的船上就已经开始了。同船有一位鲍小姐，简直是男人心目中最完美的驴友。和家乡那些保守无趣的妇女不同，她身姿丰腴、穿着大胆、性格泼辣，而且还特别懂得男人的心思。虽然她早已经订婚，但是却并不妨碍与同船的方鸿渐共度两三天销魂的时光。初尝女人滋味的方鸿渐自然是被勾去了魂魄，爱得忘乎所以。可是随着船靠码头，快乐的旅程也不得不画上句号。刚一登岸，鲍小姐立刻就像没事人一样扑向了未婚夫的怀抱。一切发展得如电光火石一样迅猛，却又像被人掐住了喉咙一样戛然而止，方鸿渐久久不能超脱事外。他回过头来才猛然认识到，自己不过是人家旅行途中的一剂调味品。</p>
-<p>这就是方鸿渐的第一段爱情。也许你要说这根本算不上是爱情，只不过是一段“一夜情”的经历罢了，况且咱们的主人公也没吃什么亏，至多是两不相欠。然而实际上，对于一个爱情的门外汉来说，伴随着性爱的刺激和心跳，那种被玩弄和被伤害的感觉足以令人痛彻心扉。如果说甜蜜是爱情的主旋律，那么痛苦更是这段主旋律中的最高音。<mark class="label ">让我们姑且称这段不太完美的短暂爱情为“情欲的爱”吧。</mark></p>
-<p>这波未平，那波又起，方鸿渐的第二段爱情紧随其后，几乎是无缝衔接。苏文纨是方鸿渐的大学同学，跟他乘坐同一艘船归国。这位苏小姐和前一位鲍小姐迥然不同，她是一名大家闺秀，同时也是货真价实的留洋女博士。留洋女博士不仅在当时十分罕见，就是放在今天来看，也算得上是凤毛麟角。然而就是因为学历太高容易让人产生高攀不起的自卑，苏小姐在婚恋市场上也被划归为大龄剩女一列。你们想想看，今天我们都要嫌女博士大龄，那放在当时的社会，通常十五六岁的女孩子就要拜堂成亲，一个留洋归来的女博士该有多么的难嫁！</p>
-<p>苏小姐深深明白这个道理，她想尽了一切办法想要委身于条件看上去还不错的方鸿渐。她的确是真心喜欢方鸿渐，但是同时却又害上了一种治不好的高冷病：太过于矜持，也实在太爱耍心计。她甚至故意挑起方鸿渐与另一位追求者之间的矛盾，想让两个情敌为了自己争风吃醋。女人们最盼望的事情莫过于有两个男人能够为了自己打得头破血流，被两个人同时追求却又不知如何取舍，这恐怕是恋爱中最令女人不可自拔的桥段。看来并不是近年来韩剧里才有这样的套路，中国早在八十年前就已经悄悄流行过了。方鸿渐虽然也喜欢苏小姐，但是还没有达到愿意“跪舔”的程度，苏小姐越是用心良苦地设计，他却越是发自内心地排斥。用今天的话来说，这段爱情就是被苏小姐活活“作”死的。</p>
-<p>这是一段表面看上去最为登对的爱情：男博士配女博士，乡绅公子配大家闺秀。但是别人眼中的天作之合却抵不过自己最真实的感受，有好感并不等于爱的痴狂，“合适”也只不过是爱情的充分不必要条件。这第二段爱情又是无疾而终，<mark class="label ">我们总结概括一下，把它称为“门当户对的爱”吧。</mark></p>
-<p>很快，方鸿渐又迎来了第三段爱情，这也是整部小说中最为浪漫美好的一段——读到这里你可能要问了，为什么方鸿渐这小子运气这么好？有的人一直都是单身狗，但是他却偏偏桃花运一直没有断过！那我倒是可以先提前安慰你一下，其实这段最美好的爱情到最后也没落下什么好下场。</p>
-<p>方鸿渐在之前那位苏小姐的会客厅里遇到了他一生挚爱——苏小姐的表妹：唐小姐。唐小姐和外面那些妖艳贱货全都不一样，她天真直率，调皮可爱。比起鲍小姐来说她更加青涩，比起苏小姐来说她又更加单纯。她像一阵清风，轻轻柔柔地吹进了方鸿渐苦闷的心里。为了能够跟她一起吃一顿晚饭，方鸿渐从早上起床开始就坐立难安，一整天都没有心思上班，下班后早早到了饭店等候，又害怕她不会赴约，就连听到有脚步靠近也会心惊胆战。</p>
-<p>这听上去完全就像是一个初中生的青涩爱情经历，作为风流倜傥阅女无数的方鸿渐，为什么突然间就丧失了所有的经验和伎俩，变得这么的怂？看来在真爱面前，再老练的情场高手也会变成幼稚的小男孩。可是呢好景不长，鲁迅先生说“悲剧就是把美好的东西撕碎给人看”。苏小姐自己得不到的东西，当然是选择撕碎它。眼看方鸿渐与表妹之间你侬我侬，她气得浑身直抖，把方鸿渐与鲍小姐之间的风流韵事添油加醋地告诉了唐小姐，并且还加上了许多来自“过来人”的劝告。这一劝，可把唐小姐劝得天崩地裂、痛不欲生。无论方鸿渐想要如何对她解释，却再也得不到原先的信任了。一对佳偶就这样在误解中错过彼此，再也没有见过面。</p>
-<p>杨绛曾经说过，其实钱钟书最爱的就是唐小姐，正因为如此，才故意安排唐小姐决不能够嫁给方鸿渐。因为美好的爱情永远只能停留在记忆与想象里，一旦落实到了柴米油盐之中，就会失去原来纯粹的模样。相同的理论张爱玲也说过：每个男人的生命中都会有一朵白玫瑰和一朵红玫瑰，无论娶了哪一朵最终都会是遗憾。最完美的永远是得不到的，这就是爱情这个磨人的小妖精最可恨之处。<mark class="label ">或许我们也可以为方鸿渐的这一段爱情取名为“求之不得的爱”。</mark></p>
-<p>最后这第四段爱情就让人觉得十分亲切了，因为你也许没机会在旅途中碰上艳遇，你运气不够好没有门当户对的佳偶，你人生悲惨至今没有遇到过真爱——但是你一定在生活中遇见过这位“孙小姐”：她相貌平平、出身平平、性格平平，可以说一切都平平</p>
-<p>最后这第四段爱情就让人觉得十分亲切了，因为你也许没机会在旅途中碰上艳遇，你运气不够好没有门当户对的佳偶，你人生悲惨至今没有遇到过真爱——但是你一定在生活中遇见过这位“孙小姐”：她相貌平平、出身平平、性格平平，可以说一切都平平。她是最普通，但也是最真实的一个女人。她和方鸿渐是怎么认识的呢？认识的经历也十分平平——他俩是同事。</p>
-<p>孙小姐呢，通常都挺温柔体贴，偶尔也会有点尖酸刻薄，方鸿渐对她似乎没有太大的感觉，但是也并不十分讨厌。你肯定不会想到，几番波折之后，最后成为方太太的竟恰恰就是这位孙小姐！什么？这怎么可能呢？经历了一夜风流，两厢别离，三种相思，风流倜傥的方鸿渐居然要娶一个“路人甲”做自己的老婆？</p>
-<p>世上的女人那么多，为什么偏偏娶了人畜无害的孙小姐呢？孙小姐虽然在别的方面并不擅长，但是在自己的婚姻方面却十分懂得经营。她与方鸿渐本来做着相安无事的同事，但是却很会营造暧昧气氛，以至于让整个办公室的人都误以为两人早就是一对；本来舆论压力还不至于让方鸿渐就范，但是孙小姐还特地为自己伪造出一份来自父亲的信，信中言辞激烈地质问她和方鸿渐的关系，顺便还催促结婚。这样一来，她顺理成章地就成为了舆论压力和父权压力的受害者。恐怕方鸿渐最后娶她，一半是出于怜悯，另一半也是出于木已成舟的无奈。</p>
-<p>与其说是孙小姐千方百计地嫁给了方鸿渐，不如说只有孙小姐才是方鸿渐最后的避难所。如果不是她，方鸿渐最后的感情与婚姻又将落脚于何处呢？现实也许荒谬，也许残酷，但是它最厉害的一点就是真实，真实到根本没有人能够有力量去违逆它。<mark class="label ">让我们就称这最后这一段爱情为“不可摆脱的爱”吧。</mark></p>
-<p>到这里为止，方鸿渐的四段爱情故事都已经讲完了，小说也快翻到最后。但是在一开始咱们就说过，《围城》并不仅仅是一部爱情小说。怎么？都谈了四段恋爱，这事还没完？！不仅没完，这才刚刚开始呢！虽然整部小说都是以爱情和婚姻来贯穿情节的，但是这却只是线索而已，婚姻也只是钱钟书描绘的“三座围城”中的其中一座。</p>
-<p>经历过爱情的人都知道，婚姻的确像是一座城，而且更像是一个牢笼。无数男男女女都为着婚姻这个目标而日夜兼程地赶路，不过刚进去就想出来的也大有人在，更有甚者，在这座城里进进出出，最终也不知道自己要去往何处。作者钱钟书与妻子杨绛的婚姻既是门当户对，又是情投意合。不过作者本人的幸福经历并不能够改变婚姻这座城池的本质，作者能够站在城里眺望城外，用一双慧眼把这座城看得清清楚楚。他没有开门相迎，也不会拒人于门外，因为作者并不是一个看门人，他对你进不进城并不关心；相反，他是一个画地图的人，把这座城的里里外外给你画个清楚，至于你到底何去何从，全凭你自己来定夺。</p>
-<h2 id="第三部分">第三部分</h2>
-<p>如果说“婚姻之城”只是三座围城中的其中一座，下面我就要赶紧带着你一起去看看另外两座围城：“事业之城”与“自我之城”。</p>
-<p>方鸿渐虽然是留学生，但是他在欧洲学习的专业很令人费解：一开始学的还是社会学与哲学，但是后来实在是跟不上，就转而开始学习中国文学。与现在的海外汉学发展情况不同，在当时的国际环境下一个中国留学生去外国学习中国文学，实在是莫名其妙。这还不算，他因为没写完论文，根本就无法正常毕业，于是只得购买了一个假的博士学位证书，带回家来哄骗父母。</p>
-<p>这位假博士回国之后一共辗转了三个地方，做了三份不同的工作。伴随着每一份工作，你都会看到主人公巨大的变化，这三份工作给他带来的影响，甚至要比那四段恋爱来得更猛烈！《围城》这部小说有一个非常奇妙之处，就是明明写的是七十年前的故事，但是在今天看来也丝毫没有任何的隔阂感，不仅几段爱情故事听上去就像是你的好哥们儿前几天才发生过的事情，连方鸿渐在事业上的曲折也让人感到仿佛就发生在我们身边。怪不得经常有人说，其实我们每一个人都是钱钟书笔下的方鸿渐。</p>
-<p>方鸿渐归国后的第一份工作是在一家银行——你要好奇了，明明是中国文学系毕业的留学生，为什么会进银行去工作呢？这你就有所不知了，这家银行是方鸿渐那还没过门就不幸去世的妻子家的产业。老岳父一听贤婿学成归来，立刻把他安排进了自己家开的银行里。与其说是上班，实际上不过是挂职。这种事情在我们身边并不少见吧？无论原来学的是什么专业，本来又拥有何种抱负，很多人大学一毕业就会被父母拉回家去继承家族产业，或者受父母的安排在家乡谋职。方鸿渐也不能免俗，而且他好像丝毫也不以为俗，不仅在岳父的银行里轻轻松松地上班，而且吃住也都在岳父家里，并且心安理得。</p>
-<p>其实这还挺让人吃惊的，因为虽然学艺不精，但是方鸿渐毕竟接受了欧洲文化的熏陶，法国的革命精神的各种新思潮也必定让他耳濡目染。可是怎么刚刚一回国就立刻倒插门到岳父的银行里去捧铁饭碗呢？如果说婚姻的城池对于方鸿渐来说是个考验，那么事业这座城池在他的眼里简直犹如一摊黄土矮墙，根本还没来得及看一眼就已经坍塌了。</p>
-<p>好在战争局势和社会动荡不允许他这么英雄气短，时局逼着他不得不离开上海的温柔乡，随着几个朋友一起奔赴湖南的一个小小的县城，去一所战时新创办的三闾大学任教。值得我们欣慰的是，作为知识分子的方鸿渐好像终于要开始走上兴师办学、启发民智的道路了。在国难当头之下，仿佛这才是一个热血青年应有的抱负与责任。</p>
-<p>方鸿渐没有辜负我们的期望，他刚到三闾大学的时候也的确就是这样想的：要为学生传道、授业、解惑，让青年一代重新振作，改造我们的国家。可见他骨子里毕竟还是有热血的。可是呢，青年有志报国，不等于报国有路。一所刚刚创办的大学，学生总数不过一百来人，其组织机构之复杂就比得上一个庞大的帮派系统。校长、主任、教授们好像在讲课办学之外还有很多的闲暇时间，有大把的精力能够把学校的政治斗争搞得有声有色。方鸿渐刚一进学校就莫名其妙地被划归为某一个帮派的成员，并且还处处受到其他帮派的排挤。</p>
-<p>虽说描写的是上个世纪的事情，但是很多情节着实有趣。比方说方鸿渐原本被聘任教授，结果等到正式入职的时候只有副教授的职称。无论他怎样苦心经营，却都攀不上教授的帽子。有同事就推心置腹地告诉他：从讲师升到副教授是很容易的，但是从副教授升到教授就难于登天。好比从丫鬟转做小妾是很容易的，但是如果把小妾扶正做夫人却是有违伦常的事情。这些论断令人读了之后不禁要惊奇地拍桌子。</p>
-<p>再比如，三闾大学要施行“导师制”。这在今天看起来好像是天经地义的，但是在当时却实乃首创。三闾大学不仅要求导师对学生进行一对一地授课和指导，而且还要导师每天都跟学生们一同吃饭。不过呢，教授们对授课和指导的问题并不在意，他们关心的焦点在于“一对一吃饭”问题上，并且就到底“怎么吃”展开了非常激烈的讨论。好好的“导师制”被讨论成了“师生聚餐制”，令人啼笑皆非。</p>
-<p>在学校里当权的都是不学无术之辈，有学有术之辈却又不把心思放在教学上，方鸿渐的内心是苦恼的：好不容易重新换了一个地方准备从零开始，好好施展自己的抱负，却发现他只不过是从一座看上去很像银行的城，转而逃到了一座看上去很像学校的城。看上去不一样，实际上都一样。</p>
-<p>好在这座城很快也待不下去了，方鸿渐因为受到同事检举被学校解聘，只得带着爱妻孙小姐一起回到他逃来的那个地方——上海。从上海到湖南，又从湖南到上海，好像兜兜转转走了一个圈，又回到原来的起点。但其实不是这样，不是回到原点，这次比原先还要更糟糕。</p>
-<p>丢了学校的工作，方鸿渐经好友推荐去了一家报社。方鸿渐并不灰心，他认为报馆和学校的实质是一样的，都是开发民智，从精神上拯救国民。但实际上呢？由于报社各个部门都不缺人手，方鸿渐最后负责的是《家庭与妇女》和《文化与艺术》两本刊物。</p>
-<p>如果说一开始在岳父银行的时候，方鸿渐只是一个混日子的纨绔子弟，那么不辞万难去湖南任教，以及回到上海的报社任职时，他已经渐渐有了觉悟，想要把自己的学识变成能够振奋自己精神和影响他人的武器。但是他每一次想要施展抱负的念头都会被现实迎头一个闷棍打趴下去，不仅无奈，而且还有说不出口的疼痛。</p>
-<mark class="label ">三份工作，没有任何一份能够让他实现自我价值，甚至没有任何一份能够让他衣食无忧。每当换一个新工作的时候，起初他总是充满期待和欣喜，但是等到不得不再换另一个工作的时候，就只剩巨大的失望在前面等待着他。看似从一座城里挣扎着出来，最终只能陷于另一座城的禁锢</mark>
-<p>。</p>
-<h2 id="第四部分">第四部分</h2>
-<p>婚姻之城与事业之城都是如此令人无奈和失望，这让整本嬉笑怒骂的小说仿佛都成了一部悲剧。但是钱钟书有着令读者意想不到的绝情，在这两座看得见的城之外，他的笔下还有另一座看不见的城，让我们称它为“自我之城”吧。</p>
-<mark class="label ">纵观整部小说，无论是在婚姻中还是工作中，方鸿渐一直都在做一件事情，就是寻求归属感和认同感</mark>
-<p>。他明明确信学识的真假与学位无关，但是在归国之前还是心虚地买了一张假文凭。好像学问并不是学问，只有被别人知道了的学问才算得上是学问。至于孔子教过的“人不知而不愠”，早已不能安慰他内心的空洞。</p>
-<p>爱情中的他也十分怯懦，仿佛别人说了什么，比自己做过什么还要更加有说服力。他并没有勾引过苏小姐，也没有给过她爱的承诺，但是当苏小姐在唐小姐面前污蔑他的时候，他却像哑巴一样不能反驳；最后娶孙小姐更是莫名其妙，完全是因为办公室里的其他同事和家乡的长辈以为他和孙小姐已经是一对了，于是他就大阔步地走进对方设好的圈套里，主动向孙小姐求婚了。</p>
-<p>事业中的他更是可笑到了极点，在三闾大学任教的时候，明明自己擅长的是中国文学，但是却心甘情愿地去教一门叫做“论理学”的公共科目；在报社做编辑的时候，明明希望能够负责经济和时政版面，最后居然只能写如何在菠菜上面淋麻油的厨房小知识。</p>
-<p>方鸿渐并非是一个没有半点学识的人，对于爱情更不是随波逐流而是有自己明确的追求，事业上他何尝没有自己的期待？但是他却犯了一个十分致命的错误：<mark class="label ">终其一生，他都努力想要活成别人所期待的样子</mark>。也许这正是整部《围城》中最大的一座城，这座城之高大、之坚固，简直无法被摧毁。被禁锢了的内心，比被禁锢了的肉身更难得到解脱。如果不是这种对于归属感和认同感的盲目渴望，也许方鸿渐可以过上自己真正喜欢的生活。但是这种来自自我的封闭实在太牢不可破了，或许“自我之城”才是世界上最难冲出的一座城。钱钟书敏锐地认识到了这一点，他用尽讽刺与戏谑的笔法，通过一个小小的方鸿渐，写尽了我们每一个人的人生中都难以摆脱的困境与孤独，留给我们大家一个根本无法解答的难题。</p>
-<h2 id="总结">总结</h2>
-<p>最后我们再来回顾一下这本书中的要点。</p>
-<p>第一，
-钱钟书是庚子赔款留学生，他塑造一个归国留学生的方鸿渐作为小说的主角。海外知识分子与本土文化格格不入的尴尬，奠定了整部小说的基调。</p>
-<p>第二，
-作者在小说中描述了世间的四种爱情，分别是：情欲的爱、门当户对的爱、求之不得的爱、不可摆脱的爱。通过主人公在每一种爱情中不同的经历与感受，揭秘婚姻这座围城原本就矛盾的本质。</p>
-<p>第三，
-在钱钟书的笔下，主人公的三份工作代表了知识分子实现自我价值的三种途径：银行经济救国、学校教育救国、报社启发民智救国。但是梦想与现实之间的落差，永远是事业这座围城最无奈之处。</p>
-<p>第四，
-除了婚姻之城、事业之城这两座看得见的围城，作者还为我们展现了一座看不见的自我之城。对于归属感与认同感的渴望，往往成为人们禁锢自己的枷锁。在上世纪三十年代的整个中国社会都是如此，而在今天我们的生活中亦是如此，努力想要活成别人期待的样子，这是人生最大的一座心灵围城。</p>
-]]></content>
-      <categories>
-        <category>得到讲书</category>
-        <category>小说</category>
-      </categories>
-      <tags>
-        <tag>得到讲书</tag>
-        <tag>小说</tag>
-        <tag>围城</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Numpy数组操作</title>
-    <url>/posts/21795/</url>
-    <content><![CDATA[<p>本文主要介绍一些操作Numpy数组常用的方法。</p>
-<span id="more"></span>
-<h2 id="数组扁平化">数组扁平化</h2>
-<ul>
-<li><code>a.flatten()</code>:返回副本</li>
-<li><code>a.ravel()</code>:返回视图</li>
-</ul>
-<h2 id="形状变换">形状变换</h2>
-<ul>
-<li><code>a.reshape()</code>:返回视图</li>
-<li><code>a.resize()</code>:返回副本</li>
-</ul>
-<h2 id="添加元素">添加元素</h2>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-        <category>numpy</category>
-      </categories>
-      <tags>
-        <tag>numpy</tag>
-        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -3167,6 +2919,228 @@ class="math inline">\(m×n\)</span> 矩阵（默认布局）</td>
       </tags>
   </entry>
   <entry>
+    <title>围城</title>
+    <url>/posts/39443/</url>
+    <content><![CDATA[<p>在本书里,钱钟书为我们描述了二十世纪三十年代海外留学生归国之后所经历的故事。在抗日战争的历史背景下，穿插讲述了主人公的四段爱情经历和三段工作经历。故事虽然发生在精英知识分子身上，但是却揭示了当时社会中人们都会面临的婚姻与事业的困境，以及困于内心而无法自拔的深刻矛盾。</p>
+<span id="more"></span>
+<h2 id="关于作者">关于作者</h2>
+<p>钱钟书，中国现代文学史上非常重要的一位“才子型”文学家。他1933年从清华大学外文系毕业，作为最早的庚子赔款留学生之一前往英国牛津大学留学。除了著名的长篇小说《围城》之外，他还著有短篇小说集《人鬼兽》和散文集《写在人生边上》；他在学术研究上的成就甚至要高于他的文学成就，《宋诗选注》与《管锥编》等研究专著在学术史上有着非常重要的地位——一方面，作为作家的他幽默犀利，另一方面，作为学者的他又严谨敦实。无论是文学著作还是学术专著，都一直深深地感染着他的读者们。</p>
+<h2 id="核心内容">核心内容</h2>
+<p>本书思想核心是：<mark class="label ">人的一生中可能会遇到各种不同类型的爱情，但是最终走向婚姻之后却会发现，原来它就像是一座围城，城外的人想进去，而城里的人却又想出来；同样，无论是从事哪种工作，都会在追求事业的过程中遇到理想与现实之间的巨大落差，从而再次陷入两难选择的困境。而这都是因为人们往往无法认清自己的内心，为了迎合外界以致活成了别人所期待的模样，这才是人们心中最牢固、最难冲破的一座围城。</mark></p>
+<h2 id="前言">前言</h2>
+<p>即使你没有读过《围城》这本书，也一定听说过这样一句话：“婚姻是一座围城，外面的人想进去，里面的人想出来。”但是如果你以为这句话就是本书的全部主旨，那就太辜负作者钱钟书的一片苦心了。</p>
+<p>《围城》是钱钟书唯一一部长篇小说，他是在1945年到1946年这段非常动荡的战争年代里完成的。据他的太太杨绛女士回忆，当时他只有晚上才有时间写小说，而且每天只能写500字左右。但是这样一天一天地聚沙成塔，最后竟然也完成了一部二十多万字的著作！</p>
+<p>而且，钱钟书的真实身份根本就不是一位作家，而是地地道道的学者：1935年，钱钟书从清华大学毕业后，又去英国牛津大学留学，终身都致力于翻译和文学研究工作。他在学术史上的影响力甚至要盖过他在文坛上的光芒。如果硬要给钱钟书选一部代表作，那么其实《围城》是不够格的，因为无论是《谈艺录》《宋诗选注》，还是《管锥编》，这些研究专著都更加光彩夺目。而且你知道吗？甚至还有一门专门的学问来研究钱钟书在国学和文化批评等方面的成就，就叫做“钱学”！</p>
+<p>写书对于大学者钱钟书来说，顶多只能算是一种兴趣爱好。但是有时候，才子的“信手拈来”却胜过平庸之辈的“呕心沥血”，这部偶然间的兴趣之作却在文坛引起了巨大的反响。虽然在起初发表的30年时间里，它始终都是一本“禁书”，很少有人问津，但是自从1980年重印之后，它不仅超级受到读者的欢迎，屡次被重印，而且还被翻译成英文、法文、德文、俄文等许多版本在全世界各地流传。即使是在小说已经出版了七十年后的今天，你还是常常能够在畅销书排行榜上看到《围城》的身影。</p>
+<p>《围城》之所以能这么受欢迎，跟它独特的语言风格绝对分不开。钱钟书挖苦别人的才能几乎没人能比得上，而且几乎每一句讽刺都能够不偏不倚地戳中读者的笑点，既辛辣又幽默。用今天的话来说，他绝对算得上是一位名副其实的“民国段子手”。</p>
+<h2 id="第一部分">第一部分</h2>
+<p>下面我们就来仔细地读一读这部有趣的小说。当我们翻开小说第一页的时候，仿佛看到作者给我们画了一幅油画：浩瀚的印度洋上漂着一艘法国邮轮，主人公方鸿渐刚刚留学毕业，乘坐轮船回国。当时正是1937年，一个尴尬的年份：抗日战争尚未正式打响，但是中国社会却早已不复原来的模样。在这样不新不旧的尴尬年代里，主人公却恰恰拥有一个不中不洋的尴尬身份：留学生。</p>
+<p>当时的留学生跟今天的留学生绝不相同，因为在当时，有机会并且有经济条件出国深造的人本来就极为罕有，更何况还要有胆识肯到那遥远、未知的外国去“犯险”；但当时的留学生和今天的留学生又面临很多相似的问题：海外知识分子归国后往往都会发现自己与本土文化变得格格不入，不仅会感到彷徨迷失，甚至还会陷入无法自拔的孤独。</p>
+<p>作者钱钟书年轻的时候也曾经是一名留学生，1935年他以第一名的成绩考取了庚子赔款公派留学生。这个庚子赔款留学生项目听起来普通，实际上非同小可，它几乎撼动并改变了整个近代中国的教育格局。著名的詹天佑、陶行知、竺可桢、赵元任，都曾经是庚子赔款留学生。那么，庚子赔款是怎么回事？八国联军侵占紫禁城，逼着清政府签订了《辛丑条约》，规定中国必须赔偿4亿5千万两白银给各国，这笔钱就叫“庚子赔款”。可是出乎意料的是，美国人竟然说赔的钱太多了——你没有听错！他们居然说赔的太多了！而且还要返还一部分给中国！而这部分钱就用作每年的公派留学生费用，从中国拣选优秀的青少年去世界各地留学。</p>
+<p>这件事情确实匪夷所思，但是不管怎么说，钱钟书和其他中国的青年才俊们正是凭借这个契机才获得了留学的机会，这段经历也改变了他们许多人的一生。当时，钱钟书后来的太太杨绛刚刚与他相恋不久，就毅然跟他一起去英国，而且杨绛可是自费留学的，可见一片痴心。留学的虽然是一小撮人，但是这一小撮人的经历却像是一个极为精彩的万花筒，透过它仿佛能够照见当时整个中国社会的人生百态。</p>
+<p>在《围城》这本书中，留洋归来的钱钟书塑造了一个同样留洋归来的小说主人公：方鸿渐。整本书写的都是这个人的故事，但是这个故事不仅不高大上，而且还鸡零狗碎，甚至让人啼笑皆非。</p>
+<p>下面我们就来了解一下这位方先生的奇妙经历。伴随着他的奇妙经历，我们还将会看到钱钟书在这部书里深深预埋的人生智慧。智慧太多太深刻，我们今天只挑选两个最重要的主题来讲。<mark class="label ">第一个主题，是世间的四种爱情；第二个主题，是人生的三座围城。</mark></p>
+<h2 id="第二部分">第二部分</h2>
+<p>首先我们来说“人生的四种爱情”。难道爱情还分这么多的种类？不错！主人公方鸿渐不仅深谙这种分类，还亲身经历过其中的每一种爱情，真是让人羡慕。</p>
+<p>方鸿渐是一个运气好到爆炸的青年人，他出身于书香世家，父亲是前清的举人。虽然清朝不复存在之后，举人自然也就成了虚头衔，但是这却没有熄灭老父亲心中希望家族后人通过读书来光耀门楣的火种，他费尽了心思供方鸿渐去读大学。为什么要说方鸿渐运气好到爆炸呢？因为他除了有一位举人父亲，还有一位银行家岳父。很小的时候他和银行家的千金就被指腹为婚，岳父因此一直出钱赞助他求学。这份运气可真不是吹的，就在方鸿渐大学快要毕业不得不返回家迎娶素昧平生的未婚妻时，未婚妻居然病死了！方鸿渐像是死刑犯人蒙获了恩赦，急忙写了一封悼亡信给岳父表示安慰。结果岳父被他深深感动，把原先准备办婚礼的钱都拿来供方鸿渐出国留学。从此方鸿渐像一只小鸟一样快活地飞走了，展开了他曲折离奇的情感经历——岳父真的是用自己女儿的嫁妆，成全了方鸿渐的四段爱情。</p>
+<p>很多人读《围城》，都会把它当做一部爱情小说来读。这当然不算错，因为纵览整部小说，方鸿渐的身边从来都没有缺少过女人，但是实际上，钱钟书想要说的却又不仅仅是爱情这回事。不过不管怎样，我们首先都必须来看一看，方鸿渐桃花朵朵的人生中究竟遇到了哪些风姿不同的女人？</p>
+<p>方鸿渐的艳遇从回国的船上就已经开始了。同船有一位鲍小姐，简直是男人心目中最完美的驴友。和家乡那些保守无趣的妇女不同，她身姿丰腴、穿着大胆、性格泼辣，而且还特别懂得男人的心思。虽然她早已经订婚，但是却并不妨碍与同船的方鸿渐共度两三天销魂的时光。初尝女人滋味的方鸿渐自然是被勾去了魂魄，爱得忘乎所以。可是随着船靠码头，快乐的旅程也不得不画上句号。刚一登岸，鲍小姐立刻就像没事人一样扑向了未婚夫的怀抱。一切发展得如电光火石一样迅猛，却又像被人掐住了喉咙一样戛然而止，方鸿渐久久不能超脱事外。他回过头来才猛然认识到，自己不过是人家旅行途中的一剂调味品。</p>
+<p>这就是方鸿渐的第一段爱情。也许你要说这根本算不上是爱情，只不过是一段“一夜情”的经历罢了，况且咱们的主人公也没吃什么亏，至多是两不相欠。然而实际上，对于一个爱情的门外汉来说，伴随着性爱的刺激和心跳，那种被玩弄和被伤害的感觉足以令人痛彻心扉。如果说甜蜜是爱情的主旋律，那么痛苦更是这段主旋律中的最高音。<mark class="label ">让我们姑且称这段不太完美的短暂爱情为“情欲的爱”吧。</mark></p>
+<p>这波未平，那波又起，方鸿渐的第二段爱情紧随其后，几乎是无缝衔接。苏文纨是方鸿渐的大学同学，跟他乘坐同一艘船归国。这位苏小姐和前一位鲍小姐迥然不同，她是一名大家闺秀，同时也是货真价实的留洋女博士。留洋女博士不仅在当时十分罕见，就是放在今天来看，也算得上是凤毛麟角。然而就是因为学历太高容易让人产生高攀不起的自卑，苏小姐在婚恋市场上也被划归为大龄剩女一列。你们想想看，今天我们都要嫌女博士大龄，那放在当时的社会，通常十五六岁的女孩子就要拜堂成亲，一个留洋归来的女博士该有多么的难嫁！</p>
+<p>苏小姐深深明白这个道理，她想尽了一切办法想要委身于条件看上去还不错的方鸿渐。她的确是真心喜欢方鸿渐，但是同时却又害上了一种治不好的高冷病：太过于矜持，也实在太爱耍心计。她甚至故意挑起方鸿渐与另一位追求者之间的矛盾，想让两个情敌为了自己争风吃醋。女人们最盼望的事情莫过于有两个男人能够为了自己打得头破血流，被两个人同时追求却又不知如何取舍，这恐怕是恋爱中最令女人不可自拔的桥段。看来并不是近年来韩剧里才有这样的套路，中国早在八十年前就已经悄悄流行过了。方鸿渐虽然也喜欢苏小姐，但是还没有达到愿意“跪舔”的程度，苏小姐越是用心良苦地设计，他却越是发自内心地排斥。用今天的话来说，这段爱情就是被苏小姐活活“作”死的。</p>
+<p>这是一段表面看上去最为登对的爱情：男博士配女博士，乡绅公子配大家闺秀。但是别人眼中的天作之合却抵不过自己最真实的感受，有好感并不等于爱的痴狂，“合适”也只不过是爱情的充分不必要条件。这第二段爱情又是无疾而终，<mark class="label ">我们总结概括一下，把它称为“门当户对的爱”吧。</mark></p>
+<p>很快，方鸿渐又迎来了第三段爱情，这也是整部小说中最为浪漫美好的一段——读到这里你可能要问了，为什么方鸿渐这小子运气这么好？有的人一直都是单身狗，但是他却偏偏桃花运一直没有断过！那我倒是可以先提前安慰你一下，其实这段最美好的爱情到最后也没落下什么好下场。</p>
+<p>方鸿渐在之前那位苏小姐的会客厅里遇到了他一生挚爱——苏小姐的表妹：唐小姐。唐小姐和外面那些妖艳贱货全都不一样，她天真直率，调皮可爱。比起鲍小姐来说她更加青涩，比起苏小姐来说她又更加单纯。她像一阵清风，轻轻柔柔地吹进了方鸿渐苦闷的心里。为了能够跟她一起吃一顿晚饭，方鸿渐从早上起床开始就坐立难安，一整天都没有心思上班，下班后早早到了饭店等候，又害怕她不会赴约，就连听到有脚步靠近也会心惊胆战。</p>
+<p>这听上去完全就像是一个初中生的青涩爱情经历，作为风流倜傥阅女无数的方鸿渐，为什么突然间就丧失了所有的经验和伎俩，变得这么的怂？看来在真爱面前，再老练的情场高手也会变成幼稚的小男孩。可是呢好景不长，鲁迅先生说“悲剧就是把美好的东西撕碎给人看”。苏小姐自己得不到的东西，当然是选择撕碎它。眼看方鸿渐与表妹之间你侬我侬，她气得浑身直抖，把方鸿渐与鲍小姐之间的风流韵事添油加醋地告诉了唐小姐，并且还加上了许多来自“过来人”的劝告。这一劝，可把唐小姐劝得天崩地裂、痛不欲生。无论方鸿渐想要如何对她解释，却再也得不到原先的信任了。一对佳偶就这样在误解中错过彼此，再也没有见过面。</p>
+<p>杨绛曾经说过，其实钱钟书最爱的就是唐小姐，正因为如此，才故意安排唐小姐决不能够嫁给方鸿渐。因为美好的爱情永远只能停留在记忆与想象里，一旦落实到了柴米油盐之中，就会失去原来纯粹的模样。相同的理论张爱玲也说过：每个男人的生命中都会有一朵白玫瑰和一朵红玫瑰，无论娶了哪一朵最终都会是遗憾。最完美的永远是得不到的，这就是爱情这个磨人的小妖精最可恨之处。<mark class="label ">或许我们也可以为方鸿渐的这一段爱情取名为“求之不得的爱”。</mark></p>
+<p>最后这第四段爱情就让人觉得十分亲切了，因为你也许没机会在旅途中碰上艳遇，你运气不够好没有门当户对的佳偶，你人生悲惨至今没有遇到过真爱——但是你一定在生活中遇见过这位“孙小姐”：她相貌平平、出身平平、性格平平，可以说一切都平平</p>
+<p>最后这第四段爱情就让人觉得十分亲切了，因为你也许没机会在旅途中碰上艳遇，你运气不够好没有门当户对的佳偶，你人生悲惨至今没有遇到过真爱——但是你一定在生活中遇见过这位“孙小姐”：她相貌平平、出身平平、性格平平，可以说一切都平平。她是最普通，但也是最真实的一个女人。她和方鸿渐是怎么认识的呢？认识的经历也十分平平——他俩是同事。</p>
+<p>孙小姐呢，通常都挺温柔体贴，偶尔也会有点尖酸刻薄，方鸿渐对她似乎没有太大的感觉，但是也并不十分讨厌。你肯定不会想到，几番波折之后，最后成为方太太的竟恰恰就是这位孙小姐！什么？这怎么可能呢？经历了一夜风流，两厢别离，三种相思，风流倜傥的方鸿渐居然要娶一个“路人甲”做自己的老婆？</p>
+<p>世上的女人那么多，为什么偏偏娶了人畜无害的孙小姐呢？孙小姐虽然在别的方面并不擅长，但是在自己的婚姻方面却十分懂得经营。她与方鸿渐本来做着相安无事的同事，但是却很会营造暧昧气氛，以至于让整个办公室的人都误以为两人早就是一对；本来舆论压力还不至于让方鸿渐就范，但是孙小姐还特地为自己伪造出一份来自父亲的信，信中言辞激烈地质问她和方鸿渐的关系，顺便还催促结婚。这样一来，她顺理成章地就成为了舆论压力和父权压力的受害者。恐怕方鸿渐最后娶她，一半是出于怜悯，另一半也是出于木已成舟的无奈。</p>
+<p>与其说是孙小姐千方百计地嫁给了方鸿渐，不如说只有孙小姐才是方鸿渐最后的避难所。如果不是她，方鸿渐最后的感情与婚姻又将落脚于何处呢？现实也许荒谬，也许残酷，但是它最厉害的一点就是真实，真实到根本没有人能够有力量去违逆它。<mark class="label ">让我们就称这最后这一段爱情为“不可摆脱的爱”吧。</mark></p>
+<p>到这里为止，方鸿渐的四段爱情故事都已经讲完了，小说也快翻到最后。但是在一开始咱们就说过，《围城》并不仅仅是一部爱情小说。怎么？都谈了四段恋爱，这事还没完？！不仅没完，这才刚刚开始呢！虽然整部小说都是以爱情和婚姻来贯穿情节的，但是这却只是线索而已，婚姻也只是钱钟书描绘的“三座围城”中的其中一座。</p>
+<p>经历过爱情的人都知道，婚姻的确像是一座城，而且更像是一个牢笼。无数男男女女都为着婚姻这个目标而日夜兼程地赶路，不过刚进去就想出来的也大有人在，更有甚者，在这座城里进进出出，最终也不知道自己要去往何处。作者钱钟书与妻子杨绛的婚姻既是门当户对，又是情投意合。不过作者本人的幸福经历并不能够改变婚姻这座城池的本质，作者能够站在城里眺望城外，用一双慧眼把这座城看得清清楚楚。他没有开门相迎，也不会拒人于门外，因为作者并不是一个看门人，他对你进不进城并不关心；相反，他是一个画地图的人，把这座城的里里外外给你画个清楚，至于你到底何去何从，全凭你自己来定夺。</p>
+<h2 id="第三部分">第三部分</h2>
+<p>如果说“婚姻之城”只是三座围城中的其中一座，下面我就要赶紧带着你一起去看看另外两座围城：“事业之城”与“自我之城”。</p>
+<p>方鸿渐虽然是留学生，但是他在欧洲学习的专业很令人费解：一开始学的还是社会学与哲学，但是后来实在是跟不上，就转而开始学习中国文学。与现在的海外汉学发展情况不同，在当时的国际环境下一个中国留学生去外国学习中国文学，实在是莫名其妙。这还不算，他因为没写完论文，根本就无法正常毕业，于是只得购买了一个假的博士学位证书，带回家来哄骗父母。</p>
+<p>这位假博士回国之后一共辗转了三个地方，做了三份不同的工作。伴随着每一份工作，你都会看到主人公巨大的变化，这三份工作给他带来的影响，甚至要比那四段恋爱来得更猛烈！《围城》这部小说有一个非常奇妙之处，就是明明写的是七十年前的故事，但是在今天看来也丝毫没有任何的隔阂感，不仅几段爱情故事听上去就像是你的好哥们儿前几天才发生过的事情，连方鸿渐在事业上的曲折也让人感到仿佛就发生在我们身边。怪不得经常有人说，其实我们每一个人都是钱钟书笔下的方鸿渐。</p>
+<p>方鸿渐归国后的第一份工作是在一家银行——你要好奇了，明明是中国文学系毕业的留学生，为什么会进银行去工作呢？这你就有所不知了，这家银行是方鸿渐那还没过门就不幸去世的妻子家的产业。老岳父一听贤婿学成归来，立刻把他安排进了自己家开的银行里。与其说是上班，实际上不过是挂职。这种事情在我们身边并不少见吧？无论原来学的是什么专业，本来又拥有何种抱负，很多人大学一毕业就会被父母拉回家去继承家族产业，或者受父母的安排在家乡谋职。方鸿渐也不能免俗，而且他好像丝毫也不以为俗，不仅在岳父的银行里轻轻松松地上班，而且吃住也都在岳父家里，并且心安理得。</p>
+<p>其实这还挺让人吃惊的，因为虽然学艺不精，但是方鸿渐毕竟接受了欧洲文化的熏陶，法国的革命精神的各种新思潮也必定让他耳濡目染。可是怎么刚刚一回国就立刻倒插门到岳父的银行里去捧铁饭碗呢？如果说婚姻的城池对于方鸿渐来说是个考验，那么事业这座城池在他的眼里简直犹如一摊黄土矮墙，根本还没来得及看一眼就已经坍塌了。</p>
+<p>好在战争局势和社会动荡不允许他这么英雄气短，时局逼着他不得不离开上海的温柔乡，随着几个朋友一起奔赴湖南的一个小小的县城，去一所战时新创办的三闾大学任教。值得我们欣慰的是，作为知识分子的方鸿渐好像终于要开始走上兴师办学、启发民智的道路了。在国难当头之下，仿佛这才是一个热血青年应有的抱负与责任。</p>
+<p>方鸿渐没有辜负我们的期望，他刚到三闾大学的时候也的确就是这样想的：要为学生传道、授业、解惑，让青年一代重新振作，改造我们的国家。可见他骨子里毕竟还是有热血的。可是呢，青年有志报国，不等于报国有路。一所刚刚创办的大学，学生总数不过一百来人，其组织机构之复杂就比得上一个庞大的帮派系统。校长、主任、教授们好像在讲课办学之外还有很多的闲暇时间，有大把的精力能够把学校的政治斗争搞得有声有色。方鸿渐刚一进学校就莫名其妙地被划归为某一个帮派的成员，并且还处处受到其他帮派的排挤。</p>
+<p>虽说描写的是上个世纪的事情，但是很多情节着实有趣。比方说方鸿渐原本被聘任教授，结果等到正式入职的时候只有副教授的职称。无论他怎样苦心经营，却都攀不上教授的帽子。有同事就推心置腹地告诉他：从讲师升到副教授是很容易的，但是从副教授升到教授就难于登天。好比从丫鬟转做小妾是很容易的，但是如果把小妾扶正做夫人却是有违伦常的事情。这些论断令人读了之后不禁要惊奇地拍桌子。</p>
+<p>再比如，三闾大学要施行“导师制”。这在今天看起来好像是天经地义的，但是在当时却实乃首创。三闾大学不仅要求导师对学生进行一对一地授课和指导，而且还要导师每天都跟学生们一同吃饭。不过呢，教授们对授课和指导的问题并不在意，他们关心的焦点在于“一对一吃饭”问题上，并且就到底“怎么吃”展开了非常激烈的讨论。好好的“导师制”被讨论成了“师生聚餐制”，令人啼笑皆非。</p>
+<p>在学校里当权的都是不学无术之辈，有学有术之辈却又不把心思放在教学上，方鸿渐的内心是苦恼的：好不容易重新换了一个地方准备从零开始，好好施展自己的抱负，却发现他只不过是从一座看上去很像银行的城，转而逃到了一座看上去很像学校的城。看上去不一样，实际上都一样。</p>
+<p>好在这座城很快也待不下去了，方鸿渐因为受到同事检举被学校解聘，只得带着爱妻孙小姐一起回到他逃来的那个地方——上海。从上海到湖南，又从湖南到上海，好像兜兜转转走了一个圈，又回到原来的起点。但其实不是这样，不是回到原点，这次比原先还要更糟糕。</p>
+<p>丢了学校的工作，方鸿渐经好友推荐去了一家报社。方鸿渐并不灰心，他认为报馆和学校的实质是一样的，都是开发民智，从精神上拯救国民。但实际上呢？由于报社各个部门都不缺人手，方鸿渐最后负责的是《家庭与妇女》和《文化与艺术》两本刊物。</p>
+<p>如果说一开始在岳父银行的时候，方鸿渐只是一个混日子的纨绔子弟，那么不辞万难去湖南任教，以及回到上海的报社任职时，他已经渐渐有了觉悟，想要把自己的学识变成能够振奋自己精神和影响他人的武器。但是他每一次想要施展抱负的念头都会被现实迎头一个闷棍打趴下去，不仅无奈，而且还有说不出口的疼痛。</p>
+<mark class="label ">三份工作，没有任何一份能够让他实现自我价值，甚至没有任何一份能够让他衣食无忧。每当换一个新工作的时候，起初他总是充满期待和欣喜，但是等到不得不再换另一个工作的时候，就只剩巨大的失望在前面等待着他。看似从一座城里挣扎着出来，最终只能陷于另一座城的禁锢</mark>
+<p>。</p>
+<h2 id="第四部分">第四部分</h2>
+<p>婚姻之城与事业之城都是如此令人无奈和失望，这让整本嬉笑怒骂的小说仿佛都成了一部悲剧。但是钱钟书有着令读者意想不到的绝情，在这两座看得见的城之外，他的笔下还有另一座看不见的城，让我们称它为“自我之城”吧。</p>
+<mark class="label ">纵观整部小说，无论是在婚姻中还是工作中，方鸿渐一直都在做一件事情，就是寻求归属感和认同感</mark>
+<p>。他明明确信学识的真假与学位无关，但是在归国之前还是心虚地买了一张假文凭。好像学问并不是学问，只有被别人知道了的学问才算得上是学问。至于孔子教过的“人不知而不愠”，早已不能安慰他内心的空洞。</p>
+<p>爱情中的他也十分怯懦，仿佛别人说了什么，比自己做过什么还要更加有说服力。他并没有勾引过苏小姐，也没有给过她爱的承诺，但是当苏小姐在唐小姐面前污蔑他的时候，他却像哑巴一样不能反驳；最后娶孙小姐更是莫名其妙，完全是因为办公室里的其他同事和家乡的长辈以为他和孙小姐已经是一对了，于是他就大阔步地走进对方设好的圈套里，主动向孙小姐求婚了。</p>
+<p>事业中的他更是可笑到了极点，在三闾大学任教的时候，明明自己擅长的是中国文学，但是却心甘情愿地去教一门叫做“论理学”的公共科目；在报社做编辑的时候，明明希望能够负责经济和时政版面，最后居然只能写如何在菠菜上面淋麻油的厨房小知识。</p>
+<p>方鸿渐并非是一个没有半点学识的人，对于爱情更不是随波逐流而是有自己明确的追求，事业上他何尝没有自己的期待？但是他却犯了一个十分致命的错误：<mark class="label ">终其一生，他都努力想要活成别人所期待的样子</mark>。也许这正是整部《围城》中最大的一座城，这座城之高大、之坚固，简直无法被摧毁。被禁锢了的内心，比被禁锢了的肉身更难得到解脱。如果不是这种对于归属感和认同感的盲目渴望，也许方鸿渐可以过上自己真正喜欢的生活。但是这种来自自我的封闭实在太牢不可破了，或许“自我之城”才是世界上最难冲出的一座城。钱钟书敏锐地认识到了这一点，他用尽讽刺与戏谑的笔法，通过一个小小的方鸿渐，写尽了我们每一个人的人生中都难以摆脱的困境与孤独，留给我们大家一个根本无法解答的难题。</p>
+<h2 id="总结">总结</h2>
+<p>最后我们再来回顾一下这本书中的要点。</p>
+<p>第一，
+钱钟书是庚子赔款留学生，他塑造一个归国留学生的方鸿渐作为小说的主角。海外知识分子与本土文化格格不入的尴尬，奠定了整部小说的基调。</p>
+<p>第二，
+作者在小说中描述了世间的四种爱情，分别是：情欲的爱、门当户对的爱、求之不得的爱、不可摆脱的爱。通过主人公在每一种爱情中不同的经历与感受，揭秘婚姻这座围城原本就矛盾的本质。</p>
+<p>第三，
+在钱钟书的笔下，主人公的三份工作代表了知识分子实现自我价值的三种途径：银行经济救国、学校教育救国、报社启发民智救国。但是梦想与现实之间的落差，永远是事业这座围城最无奈之处。</p>
+<p>第四，
+除了婚姻之城、事业之城这两座看得见的围城，作者还为我们展现了一座看不见的自我之城。对于归属感与认同感的渴望，往往成为人们禁锢自己的枷锁。在上世纪三十年代的整个中国社会都是如此，而在今天我们的生活中亦是如此，努力想要活成别人期待的样子，这是人生最大的一座心灵围城。</p>
+]]></content>
+      <categories>
+        <category>得到讲书</category>
+        <category>小说</category>
+      </categories>
+      <tags>
+        <tag>得到讲书</tag>
+        <tag>小说</tag>
+        <tag>围城</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人生的意义</title>
+    <url>/posts/25293/</url>
+    <content><![CDATA[<p>客观上看，人的目的是好好活，而人生的意义取决于我们对“好好活”的认识和理解。</p>
+<span id="more"></span>
+<p>首先我们需要清楚意义这个词的意思：指一个事物对另一个事物的价值。</p>
+<p>这句话怎么理解呢？我们假设有两个事物，或者说两个系统，他们其中一个有自己的目的。比如说人的目的是好好活着，而食物能帮助我们更好的达到这个目的，我们就说食物对人是有价值的，也就是有意义的。</p>
+<p>上面说的虽然是两个事物，但是从广义上来说，意义这个词最终指向的是人类自身的目的。因为正是我们来讨论各个事物的意义。</p>
+<p>那么问题来了，人活着的意义是什么？也就是人活着的价值是什么？要讨论这个问题我们首先需要确定意义是对谁来说的。</p>
+<p>如果对自己来说，那么人活着这本身是一种目的，相当于问人活着对自己活着有什么意义，讨论这个是无意义的。除非你觉得你的人生目的是其他，而不是好好活着。但是你要知道，你的一切决定都是你综合理性和感性做出的，这个决定必定在当时对你来说令你觉得更能满足自己的内心，而满足自己的内心本身也是好好活着的范畴。（好好活着并非是好死不如赖活着，而是看你对他的认识）</p>
+<p>如果对别人来说，那么你活着的目的当然是给别人做出贡献，能让别人更好的达到他的目的。</p>
+<p>而社会大部分的都是别人，且社会的好坏也直接影响着自身。所以这才出现了国家倡导的人生最高价值：无私奉献。</p>
+<p>而很多书中从自身出发讨论人生的意义，其实本质就是在解读好好活着是什么，怎么才算好好活着。对这个概念的解读，会受到历史背景，文化因素等等的影响。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>人生的意义</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numpy基础</title>
+    <url>/posts/21796/</url>
+    <content><![CDATA[<p>Numpy是用于处理多维数组的数值运算库，不仅可以用于机器学习，还可以用于图像处理、自然语言处理等任务。本文主要介绍关于Numpy底层的一些基本概念。</p>
+<span id="more"></span>
+<mark class="label danger">本文现在还很简略，等需要的时候再补充吧</mark>
+<h2 id="多维数组ndarray">多维数组ndarray</h2>
+<p>ndarray本质就是一个N维数组，由多个具有相同类型和尺寸的元素组成。</p>
+<h3 id="属性">属性</h3>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">T</td>
+<td>返回经过转置的矩阵，当ndim&lt;2时返回原数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">data</td>
+<td>数组中的数据在内存中的开始地址</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dtype</td>
+<td>元素的数据类型</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">flags（不常用）</td>
+<td>数据的内存布局信息</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">flat</td>
+<td>将原数组转为一维数组的迭代器（返回新的，原数组不变）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">imag</td>
+<td>元素虚数部分</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">real</td>
+<td>元素实数部分</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">size</td>
+<td>元素数量</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">itemsize</td>
+<td>每个元素的大小（以字节为单位）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nbytes</td>
+<td>所有元素的总字节数</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ndim</td>
+<td>维数</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">shape</td>
+<td>形状</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">strides（不常用）</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ctypes（不常用）</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">base（不常用）</td>
+<td>返回基类，不是视图时，返回None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他">其他</h3>
+<p>下面记录一下一些不常用的概念，以后需要时再补充吧。</p>
+<ul>
+<li>内存布局：行主序和列主序</li>
+<li>步长相关概念</li>
+</ul>
+<h2 id="广播">广播</h2>
+<ul>
+<li>如果维数不同，在其shape的开头加入1以对其形状进行调整。</li>
+<li>可以进行广播的条件是：每个维度的元素数量与最大数量相等或为1。</li>
+<li>对于元素数量为1的维度，使用相同的值进行重复填充</li>
+</ul>
+<h2 id="副本视图">副本视图</h2>
+<p><strong>副本</strong>：使用与原数组不同的内存空间，但数据内容相同。</p>
+<p><strong>视图</strong>：与原数组引用的是同一个内存地址。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">c = a  <span class="comment"># 视图</span></span><br><span class="line">a = a + <span class="number">1</span>  <span class="comment"># 副本</span></span><br><span class="line">a += <span class="number">1</span>    <span class="comment"># 视图</span></span><br><span class="line">np.add(a, <span class="number">1</span>, out=a) <span class="comment">#视图</span></span><br></pre></td></tr></table></figure>
+<p>一般而言，视图操作比副本操作要快。</p>
+<p><strong>副本与视图的分辨方法：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.may_share_memory(a, b)  <span class="comment"># 返回True，说明b是a的视图</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组操作">数组操作</h2>
+<p>对于Numpy数组操作的大部分函数，既可以通过<code>ndarray.</code>的方式调用，也可以通过<code>np.</code>的方式调用。</p>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+        <category>numpy</category>
+      </categories>
+      <tags>
+        <tag>numpy</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>月亮和六便士</title>
     <url>/posts/9246/</url>
     <content><![CDATA[<p>一个英国证券交易所的经纪人，突然放弃安稳的工作、美满的家庭离家出走，去巴黎追求绘画理想，在异国经受着精神和肉体的双重折磨。在一番离奇的遭遇之后，他决定离开文明世界，在塔希提岛上度过余生。在岛上，他终于能够安心创作，画出了使后世震惊的杰作，但在去世之前，他却留下遗嘱，让妻子把画作全部烧毁。</p>
@@ -3211,6 +3185,32 @@ class="math inline">\(m×n\)</span> 矩阵（默认布局）</td>
         <tag>得到讲书</tag>
         <tag>小说</tag>
         <tag>月亮和六便士</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numpy数组操作</title>
+    <url>/posts/21795/</url>
+    <content><![CDATA[<p>本文主要介绍一些操作Numpy数组常用的方法。</p>
+<span id="more"></span>
+<h2 id="数组扁平化">数组扁平化</h2>
+<ul>
+<li><code>a.flatten()</code>:返回副本</li>
+<li><code>a.ravel()</code>:返回视图</li>
+</ul>
+<h2 id="形状变换">形状变换</h2>
+<ul>
+<li><code>a.reshape()</code>:返回视图</li>
+<li><code>a.resize()</code>:返回副本</li>
+</ul>
+<h2 id="添加元素">添加元素</h2>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+        <category>numpy</category>
+      </categories>
+      <tags>
+        <tag>numpy</tag>
+        <tag>数据分析</tag>
       </tags>
   </entry>
 </search>
